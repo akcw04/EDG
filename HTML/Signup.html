@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Truculenta:opsz,wght@12..72,100..900&display=swap" rel="stylesheet">
+    <script src="../Javascript/Signup_Validation.js"></script>
 </head>
 <body>
 <a class="home_icon" href="">🏠︎</a>
@@ -15,19 +16,25 @@
 <div class="form">
 <form action="#">
     <h2>☻ Name :</h2>
-    <input class="input_box" type="text" id="name" name="name">
+    <input required placeholder="Enter Full Name"  class="input_box" type="text" id="name" name="name">
     <h2>♕ Date of birth  :</h2>
-    <input class="input_box" type="date" id="name" name="name">
+    <input class="dob_box" type="date" id="dob" name="dob">
     <h2>⚥ Gender :</h2>
     <input class="gender" type="radio" name="gender" value="male"><b class="gender"> MALE</b><br>
     <input class="gender" type="radio" name="gender" value="female"><b class="gender"> FEMALE</b><br>
     <input class="gender" type="radio" name="gender" value="other"><b class="gender"> OTHER</b>
     <h2>☏ Phone Number :</h2>
-    <input class="input_box" type="tel" id="phone" name="phone">
+    <input required placeholder="Phone Number" class="input_box" type="tel" id="phone" name="phone">
     <h2>✉ Email :</h2>
-    <input class="input_box" type="email" id="email" name="email">
+    <input required placeholder="Registered Email Address" class="input_box" type="email" id="email" name="email">
     <h2>⚿ Password :</h2>
-    <input class="input_box" type="password" id="password" name="password">
+    <input oninput="return formvalid()" class="input_box" type="password" required placeholder="Password" id="password" name="password" autocomplete="off">
+    <br>
+    <span id="val-password"></span>
+    <h2>⚿ Confirm Password :</h2>
+    <input oninput ="return Validate_Password()" required placeholder="Confirm Password" class="input_box" type="password" id="confirm_password" name="confirm_password" autocomplete="off">
+    <br>
+    <span id="val-confirm"></span>
     <br>
     <br>
     <br>
