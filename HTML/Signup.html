@@ -24,9 +24,13 @@
     <input class="gender" type="radio" name="gender" value="female"><b class="gender"> FEMALE</b><br>
     <input class="gender" type="radio" name="gender" value="other"><b class="gender"> OTHER</b>
     <h2>☏ Phone Number :</h2>
-    <input required placeholder="Phone Number" class="input_box" type="tel" id="phone" name="phone">
+    <input oninput="return validate_phone_number()" required placeholder="Phone Number" class="input_box" type="tel" id="phone" name="phone">
+    <br>
+    <span id="val-phone"></span>
     <h2>✉ Email :</h2>
-    <input required placeholder="Registered Email Address" class="input_box" type="email" id="email" name="email">
+    <input oninput="return validate_email()" placeholder="Registered Email Address" class="input_box" type="email" id="email" name="email">
+    <br>
+    <span id="val-email"></span>
     <h2>⚿ Password :</h2>
     <input oninput="return formvalid()" class="input_box" type="password" required placeholder="Password" id="password" name="password" autocomplete="off">
     <br>

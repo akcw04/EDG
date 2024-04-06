@@ -7,6 +7,7 @@ function formvalid() {
       return false;
     } else {
       document.getElementById("val-password").innerHTML = "";
+      return true;
     }
   }
 
@@ -27,9 +28,34 @@ function Validate_Password() {
     } else {
         // Passwords match
         document.getElementById("val-confirm").innerHTML = "";
+        return true;
     }
 }
 
 // Add event listeners to the password and confirm password fields
 passwordField.addEventListener('input', validatePassword);
 confirmPasswordField.addEventListener('input', validatePassword);
+
+function validate_phone_number() {
+    var phone_number = document.getElementById("phone").value;
+    var phone_number_regex = /^[0-9]{10}$/;
+    if (!phone_number.match(phone_number_regex)) {
+        document.getElementById("val-phone").innerHTML = " * Invalid Phone Number";
+        return false;
+    } else {
+        document.getElementById("val-phone").innerHTML = "";
+        return true;
+    }
+}
+
+function validate_email() {
+    var email = document.getElementById("email").value;
+    var email_regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    if (!email.match(email_regex)) {
+        document.getElementById("val-email").innerHTML = " * Invalid Email";
+        return false;
+    } else {
+        document.getElementById("val-email").innerHTML = "";
+        return true;
+    }
+}
