@@ -324,3 +324,24 @@ h1 {
   margin: 0 auto;
   width: 100%;
 }
+
+#section3 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #FFD1DC;
+  margin: 0;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  font-family: "Dosis", sans-serif;
+}
+
+#section3 h2 {
+  font-size: 40px;
+  margin: 0;
+  padding-top: 20px;
+  padding-bottom: 15px;
+  text-align: center;
+  font-family: "Dosis", sans-serif;
+  color: black;
+}
