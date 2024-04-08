@@ -222,5 +222,11 @@
  .img-box2 {
     display: flex;
     justify-content: center;
-    height: '50%';
+    width: 100%;
+    height: 100%;
  }
+
+ .imgstyle2 {
+  width: 50%;
+  height: 100%;
+}
