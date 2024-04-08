@@ -14,44 +14,46 @@
 <a class="home_icon" href="">🏠︎</a>
 <h1>Sign Up</h1>
 <div class="form">
-<form action="#">
-    <h2>☻ Name :</h2>
-    <input required placeholder="Enter Full Name"  class="input_box" type="text" id="name" name="name">
+<form method="POST" action="../PHP/submit_form.php">
+    <h2>☻ First Name :</h2>
+    <input required placeholder="Exp : Karen"  class="input_box" type="text" id="FirstName" name="FirstName">
+    <h2>☻ Last Name :</h2>
+    <input required placeholder="Exp : Chua"  class="input_box" type="text" id="LastName" name="LastName">
     <h2>♕ Date of birth  :</h2>
-    <input class="dob_box" type="date" id="dob" name="dob">
+    <input class="dob_box" type="date" id="DOB" name="DOB">
     <h2>⚥ Gender :</h2>
-    <input class="gender" type="radio" name="gender" value="male"><b class="gender"> MALE</b><br>
-    <input class="gender" type="radio" name="gender" value="female"><b class="gender"> FEMALE</b><br>
-    <input class="gender" type="radio" name="gender" value="other"><b class="gender"> OTHER</b>
+    <input class="gender" type="radio" name="Gender" value="male"><b class="gender"> MALE</b><br>
+    <input class="gender" type="radio" name="Gender" value="female"><b class="gender"> FEMALE</b><br>
+    <input class="gender" type="radio" name="Gender" value="others"><b class="gender"> OTHER</b>
     <h2>☏ Phone Number :</h2>
-    <input oninput="return validate_phone_number()" required placeholder="Phone Number" class="input_box" type="tel" id="phone" name="phone">
+    <input oninput="return validate_phone_number()" required placeholder="Exp : 0127158682" class="input_box" type="tel" id="PhoneNumber" name="PhoneNumber">
     <br>
     <span id="val-phone"></span>
     <h2>✉ Email :</h2>
-    <input oninput="return validate_email()" placeholder="example@gmail.com"  class="input_box" type="email" id="email" name="email">
+    <input oninput="return validate_email()" placeholder="example@gmail.com"  class="input_box" type="email" id="Email" name="Email">
     <br>
     <span id="val-email"></span>
     <h2>⚿ Password :</h2>
-    <input oninput="return formvalid()" class="input_box" type="password" required placeholder="Password" id="password" name="password" autocomplete="off">
+    <input oninput="return formvalid()" class="input_box" type="password" required placeholder="Password" id="Password" name="Password" autocomplete="off">
     <br>
     <span id="val-password"></span>
     <h2>⚿ Confirm Password :</h2>
-    <input oninput ="return Validate_Password()" required placeholder="Confirm Password" class="input_box" type="password" id="confirm_password" name="confirm_password" autocomplete="off">
+    <input oninput ="return Validate_Password()" required placeholder="Confirm Password" class="input_box" type="Password" id="Confirm_Password" name="Confirm_Password" autocomplete="off">
     <br>
     <span id="val-confirm"></span>
     <br>
     <br>
     <br>
-    <button class="button" type="submit"><p class="signup_p">Sign Up</p></button>
+    <button class="button" name="submit" id="submit" type="submit"><p class="signup_p">Sign Up</p></button>
     <br>
     <br>
     <br>
-</div>
+</form>
+</div> <!-- Closing div for form container -->
     <hr>
     <br>
 <div class="signup_footer">    
     <p>Already have an Account? <a href="Login.html"><p>Login Now</p></a></p>
-</div>
-</form>
+    </div>
 </body>
 </html>
