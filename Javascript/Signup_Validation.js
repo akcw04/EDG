@@ -5,7 +5,7 @@ function formvalid() {
         document.getElementById("val-password").innerHTML = " * Password must be at least 8 characters long";
         return false;
       } else if (!/[!@#$%^&*]/.test(password_val)) {
-        document.getElementById("val-password").innerHTML = " * Password must contain at least one special character";
+        document.getElementById("val-password").innerHTML = " * Contain at least one special character";
         return false; 
       }  else {
         document.getElementById("val-password").innerHTML = "";

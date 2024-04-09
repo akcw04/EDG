@@ -9,39 +9,35 @@ $conn = new mysqli($servername, $username, $password);
 
 // Create database if it does not exist
 $sql = "CREATE DATABASE IF NOT EXISTS edg";
-if ($conn->query($sql) === TRUE) {
-    echo "Database created successfully or already exists.<br>";
-} else {
-    echo "Error creating database: " . $conn->error . "<br>";
-}
-
-// Close the connection
-$conn->close();
+$conn->query($sql);
 
 // Establish a new connection to the created database
 $conn = new mysqli($servername, $username, $password, "edg");
 
 // SQL to create table for users
-$sql = "CREATE TABLE IF NOT EXISTS users (
+$sql_users = "CREATE TABLE IF NOT EXISTS users (
     id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     FirstName VARCHAR(30) NOT NULL,
     LastName VARCHAR(30) NOT NULL,
     DOB DATE,
     Gender ENUM('male', 'female', 'others'),
     PhoneNumber VARCHAR(15),
-    Email VARCHAR(50) NOT NULL UNIQUE,
+    Email VARCHAR(50) NOT NULL,
     Password VARCHAR(255) NOT NULL,
-    `Role` enum('0','1') DEFAULT '0')";
+    Role ENUM('0','1') DEFAULT '0'
+)";
 
+$conn->query($sql_users);
 
 // SQL to create table for questions
-$sql = "CREATE TABLE IF NOT EXISTS questions (
+$sql_questions = "CREATE TABLE IF NOT EXISTS questions (
     id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     Category ENUM('addition', 'subtraction', 'multiplication', 'division'),
     Question VARCHAR(255) NOT NULL,
     CorrectAnswer VARCHAR(255) NOT NULL
 )";
 
+$conn->query($sql_questions);
 
 if(isset($_POST['submit'])) {
     $FirstName = $_POST['FirstName'];
@@ -55,13 +51,15 @@ if(isset($_POST['submit'])) {
     
     
     // Insert user details into database
-    $sql = "INSERT INTO users (FirstName, LastName, DOB, Gender, PhoneNumber, Email, Password) 
-            VALUES ('$FirstName', '$LastName', '$DOB', '$Gender', '$PhoneNumber', '$Email', '$Password')";
+    $sql_insert = "INSERT INTO users (FirstName, LastName, DOB, Gender, PhoneNumber, Email, Password) 
+    VALUES ('$FirstName', '$LastName', '$DOB', '$Gender', '$PhoneNumber', '$Email', '$Password')";
     
-    if ($conn->query($sql) === TRUE) {
-        echo '<script>alert("Account Created Successflly")</script>';
+    if ($conn->query($sql_insert) === TRUE) {
+        echo '<script>alert("Account Created Successfully"); window.location.href = "http://localhost/EDG/HTML/Signup.html";</script>';
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
 }
 
+// Close the connection
+$conn->close();
