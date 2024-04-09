@@ -4,7 +4,11 @@ function formvalid() {
     if (password_val.length < 8) {
         document.getElementById("val-password").innerHTML = " * Minimum 8 characters";
         return false;
-    } else {
+    } if (password_val.contains(" ")) { 
+
+    }
+    
+    else {
         document.getElementById("val-password").innerHTML = "";
         return true;
     }
@@ -13,12 +17,23 @@ function formvalid() {
 function Validate_Password() {
     var password_val = document.getElementById("Password").value;
     var confirm_password_val = document.getElementById("Confirm_Password").value;
-
-    if (password_val !== confirm_password_val) {
-        document.getElementById("val-confirm").innerHTML = " * Passwords do not match";
+    if (password.length < 8) {
+        document.getElementById("val-password").innerHTML = " * Password must be at least 8 characters long";
+        return false;
+    } else if (!/[A-Z]/.test(password)) {
+        document.getElementById("val-password").innerHTML = " * Password must contain at least one uppercase letter";
+        return false;
+    } else if (!/[a-z]/.test(password)) {
+        document.getElementById("val-password").innerHTML = " * Password must contain at least one lowercase letter";
+        return false;
+    } else if (!/\d/.test(password)) {
+        document.getElementById("val-password").innerHTML = " * Password must contain at least one number";
+        return false;
+    } else if (!/[!@#$%^&*]/.test(password)) {
+        document.getElementById("val-password").innerHTML = " * Password must contain at least one special character";
         return false;
     } else {
-        document.getElementById("val-confirm").innerHTML = "";
+        document.getElementById("val-password").innerHTML = "";
         return true;
     }
 }

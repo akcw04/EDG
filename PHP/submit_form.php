@@ -30,8 +30,8 @@ $sql = "CREATE TABLE IF NOT EXISTS users (
     Gender ENUM('male', 'female', 'others'),
     PhoneNumber VARCHAR(15),
     Email VARCHAR(50) NOT NULL UNIQUE,
-    Password VARCHAR(255) NOT NULL
-)";
+    Password VARCHAR(255) NOT NULL,
+    `Role` enum('0','1') DEFAULT '0')";
 
 
 // SQL to create table for questions
