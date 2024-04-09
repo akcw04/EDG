@@ -15,15 +15,20 @@
 <h1>Log In</h1>
 <div class="form">
 <form action="#" >
-    <h2>☻ Name :</h2>
-    <input class="input_box" type="text" required placeholder="Full Name as per IC" id="name" name="name">
+    <h2>☻ First Name :</h2>
+    <input required placeholder="Exp : Karen"  class="input_box" type="text" id="FirstName" name="FirstName">
+    <br>
+    <span></span>
+    <h2>☻ Last Name :</h2>
+    <input required placeholder="Exp : Chua"  class="input_box" type="text" id="LastName" name="LastName">
+    <br>
     <span></span>
     <h2>✉ Email :</h2>
-    <input class="input_box" type="text" required placeholder="Email Address" id="email" name="email">
-    <span></span>
-    <h2>⚿ Password :</h2>
-    <input oninput="return formvalid()" class="input_box" type="password" required placeholder="Password" id="password" name="password" autocomplete="off">
+    <input oninput="return validate_email()" placeholder="example@gmail.com"  class="input_box" type="email" id="Email" name="Email">
     <br>
+    <span id="val-email"></span>
+    <h2>⚿ Password :</h2>
+    <input oninput="return formvalid()" class="input_box" type="password" placeholder="Password" id="Password" name="Password" autocomplete="off">
     <br>
     <span id="val-password"></span>
     <br>
