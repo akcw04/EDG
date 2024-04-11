@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pick Color Mode</title>
+    <link rel="stylesheet" href="../CSS/Pick_Color.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <h1>Pick A Color Mode :</h1>
+    <p>Choose Whichever That You Feel Comfortable With</p>
+    <br>
+    <form action="#" method="post">
+        <div class="div1">
+            <a href="#"><img id="img1" class="img1" src="../IMG/protanopia_mode.png" alt="protanopia"></a>
+            <a href="#"><img id="img2" class="img2" src="../IMG/tritanopia_mode.png" alt="tritanopia"></a>
+        </div>
+        <script>
+            // JavaScript to change body background color on img1 hover
+            document.querySelector('.img1').addEventListener('mouseenter', function() {
+                document.body.style.backgroundColor = '#779ECB';
+            });
+            document.querySelector('.img1').addEventListener('mouseleave', function() {
+                document.body.style.backgroundColor = '#FFC0CB'; // Change back to original color
+            });
+
+            document.querySelector('.img2').addEventListener('mouseenter', function() {
+                document.body.style.backgroundColor = '#9ADBB3';
+            });
+            document.querySelector('.img2').addEventListener('mouseleave', function() {
+                document.body.style.backgroundColor = '#FFC0CB'; // Change back to original color
+            });
+        </script>
+    </form>
+</body>
+</html>
