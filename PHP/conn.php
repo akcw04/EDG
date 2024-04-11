@@ -11,4 +11,3 @@ if ($conn->connect_error) {
 }
 echo '<script>alert("database Connected")</script>';
 
-?>
