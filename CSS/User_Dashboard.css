@@ -174,8 +174,12 @@ main {
   }
 }
 
-#section1 {
+#part1 {
     background-color: #2e5989;
+}
+
+#part2 {
+  background-color: #779ECB;
 }
 
 .user_dashboard_bg {
@@ -206,4 +210,38 @@ h1 {
     display: flex; 
     justify-content: center; 
     align-items: center; 
+}
+
+.marquee {
+  width: 150%;
+  height: 200px;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.marquee p {
+  position: absolute;
+  width: 150%;
+  height: 100%;
+  margin: 0;
+  line-height: 200px;  /* Adjust the line height to vertically center text */
+  text-align: center;
+  animation: scroll-left 30s linear infinite;
+  font-size: 45px;
+  font-family: 'Trebuchet MS', sans-serif;
+  word-spacing: 10px;
+  white-space: nowrap;  /* Ensures the text stays in a single line */
+  font-style: oblique;
+  letter-spacing: 2px;
+}
+
+@keyframes scroll-left {
+  0% {
+      transform: translateX(100%);
+  }
+  100% {
+      transform: translateX(-150%);
+  }
 }
