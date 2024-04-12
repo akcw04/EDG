@@ -61,3 +61,18 @@ p {
     font-family: "Dosis", sans-serif;    
     text-align: center;
 }
+
+.button {
+    background: none;       /* Removes the background */
+    border: none;           /* Removes the border */
+    padding: 0;             /* Removes padding */
+    margin: 0;              /* Removes margin */
+    outline: none;          /* Removes the focus outline */
+    color: inherit;         /* Inherits color from parent */
+    font-family: inherit;   /* Inherits font from parent */
+    font-size: inherit;     /* Inherits font size from parent */
+    text-align: left;       /* Aligns text to the left */
+    cursor: pointer;        /* Keeps the pointer cursor to signify it's clickable */
+    -webkit-appearance: none;  /* Removes platform-specific styling on macOS and iOS */
+    -moz-appearance: none;     /* Removes platform-specific styling in Firefox */
+}

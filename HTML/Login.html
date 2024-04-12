@@ -11,18 +11,10 @@
     <script src="../Javascript/Login_Validation.js"></script>
 </head>
 <body>
-<a class="home_icon" href="">🏠︎</a>
+<a class="home_icon" href="../HTML/Dashboard.html">🏠︎</a>
 <h1>Log In</h1>
 <div class="form">
 <form method="POST" action="../PHP/login_check.php">
-    <h2>☻ First Name :</h2>
-    <input required placeholder="Exp : Karen"  class="input_box" type="text" id="FirstName" name="FirstName">
-    <br>
-    <span></span>
-    <h2>☻ Last Name :</h2>
-    <input required placeholder="Exp : Chua"  class="input_box" type="text" id="LastName" name="LastName">
-    <br>
-    <span></span>
     <h2>✉ Email :</h2>
     <input oninput="return validate_email()" placeholder="example@gmail.com"  class="input_box" type="email" id="Email" name="Email">
     <br>
@@ -33,7 +25,7 @@
     <span id="val-password"></span>
     <br>
     <br>
-    <button class="button" type="submit"><p class="login_p">Login</p></button>
+    <button class="button" name="submit" type="submit"><p class="login_p">Login</p></button>
     <br>
     <br>
     <br>
