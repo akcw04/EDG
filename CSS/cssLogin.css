@@ -90,10 +90,9 @@ a {
 }
 
 .login_footer {
-    margin: 0 auto;
     width: 600px;
-    padding-right: 50px;
-    align-items: center;
+    margin-top: 50px;
+    margin: auto;
 }
 
 span {

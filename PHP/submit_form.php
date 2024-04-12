@@ -23,6 +23,7 @@ $sql_users = "CREATE TABLE IF NOT EXISTS users (
     Gender ENUM('male', 'female', 'others'),
     PhoneNumber VARCHAR(15),
     Email VARCHAR(50) NOT NULL,
+    Mode BOOLEAN DEFAULT FALSE,
     Password VARCHAR(255) NOT NULL,
     Role ENUM('0','1') DEFAULT '0'
 )";
@@ -55,7 +56,7 @@ if(isset($_POST['submit'])) {
     VALUES ('$FirstName', '$LastName', '$DOB', '$Gender', '$PhoneNumber', '$Email', '$Password')";
     
     if ($conn->query($sql_insert) === TRUE) {
-        echo '<script>alert("Account Created Successfully"); window.location.href = "http://localhost/EDG/HTML/Signup.html";</script>';
+        echo '<script>alert("Account Created Successfully"); window.location.href = "http://localhost/EDG/HTML/Login.html";</script>';
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
