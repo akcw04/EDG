@@ -23,3 +23,4 @@ $Email = $_POST['Email'];
 $Password = $_POST['Password'];
 
 check_data($Email, $Password, $conn);
+
