@@ -370,13 +370,77 @@ h1 {
     font-weight: bold;
 }
 
-.Marquee-Wrapper {
+.Banner-Wrapper {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
   height: 400px;
 }
 
-.Marquee-Wrapper img{
+.Banner-Wrapper img{
   width: 100%;
   height: 50%;
+  
+}
+
+.About-EDG {
+  display: flex;
+  justify-content: center;
+  margin-top: -150px;
+  font-size: 25px;
+}
+
+.EDG-Logo {
+  display: flex;
+  justify-content: center;
+}
+
+.logo-style {
+  height: 30%;
+  width: 30%;
+}
+
+.About-EDG-Text {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin: 0 100px;
+  font-family: 'Trebuchet MS', sans-serif;
+  line-height: 1.8;
+  font-size: 25px;
+  font-weight: bold;
+  margin-top: -50px;
+}
+
+.Contributers-Header {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin: 0 100px;
+  margin-top: 50px;
+  font-family: 'Trebuchet MS', sans-serif;
+  line-height: 1.8;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.Contributers-Content-Wrapper {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+}
+
+.Contributers-IMG {
+  display: flex;
+  justify-content: center;
+}
+
+.Contributers-IMG-Style{
+  width: 100%;
+  height: 100%;
+}
+
+.Contributers-Caption {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  font-weight: bold;
 }
