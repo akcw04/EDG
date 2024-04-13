@@ -457,9 +457,17 @@ h1 {
 
 .Contact-Us-Icon-Wrapper {
   display: grid;
-  grid-template-columns: auto auto auto auto;
+  grid-template-columns: 500px 500px;
+  grid-template-rows: 300px 300px;
   align-items: center;
-  margin-left: 300px;
-  margin-top: 50px;
+  margin-left: 600px;
+  margin-top: 10px;
 }
 
+.Email {
+  margin-left: -40px;
+}
+
+.Phone-Number {
+  margin-left: -20px;
+}
