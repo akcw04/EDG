@@ -34,4 +34,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['Email'], $_POST['Passw
 }
 
 $conn->close();
-?>
+
