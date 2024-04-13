@@ -33,9 +33,9 @@ $conn->query($sql_users);
 // SQL to create table for questions
 $sql_questions = "CREATE TABLE IF NOT EXISTS questions (
     id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    Category ENUM('addition', 'subtraction', 'multiplication', 'division'),
-    Question VARCHAR(255) NOT NULL,
-    CorrectAnswer VARCHAR(255) NOT NULL
+    Category_id FOREIGN KEY (Category_id) REFERENCES,
+    Question_Name VARCHAR(255) NOT NULL,
+    Question_Text VARCHAR(255) NOT NULL,
 )";
 
 $conn->query($sql_questions);
