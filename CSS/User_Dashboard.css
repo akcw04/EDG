@@ -176,64 +176,59 @@ main {
 
 #part1 {
     background-color: #2e5989;
+    height: 40rem;
 }
 
 #part2 {
-  background-color: #779ECB;
+  background-color: #b5cce9cc;
 }
+
 
 .user_dashboard_bg {
-    position: relative; /* Ensures proper behavior for absolute positioning of children */
-    top: 0;
-    left: 0;
-    width: 100%; /* Take full width of the container */
-    aspect-ratio: 1800 / 800; /* Keep the aspect ratio as 1800:800 */
-    background-image: url('../IMG/user_dashboard_bg.png');
-    background-size:cover;
-    background-position: center;
-    display: flex; 
-    justify-content: center; 
-    align-items: center; 
-    background-color: #779ECB;
+  position: absolute;
+  height: 110%;
+  width: 92%;
+  margin: 0;
+  padding: 0;
 }
 
 
-h1 {
+#part1 h1 {
     font-size: 90px;
     margin: 0; /* Remove margin to ensure centering */
-    padding: 0;
+    padding-top: 10rem;
     font-family: "Dosis", sans-serif;
     font-style: normal;
     color: white;
     text-shadow: 4px 5px 5px #23232e;
+    display: flex;
+    justify-content: center;
     text-align: center;
-    display: flex; 
-    justify-content: center; 
-    align-items: center; 
 }
 
 .marquee {
-  width: 150%;
+  width: 100%;
   height: 200px;
   overflow: hidden;
   position: relative;
   display: flex;
   align-items: center;
+  margin-top: 10px;
 }
 
 .marquee p {
   position: absolute;
-  width: 150%;
+  width: 280%;
   height: 100%;
   margin: 0;
   line-height: 200px;  /* Adjust the line height to vertically center text */
   text-align: center;
-  animation: scroll-left 30s linear infinite;
+  animation: scroll-left 35s linear infinite;
   font-size: 45px;
-  font-family: 'Trebuchet MS', sans-serif;
+  font-family: "Cinzel", serif;
   word-spacing: 10px;
   white-space: nowrap;  /* Ensures the text stays in a single line */
-  font-style: oblique;
+  font-style: bold;
   letter-spacing: 2px;
 }
 
@@ -244,4 +239,42 @@ h1 {
   100% {
       transform: translateX(-150%);
   }
+}
+
+.img-container {
+  float: left;
+  width: 25%;
+  padding: 5px;
+}
+
+#part3 {
+  background-color: #4c729c;
+  height: 40rem;
+}
+
+#part3 h1 {
+  font-size: 60px;
+  margin-top: 10px;
+  padding-top: 1em;
+  font-family: "Dosis", sans-serif;
+  font-style: normal;
+  color: white;
+  text-shadow: 4px 5px 5px #23232e;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  letter-spacing: 2px;
+}
+
+#part3 h2 {
+  font-size: 40px;
+  margin-top: 5px;
+  font-family: "Dosis", sans-serif;
+  font-style: normal;
+  color: white;
+  text-shadow: 4px 5px 5px #23232e;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  letter-spacing: 2px;
 }
