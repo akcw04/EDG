@@ -23,7 +23,7 @@ $sql_users = "CREATE TABLE IF NOT EXISTS users (
     Gender ENUM('male', 'female', 'others'),
     PhoneNumber VARCHAR(15),
     Email VARCHAR(50) NOT NULL,
-    Mode BOOLEAN DEFAULT FALSE,
+    Mode BOOLEAN,
     Password VARCHAR(255) NOT NULL,
     Role ENUM('0','1') DEFAULT '0'
 )";
