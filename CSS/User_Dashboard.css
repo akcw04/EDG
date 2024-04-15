@@ -186,9 +186,9 @@ main {
 
 .user_dashboard_bg {
   position: absolute;
-  height: 110%;
-  width: 92%;
-  margin: 0;
+  height: 100%;
+  width: 94%;
+  margin-top: 3px;
   padding: 0;
 }
 

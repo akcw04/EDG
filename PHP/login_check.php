@@ -13,13 +13,13 @@ if ($conn->connect_error) {
 
 function check_data($Email, $Password, $conn) {
     // Use prepared statements to prevent SQL Injection
-    $stmt = $conn->prepare("SELECT id FROM users WHERE Email = ? AND Password = ?");
+    $stmt = $conn->prepare("SELECT User_id FROM users WHERE Email = ? AND Password = ?");
     $stmt->bind_param("ss", $Email, $Password);
     $stmt->execute();
     $result = $stmt->get_result();
 
     if ($user = $result->fetch_assoc()) {
-        $_SESSION['User_id'] = $user['id']; // Store the user ID in the session
+        $_SESSION['User_id'] = $user['User_id']; // Store the user ID in the session
         echo '<script>alert("Login Successful"); window.location.href = "http://localhost/EDG/HTML/Pick_Color.html";</script>';
     } else {
         echo '<script>alert("No Such Account"); window.location.href = "http://localhost/EDG/HTML/Login.html";</script>';

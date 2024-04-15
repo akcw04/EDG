@@ -18,7 +18,7 @@ if ($conn->connect_error) {
 }
 
 $mode = isset($_POST['mode2']) ? 1 : 0; // Simplified mode check
-$sql_update = "UPDATE users SET Mode = ? WHERE id=?";
+$sql_update = "UPDATE users SET Mode = ? WHERE User_id=?";
 $stmt = $conn->prepare($sql_update);
 
 if ($stmt) {
