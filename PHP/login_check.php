@@ -24,7 +24,6 @@ function check_data($Email, $Password, $conn) {
     } else {
         echo '<script>alert("No Such Account"); window.location.href = "http://localhost/EDG/HTML/Login.html";</script>';
     }
-    $stmt->close();
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['Email'], $_POST['Password'])) {
@@ -33,5 +32,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['Email'], $_POST['Passw
     check_data($Email, $Password, $conn);
 }
 
-$conn->close();
+
 

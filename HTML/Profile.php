@@ -20,14 +20,15 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Dosis:wght@200..800&family=Permanent+Marker&family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
-  
+
 </head>
 
 <body>
+  <?php include("../PHP/profile.php") ?>
     <nav class="navbar">
       <ul class="navbar-nav">
         <li class="logo">
-          <a href="#section1" class="nav-link">
+          <a href="../HTML/User_Dashboard.html" class="nav-link">
             <span class="link-text logo-text">EDG</span>
             <svg
               aria-hidden="true"
@@ -101,12 +102,30 @@
   
     <main>
       <section id="section2">
+        <div id="header-bg"></div>
         <div id="top_background">
           <div>
+            <h1>Profile Section</h1>
               <div class="student_picture_container">
                 <img class="student_picture" src="../IMG/student_picture.png" alt="user_profile">
               </div>
           </div>
+        </div>
+        <div>
+          <div class="profile_container">
+            <div class="profile">
+              <h2>Profile Information</h2>
+              <div class="profile_info">
+                <div class="profile_info_left">
+                  <p>First Name: <?php echo htmlspecialchars($userData['FirstName']); ?></p>
+                  <p>Last Name: <?php echo htmlspecialchars($userData['LastName']); ?></p>
+                  <p>Email: <?php echo htmlspecialchars($userData['Email']); ?></p>
+                  <p>Phone Number: <?php echo htmlspecialchars($userData['PhoneNumber']); ?></p>
+                  <p>Address: <?php echo htmlspecialchars($userData['Address']); ?></p>
+                  <p>City: <?php echo htmlspecialchars($userData['City']); ?></p>
+                  <p>State: <?php echo htmlspecialchars($userData['State']); ?></p>
+                  <p>Zip Code: <?php echo htmlspecialchars($userData['ZipCode']); ?></p>
+                </div>
         </div>
       </section>    
     </main>

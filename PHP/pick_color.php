@@ -32,5 +32,5 @@ if ($stmt) {
     echo "Error preparing statement: " . $conn->error;
 }
 
-$conn->close();
+
 

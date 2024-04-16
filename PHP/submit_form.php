@@ -41,8 +41,6 @@ $sql_questions = "CREATE TABLE IF NOT EXISTS questions (
     FOREIGN KEY (Category_id) REFERENCES category(Category_id)
 )";
 
-$conn->query($sql_questions);
-
 //SQL to create table for choices
 $sql_choices = "CREATE TABLE IF NOT EXISTS choices (
     Choices_id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
@@ -52,7 +50,6 @@ $sql_choices = "CREATE TABLE IF NOT EXISTS choices (
     FOREIGN KEY (Questions_id) REFERENCES questions(Questions_id)
 )";
 
-$conn->query($sql_choices);
 
 //SQL to create table for category
 
@@ -61,7 +58,6 @@ $sql_category = "CREATE TABLE IF NOT EXISTS category (
     Category_Name ENUM('Addition', 'Subtraction', 'Multiplication', 'Division') NOT NULL
 )";
 
-$conn->query($sql_category);
 
 //SQL to create table for quiz_attempts
 
@@ -76,7 +72,6 @@ $sql_attempts = "CREATE TABLE IF NOT EXISTS quiz_attempts (
     FOREIGN KEY (Quiz_id) REFERENCES quiz(Quiz_id)
 )";
 
-$conn->query($sql_attempts);
 
 //SQL to create table for quiz
 
@@ -90,7 +85,12 @@ $sql_quiz = "CREATE TABLE IF NOT EXISTS quiz (
     FOREIGN KEY (Category_id) REFERENCES category(Category_id)
 )";
 
+
+$conn->query($sql_category);
 $conn->query($sql_quiz);
+$conn->query($sql_attempts);
+$conn->query($sql_questions);
+$conn->query($sql_choices);
 
 
 if(isset($_POST['submit'])) {
@@ -115,5 +115,4 @@ if(isset($_POST['submit'])) {
     }
 }
 
-// Close the connection
-$conn->close();
+

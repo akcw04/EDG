@@ -1,6 +1,7 @@
 <?php
 session_start();
 
+
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -22,9 +23,9 @@ function check_data($Email, $Password, $conn) {
         $_SESSION['User_id'] = $user['User_id']; // Store the user ID in the session
         echo '<script>alert("Account Record Found, Please Reset Your Password"); window.location.href = "http://localhost/EDG/HTML/Reset_Password.html";</script>';
     } else {
-        echo '<script>alert("No Such Account Record"); window.location.href = "http://localhost/EDG/HTML/Forgot_Password.html";</script>';
+        echo '<script>alert("No Such Account Record"); window.location.href = "http://localhost/EDG/HTML/Login.html";</script>';
     }
-    $stmt->close();
+
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['Email'], $_POST['Password'])) {
@@ -33,4 +34,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['Email'], $_POST['Passw
     check_data($Email, $Password, $conn);
 }
 
-$conn->close();
+
