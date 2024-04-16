@@ -460,14 +460,30 @@ h1 {
   grid-template-columns: 500px 500px;
   grid-template-rows: 300px 300px;
   align-items: center;
-  margin-left: 600px;
+  justify-content: center;
   margin-top: 10px;
 }
 
+.Icon-Box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Icon-details {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+
+}
 .Email {
-  margin-left: -40px;
+  width:200px;
+  height: 50px;
 }
 
 .Phone-Number {
-  margin-left: -20px;
+  width:200px;
+  height: 50px;
 }
