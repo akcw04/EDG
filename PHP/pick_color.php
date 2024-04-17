@@ -2,8 +2,7 @@
 session_start();
 
 if (!isset($_SESSION['User_id'])) {
-    // Redirect if the user is not logged in
-    echo '<script>window.location.href = "http://localhost/EDG/HTML/Login.html";</script>';
+    echo "no user id found in session";
     exit;
 }
 

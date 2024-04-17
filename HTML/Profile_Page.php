@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Dashboard</title>
+    <title>Profile Page</title>
     <script defer src="../Javascript/script.js"></script>
     <link rel="stylesheet" href="../CSS/Profile.css" />
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&display=swap" rel="stylesheet"/>
@@ -24,7 +24,7 @@
 </head>
 
 <body>
-  <?php include("../PHP/profile.php") ?>
+  <?php include '../PHP/profile.php'; ?>
     <nav class="navbar">
       <ul class="navbar-nav">
         <li class="logo">
@@ -119,12 +119,11 @@
                 <div class="profile_info_left">
                   <p>First Name: <?php echo htmlspecialchars($userData['FirstName']); ?></p>
                   <p>Last Name: <?php echo htmlspecialchars($userData['LastName']); ?></p>
-                  <p>Email: <?php echo htmlspecialchars($userData['Email']); ?></p>
+                  <p>Date Of Birth: <?php echo htmlspecialchars($userData['DOB']); ?></p>
+                  <p>Gender: <?php echo htmlspecialchars($userData['Gender']); ?></p>
                   <p>Phone Number: <?php echo htmlspecialchars($userData['PhoneNumber']); ?></p>
-                  <p>Address: <?php echo htmlspecialchars($userData['Address']); ?></p>
-                  <p>City: <?php echo htmlspecialchars($userData['City']); ?></p>
-                  <p>State: <?php echo htmlspecialchars($userData['State']); ?></p>
-                  <p>Zip Code: <?php echo htmlspecialchars($userData['ZipCode']); ?></p>
+                  <p>Email: <?php echo htmlspecialchars($userData['Email']); ?></p>
+                  <p>Password: <?php echo htmlspecialchars($userData['Password']); ?></p>
                 </div>
         </div>
       </section>    
