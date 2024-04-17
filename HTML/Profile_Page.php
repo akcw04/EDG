@@ -114,18 +114,41 @@
         <div>
           <div class="profile_container">
             <div class="profile">
-              <h2>Profile Information</h2>
-              <div class="profile_info">
-                <div class="profile_info_left">
-                  <p>First Name: <?php echo htmlspecialchars($userData['FirstName']); ?></p>
-                  <p>Last Name: <?php echo htmlspecialchars($userData['LastName']); ?></p>
-                  <p>Date Of Birth: <?php echo htmlspecialchars($userData['DOB']); ?></p>
-                  <p>Gender: <?php echo htmlspecialchars($userData['Gender']); ?></p>
-                  <p>Phone Number: <?php echo htmlspecialchars($userData['PhoneNumber']); ?></p>
-                  <p>Email: <?php echo htmlspecialchars($userData['Email']); ?></p>
-                  <p>Password: <?php echo htmlspecialchars($userData['Password']); ?></p>
-                </div>
-        </div>
+              <h2>Your Submitted Information is only for Create Account Purpose</h2>
+              <div>
+                <div class="table_container">
+                  <table class="table_design">
+                      <tr>
+                          <th>First Name :</th>
+                          <td><?php echo htmlspecialchars($userData['FirstName']); ?></td>
+                      </tr>
+                      <tr>
+                          <th>Last Name :</th>
+                          <td><?php echo htmlspecialchars($userData['LastName']); ?></td>
+                      </tr>
+                      <tr>
+                          <th>Date Of Birth :</th>
+                          <td><?php echo htmlspecialchars($userData['DOB']); ?></td>
+                      </tr>
+                      <tr>
+                          <th>Gender :</th>
+                          <td><?php echo htmlspecialchars($userData['Gender']); ?></td>
+                      </tr>
+                      <tr>
+                          <th>Phone Number :</th>
+                          <td><?php echo htmlspecialchars($userData['PhoneNumber']); ?></td>
+                      </tr>
+                      <tr>
+                          <th>Email :</th>
+                          <td><?php echo htmlspecialchars($userData['Email']); ?></td>
+                      </tr>
+                      <tr>
+                          <th>Password :</th>
+                          <td>**********</td>
+                      </tr>
+                  </table>
+              </div>
+              
       </section>    
     </main>
 </body>
