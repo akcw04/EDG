@@ -171,7 +171,6 @@
     main {
       padding-top: 0;
       margin-left: 5rem; /* Make room for the navbar */
-      background-color: #b5cce9cc;
     }
   }
 
@@ -192,12 +191,12 @@
     display: flex;
     justify-content: right;
     align-items: center;
-    margin-top: 4rem;
+    margin-top: 3rem;
     padding: 0;
   }
 
 .student_picture {
-    width: 1180px;
+    width: 1170px;
     height: 590px;
 }
 
@@ -237,6 +236,9 @@ h2 {
     height: 500px;
     background-color: #fdfd96d2;
     border-radius: 25px;
+    box-shadow: 21px 22px 17px -1px rgba(0,0,0,0.79);
+    -webkit-box-shadow: 21px 22px 17px -1px rgba(0,0,0,0.79);
+    -moz-box-shadow: 21px 22px 17px -1px rgba(0,0,0,0.79);
 }
 
 .table_design tr {
