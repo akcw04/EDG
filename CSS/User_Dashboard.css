@@ -1,3 +1,8 @@
+html {
+  scroll-behavior: smooth;
+  zoom: 100%;
+}
+
 :root {
   font-size: 18px;
   font-family: 'Open Sans';
@@ -175,7 +180,7 @@ main {
 }
 
 #part1 {
-    background-color: #2e5989;
+    background-color: #3d6695;
     height: 40rem;
 }
 
@@ -186,8 +191,8 @@ main {
 
 .user_dashboard_bg {
   position: absolute;
-  height: 100%;
-  width: 94%;
+  height: 110%;
+  width: 96.5%;
   margin-top: 3px;
   padding: 0;
 }
@@ -200,7 +205,7 @@ main {
     font-family: "Dosis", sans-serif;
     font-style: normal;
     color: white;
-    text-shadow: 4px 5px 5px #23232e;
+    text-shadow: 4px 5px 5px rgba(0,0,0,0.6);
     display: flex;
     justify-content: center;
     text-align: center;
@@ -246,9 +251,11 @@ main {
   width: 300px; 
   height: auto; 
   box-shadow: 0 0 10px rgba(0, 0, 0, 1); 
-  margin-left: 45px; 
+  margin-left: 100px; 
   border-radius: 10px; 
   transition: transform 0.3s ease; 
+  display: row;
+  justify-content: space-between;
 }
 
 .img-container:hover {
@@ -269,7 +276,7 @@ main {
   font-family: "Dosis", sans-serif;
   font-style: normal;
   color: white;
-  text-shadow: 4px 5px 5px #23232e;
+  text-shadow: 4px 5px 5px rgba(0,0,0,0.6);
   display: flex;
   justify-content: center;
   text-align: center;
@@ -282,7 +289,7 @@ main {
   font-family: "Dosis", sans-serif;
   font-style: normal;
   color: white;
-  text-shadow: 4px 5px 5px #23232e;
+  text-shadow: 4px 5px 5px rgba(0,0,0,0.6);
   display: flex;
   justify-content: center;
   text-align: center;
@@ -329,7 +336,7 @@ main {
   font-style: normal;
   background-color: #4c729c;
   color: white;
-  text-shadow: 4px 5px 5px #23232e;
+  text-shadow: 4px 5px 5px rgba(0,0,0,0.6);
   display: flex;
   justify-content: center;
   text-align: center;
