@@ -180,45 +180,47 @@ main {
 }
 
 #part1 {
-    background-color: #3d6695;
-    height: 40rem;
+    background-color: #b5cce9cc;
+    height: 54rem;
 }
 
 #part2 {
-  background-color: #b5cce9cc;
+  background-color: white;
 }
-
 
 .user_dashboard_bg {
   position: absolute;
-  height: 110%;
-  width: 96.5%;
-  margin-top: 3px;
+  left: 0;
+  margin: 0;
   padding: 0;
+  width: 100%;
+  height: 110%; 
 }
+
 
 
 #part1 h1 {
     font-size: 90px;
-    margin: 0; /* Remove margin to ensure centering */
-    padding-top: 10rem;
+    margin-top: 0;
+    margin-right: 9rem; /* Remove margin to ensure centering */
+    padding-top: 17rem;
     font-family: "Dosis", sans-serif;
     font-style: normal;
-    color: white;
-    text-shadow: 4px 5px 5px rgba(0,0,0,0.6);
+    color: Black;
     display: flex;
-    justify-content: center;
-    text-align: center;
+    justify-content: right;
+    text-align: left;
 }
 
 .marquee {
   width: 100%;
-  height: 200px;
+  height: 5em;
   overflow: hidden;
   position: relative;
   display: flex;
   align-items: center;
-  margin-top: 10px;
+  margin: 0;
+  padding: 0;
 }
 
 .marquee p {
@@ -226,7 +228,7 @@ main {
   width: 280%;
   height: 100%;
   margin: 0;
-  line-height: 200px;  /* Adjust the line height to vertically center text */
+  line-height: 100px;  /* Adjust the line height to vertically center text */
   text-align: center;
   animation: scroll-left 35s linear infinite;
   font-size: 45px;
@@ -264,14 +266,13 @@ main {
 }
 
 #part3 {
-  background-color: #4c729c;
+  background-color: #4e6e96be;
   margin: 0;
   padding: 0;
 }
 
 #part3 h1 {
   font-size: 60px;
-  margin-top: 10px;
   padding-top: 1em;
   font-family: "Dosis", sans-serif;
   font-style: normal;
@@ -286,6 +287,7 @@ main {
 #part3 h2 {
   font-size: 40px;
   margin-top: 5px;
+  padding-bottom: 30px;
   font-family: "Dosis", sans-serif;
   font-style: normal;
   color: white;
@@ -323,18 +325,18 @@ main {
 }
 
 #section3 {
-  background-color: #b5cce9cc;
-  height: 42rem;
+  background-color: #b5cce9bf;
+  height: 50rem;
 }
 
 #section3 h1 {
   font-size: 90px;
-  margin-top: 10px;
-  padding-top: 0.8em;
-  padding-bottom: 1em;
+  margin-top: 5px;
+  padding-top: 0.3em;
+  padding-bottom: 0.3em;
   font-family: "Dosis", sans-serif;
   font-style: normal;
-  background-color: #4c729c;
+  background-color: #4e6e96be;
   color: white;
   text-shadow: 4px 5px 5px rgba(0,0,0,0.6);
   display: flex;
@@ -346,5 +348,5 @@ main {
 #section4 {
   background-color: #4c729c;
   height: 50rem;
-  margin-top: 5em;
+  margin-top: 3em;
 }
