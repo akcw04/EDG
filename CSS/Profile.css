@@ -236,9 +236,7 @@ h2 {
     height: 500px;
     background-color: #fdfd96d2;
     border-radius: 25px;
-    box-shadow: 21px 22px 17px -1px rgba(0,0,0,0.79);
-    -webkit-box-shadow: 21px 22px 17px -1px rgba(0,0,0,0.79);
-    -moz-box-shadow: 21px 22px 17px -1px rgba(0,0,0,0.79);
+    box-shadow: 2px 10px 15px 0px rgba(0,0,0,0.75)
 }
 
 .table_design tr {
