@@ -38,6 +38,7 @@ $sql_questions = "CREATE TABLE IF NOT EXISTS questions (
     Questions_id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     Category_id INT(6) UNSIGNED,
     Question_Text VARCHAR(255) NOT NULL,
+    is_correct BOOLEAN,
     FOREIGN KEY (Category_id) REFERENCES category(Category_id)
 )";
 
@@ -45,8 +46,6 @@ $sql_questions = "CREATE TABLE IF NOT EXISTS questions (
 $sql_choices = "CREATE TABLE IF NOT EXISTS choices (
     Choices_id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     Questions_id INT(6) UNSIGNED,
-    Choice_Text VARCHAR(255) NOT NULL,
-    is_Correct BOOLEAN,
     FOREIGN KEY (Questions_id) REFERENCES questions(Questions_id)
 )";
 
@@ -59,20 +58,6 @@ $sql_category = "CREATE TABLE IF NOT EXISTS category (
 )";
 
 
-//SQL to create table for quiz_attempts
-
-$sql_attempts = "CREATE TABLE IF NOT EXISTS quiz_attempts (
-    Attempts_id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    User_id INT(6) UNSIGNED,
-    Quiz_id INT(6) UNSIGNED,
-    Start_time DATETIME,
-    End_time DATETIME,
-    Score INT,
-    FOREIGN KEY (User_id) REFERENCES users(User_id),
-    FOREIGN KEY (Quiz_id) REFERENCES quiz(Quiz_id)
-)";
-
-
 //SQL to create table for quiz
 
 $sql_quiz = "CREATE TABLE IF NOT EXISTS quiz (
@@ -81,6 +66,8 @@ $sql_quiz = "CREATE TABLE IF NOT EXISTS quiz (
     Category_id INT(6) UNSIGNED,
     Start_time DATETIME,
     End_time DATETIME,
+    Attempts INT(0) UNSIGNED,
+    Score INT(6),
     FOREIGN KEY (User_id) REFERENCES users(User_id),
     FOREIGN KEY (Category_id) REFERENCES category(Category_id)
 )";
@@ -88,7 +75,6 @@ $sql_quiz = "CREATE TABLE IF NOT EXISTS quiz (
 
 $conn->query($sql_category);
 $conn->query($sql_quiz);
-$conn->query($sql_attempts);
 $conn->query($sql_questions);
 $conn->query($sql_choices);
 
