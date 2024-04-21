@@ -2,9 +2,23 @@
 
 session_start();
 
-if (!isset($_SESSION['User_id'])) {
-    die('User ID is not set in the session.');
+$timeout_duration = 600;
+
+// Check if the timeout field exists
+if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > $timeout_duration)) {
+    // Last request was more than 10 minutes ago
+    session_unset();     // unset $_SESSION variable
+    session_destroy();   // destroy session data
+    die('<script>alert("Session Timed OUT, Please RETRY")</script>');
 }
+
+// Update LAST_ACTIVITY time stamp
+$_SESSION['LAST_ACTIVITY'] = time();
+
+if (!isset($_SESSION['User_id'])) {
+    die('<script>alert("User ID not set in SESSION")</script>');
+}
+
 
 $servername = "localhost";
 $username = "root";
@@ -42,8 +56,9 @@ if (isset($_POST['submit'])) {
     // Redirect with message
     $redirect_page = $change_successfully == "New Password Set Successfully" ? "login.html" : "Reset_Password.html";
     echo '<script>alert("' . $change_successfully . '"); window.location.href = "http://localhost/EDG/HTML/' . $redirect_page . '";</script>';
-} else {
-    echo "Error: Form not submitted.";
-}
+    } else {
+        echo '<script>alert("Error Resetting Password, Please Try Again")</script>';
+        false;
+    }
 
 session_destroy();
