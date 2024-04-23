@@ -182,10 +182,14 @@ main {
 #part1 {
     background-color: #a7c7e7d5;
     height: 54rem;
+    margin-bottom: 0;
+    padding-bottom: 0;
 }
 
 #part2 {
   background-color: white;
+  margin-top: 0;
+  padding-top: 0;
 }
 
 .user_dashboard_bg {
@@ -202,6 +206,7 @@ main {
 #part1 h1 {
     font-size: 90px;
     margin-top: 0;
+    margin-bottom: 0;
     margin-right: 9rem; /* Remove margin to ensure centering */
     padding-top: 17rem;
     font-family: "Dosis", sans-serif;
@@ -228,6 +233,7 @@ main {
   width: 280%;
   height: 100%;
   margin: 0;
+  padding: 0;
   line-height: 100px;  /* Adjust the line height to vertically center text */
   text-align: center;
   animation: scroll-left 35s linear infinite;
@@ -267,8 +273,8 @@ main {
 
 #part3 {
   background-color: #a7c7e7d5;
-  margin: 0;
-  padding: 0;
+  margin-top: 20px;
+  padding-top: 0;
 }
 
 #part3 h1 {
@@ -323,18 +329,21 @@ main {
 }
 
 #section3 {
+  margin: 0;
+  padding: 0;
   background-color: #a7c7e7d5;
-  height: 50rem;
+  height: 48rem;
 }
 
 #section3 h1 {
   font-size: 90px;
   margin-top: 5px;
+  margin-bottom: 6rem;
   padding-top: 0.3em;
   padding-bottom: 0.3em;
   font-family: "Dosis", sans-serif;
   font-style: normal;
-  background-color: #7b97b6;
+  background-color: #88a1b9;
   color: white;
   text-shadow: 4px 5px 5px rgba(0,0,0,0.6);
   display: flex;
@@ -344,7 +353,27 @@ main {
 }
 
 #section4 {
-  background-color: #A7C7E7;
+  background-color: #a7c7e7d5;
   height: 50rem;
   margin-top: 3em;
 }
+
+#section4 h1 {
+  font-size: 90px;
+  margin-top: 5px;
+  margin-bottom: 6rem;
+  padding-top: 0.3em;
+  padding-bottom: 0.3em;
+  font-family: "Dosis", sans-serif;
+  font-style: normal;
+  background-color: #88a1b9;
+  color: white;
+  text-shadow: 4px 5px 5px rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  letter-spacing: 2px;
+}
+
+
+

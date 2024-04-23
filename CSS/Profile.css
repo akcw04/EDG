@@ -189,20 +189,18 @@
 
 .student_picture {
     margin-top: 2rem;
-    width: 1170px;
-    height: 590px;
+    width: 1200px;
+    height: 600px;
 }
 
 h1 {
     font-size: 80px;
     font-family: Dosis;
     letter-spacing: 0.2rem;
-    color: white;
     text-align: center;
     margin-top: 10rem;
-    margin-left: 10rem;
+    margin-left: 20rem;
     float: left;
-    text-shadow: 4px 5px 5px #23232e;
 }
 
 h2 {
@@ -221,13 +219,12 @@ h2 {
     margin-top: 2rem;
     padding-bottom: 5rem;
     background-color: #A7C7E7;
-    ;
 }
 
 .table_design {
     margin-top: 5rem;
-    width: 600px;
-    height: 500px;
+    width: 700px;
+    height: 700px;
     background-color: white;
     border-radius: 25px;
     box-shadow: 2px 10px 15px 0px rgba(0,0,0,0.75)
@@ -237,16 +234,32 @@ h2 {
   font-size: 30px;
   font-family: Dosis;
   text-align: left;
-  margin: 10px;
+  margin-top: 15px;
 }
 
 .table_design th {
-  padding-left: 50px;
+  padding-top: 1rem;
+  padding-left: 60px;
 }
 
 .table_design td {
   text-align: left;
   font-size: 30px;
   font-family: Dosis;
-  padding-left: 50px;
+  padding-right: 80px;
+}
+
+
+.button {
+  font-size: 20px;
+  font-family: Dosis;
+  background-color: #A7C7E7;
+  border: none;
+  color: black;
+  text-align: center;
+  display: inline-block;
+  cursor: pointer;
+  border-radius: 12px;
+  padding: 20px;
+  margin-left: 230px;
 }
