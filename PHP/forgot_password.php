@@ -1,4 +1,6 @@
+
 <?php
+
 session_start();
 
 require 'C:/xampp/htdocs/EDG/vendor/autoload.php';
@@ -11,7 +13,7 @@ $dbname = "edg";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
-    die('<script>alert("Connection Failed")</script>' . $conn->connect_error);
+    die('<script class="alert" >alert("Connection Failed")</script>' . $conn->connect_error);
 }
 
 
@@ -25,7 +27,7 @@ function check_data($email, $conn) {
         $_SESSION['User_id'] = $user['User_id'];
         sendResetEmail($email);
     } else {
-        echo '<script>alert("No Such Record Found")</script>';
+        echo '<script class="alert" >alert("No Such Record Found"); window.location.href = "http://localhost/EDG/HTML/Forgot_Password.html";</script>';
     }
     $stmt->close();
 }
@@ -55,7 +57,7 @@ function sendResetEmail($email) {
         $mail->isHTML(true);
         $mail->Subject = 'Reset Your Password';
         $mail->Body    = 'Please click on the following link to reset your password: <a href="https://localhost/EDG/HTML/Reset_Password.html">Reset Password</a>';
-        $mail->AltBody = 'Please click on the following link to reset your password: https://localhost/EDG/HTML/Reset_Password.html';
+        $mail->AltBody = 'Please click on the following link to reset your password: https://localhost/EDG/HTML/Reset_Password.html<br>This Link Will Expire in 60 seconds';
 
         $mail->send();
         echo '<script>alert("Reset Email Has been Sent To Your Mailbox, You can Close this Window Now")</script>';

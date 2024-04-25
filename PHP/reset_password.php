@@ -11,7 +11,7 @@ if ($conn->connect_error) {
     die('<script>alert("Connection Failed: ' . $conn->connect_error . '"); window.location.href = "http://localhost/EDG/HTML/Reset_Password.html";</script>');
 }
 
-$timeout_duration = 5; // Timeout duration in seconds
+$timeout_duration = 60; // Timeout duration in seconds
 
 // Check if session has expired or if the timeout flag is set
 if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > $timeout_duration)) {
@@ -22,7 +22,7 @@ if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 
 }
 
 if (isset($_SESSION['TIMEOUT_OCCURRED']) && $_SESSION['TIMEOUT_OCCURRED']) {
-    echo '<script>alert("Session still timed out. Please Reverify");</script>';
+    echo '<script>alert("Session still timed out. Please Reverify Your Account");</script>';
     exit;  // Prevent access to the page functionality
 }
 
