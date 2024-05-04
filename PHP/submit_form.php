@@ -38,15 +38,16 @@ $sql_questions = "CREATE TABLE IF NOT EXISTS questions (
     Questions_id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     Category_id INT(6) UNSIGNED,
     Question_Text VARCHAR(255) NOT NULL,
-    is_correct BOOLEAN,
     FOREIGN KEY (Category_id) REFERENCES category(Category_id)
 )";
 
 //SQL to create table for choices
 $sql_choices = "CREATE TABLE IF NOT EXISTS choices (
-    Choices_id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    Questions_id INT(6) UNSIGNED,
-    FOREIGN KEY (Questions_id) REFERENCES questions(Questions_id)
+    Choice_id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    Question_id INT(6) UNSIGNED,
+    Choice_text VARCHAR(255) NOT NULL,
+    Is_correct BOOLEAN NOT NULL,
+    FOREIGN KEY (Question_id) REFERENCES questions(Questions_id)
 )";
 
 
@@ -54,7 +55,7 @@ $sql_choices = "CREATE TABLE IF NOT EXISTS choices (
 
 $sql_category = "CREATE TABLE IF NOT EXISTS category (
     Category_id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    Category_Name ENUM('Addition', 'Subtraction', 'Multiplication', 'Division') NOT NULL
+    Category_Name VARCHAR(255) NOT NULL
 )";
 
 

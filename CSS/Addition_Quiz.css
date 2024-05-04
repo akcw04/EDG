@@ -8,7 +8,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 75vh;
+    height: 90vh;
 }
 
 form {
@@ -31,7 +31,7 @@ form {
     background: none;       /* Removes the background */
     border: black solid transparent;
     padding: 0;             /* Removes padding */
-    margin: 20px;              /* Removes margin */
+    margin: 40px;              /* Removes margin */
     text-align: left;       /* Aligns text to the left */
     cursor: pointer;        /* Keeps the pointer cursor to signify it's clickable */
     font-family: Dosis;
@@ -67,3 +67,18 @@ h1 {
 p {
     margin: 20px;
 }
+
+/* Container for the percentage display */
+.progress-container {
+    width: 100%; /* Full width */
+    position: relative; /* Ensures positioning is relative to this container */
+    text-align: right; /* Align text to the right */
+    padding: 10px 10px 0 0; /* Padding to ensure text is not stuck to the edges */
+    font-size: 18px; /* Font size */
+    font-family: Dosis, sans-serif; /* Font family */
+    color: black; /* Text color */
+    margin-top: 20px; /* Space above the text */
+}
+
+
+
