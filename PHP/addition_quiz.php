@@ -82,7 +82,7 @@ if ($result->num_rows > 0) {
     $question_text = "End Of Quiz<br><br>You Got " . round($correct_percentage) . "% of Questions Correct!";
     $_SESSION['quiz_over'] = true;
 
-    // Insert the quiz result into the database
+    // Insert or update the quiz result into the database
     $userId = $_SESSION['User_id']; // Ensure you have the user_id stored in the session
     if (!isset($_SESSION['User_id'])) {
         echo '<script>alert("User ID not set in SESSION."); </script>';
@@ -91,7 +91,8 @@ if ($result->num_rows > 0) {
     $quizId = $category_id;
     $score = $total_correct;
 
-    $sql_insert = "INSERT INTO quiz (Quiz_id, User_id, Category_id, Score) VALUES (?, ?, ?, ?)";
+    $sql_insert = "INSERT INTO quiz (Quiz_id, User_id, Category_id, Score) VALUES (?, ?, ?, ?)
+                   ON DUPLICATE KEY UPDATE Score = VALUES(Score)";
     $stmt_insert = $conn->prepare($sql_insert);
     $stmt_insert->bind_param("iiii", $quizId, $userId, $category_id, $score);
     $stmt_insert->execute();
@@ -103,7 +104,8 @@ if (isset($_POST['action']) && $_POST['action'] == 'end_quiz') {
     unset($_SESSION['quiz_over']);
     unset($_SESSION['category_id']);
     unset($_SESSION['question_index']);
-
+    unset($_SESSION['total_correct']);
+    unset($_SESSION['incorrect_questions']);
 
     // Redirect to the Choose Quiz page
     header("Location: ../HTML/Choose_Quiz.html");
@@ -114,10 +116,13 @@ if (isset($_POST['action']) && $_POST['action'] == 'end_quiz') {
 if (isset($_POST['action']) && $_POST['action'] == 'check_quiz') {
     // Unset specific session variables
     unset($_SESSION['quiz_over']);
+    unset($_SESSION['category_id']);
+    unset($_SESSION['question_index']);
+    unset($_SESSION['total_correct']);
+    unset($_SESSION['incorrect_questions']);
 
-
-    // Redirect to the Choose Quiz page
-    header("Location: ../HTML/Answers.php");
+    // Redirect to the Answers page
+    header("Location: ../HTML/Quiz_Answers.php");
     exit;
 }
 
