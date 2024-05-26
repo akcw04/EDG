@@ -20,6 +20,8 @@ if ($conn->connect_error) {
 
 $category_id = $_SESSION['category_id'];
 $current_question_index = isset($_SESSION['question_index']) ? $_SESSION['question_index'] : 0;
+$total_correct = isset($_SESSION['total_correct']) ? $_SESSION['total_correct'] : 0;
+$incorrect_questions = isset($_SESSION['incorrect_questions']) ? $_SESSION['incorrect_questions'] : [];
 
 // Fetch the current question and all choices from the database
 $sql = "SELECT q.Question_Text, c.Choice_text, c.Is_correct, c.Choice_id
@@ -28,48 +30,40 @@ $sql = "SELECT q.Question_Text, c.Choice_text, c.Is_correct, c.Choice_id
         WHERE q.Category_id = ? AND q.Questions_id = (
             SELECT Questions_id FROM questions WHERE Category_id = ? ORDER BY Questions_id ASC LIMIT 1 OFFSET ?
         )";
-
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("iii", $category_id, $category_id, $current_question_index);
 $stmt->execute();
 $result = $stmt->get_result();
 
-// Assuming $category_id is already defined and set in your session or passed directly
+// Calculate total number of questions
 $sql_count = "SELECT COUNT(*) as total FROM questions WHERE Category_id = ?";
-$stmt = $conn->prepare($sql_count);
-$stmt->bind_param("i", $category_id);
-$stmt->execute();
-$result_count = $stmt->get_result();
+$stmt_count = $conn->prepare($sql_count);
+$stmt_count->bind_param("i", $category_id);
+$stmt_count->execute();
+$result_count = $stmt_count->get_result();
 $row_count = $result_count->fetch_assoc();
 $total_questions = $row_count['total'];
-
-if ($total_questions > 0) { // Ensure there is at least one question to avoid division by zero
-    $progress_percent = ($current_question_index / $total_questions) * 100;
-} else {
-    $progress_percent = 0; // Handle cases where there are no questions
-}
+$progress_percent = ($current_question_index / $total_questions) * 100;
 
 if (isset($_POST['choice'])) {
-    // Assume choice_id is submitted as part of the form
     $choice_id = $_POST['choice'];
+    $sql = "SELECT Is_correct FROM choices WHERE Choice_id = ?";
+    $stmt_choice = $conn->prepare($sql);
+    $stmt_choice->bind_param("i", $choice_id);
+    $stmt_choice->execute();
+    $result_choice = $stmt_choice->get_result();
+    $choice = $result_choice->fetch_assoc();
 
-    // Check if the choice was correct (optional, depends on your requirements)
-    $sql = "SELECT Is_correct FROM choices WHERE Choice_id = $choice_id";
-    $result = $conn->query($sql);
-    $choice = $result->fetch_assoc();
-
-    // Increment question index to move to the next question
-    $_SESSION['question_index']++;
-
-    // Optionally, check if the choice was correct
     if ($choice['Is_correct']) {
-        // Handle correct answer logic
+        $_SESSION['total_correct']++;
+    } else {
+        $_SESSION['incorrect_questions'][] = $current_question_index;
     }
 
-    // Redirect back to the quiz page to display the next question
+    $_SESSION['question_index']++;
+
     header("Location: ../HTML/Addition_Quiz.php");
     exit;
-
 }
 
 if ($result->num_rows > 0) {
@@ -77,17 +71,54 @@ if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         $questions_and_choices[] = $row;
     }
-    // Shuffle the choices array to randomize the order of choices
     shuffle($questions_and_choices);
-    $question_text = $questions_and_choices[0]['Question_Text']; // Assume all choices have the same question text
+    $question_text = $questions_and_choices[0]['Question_Text'];
 } else {
-    $question_text = "End of Quiz";
-    // Clear quiz-specific session variables
-    unset($_SESSION['category_id']);
-    unset($_SESSION['question_index']);
-    exit;  // Exit script to avoid further processing
+    // Calculate the percentage when all questions have been answered
+    $correct_percentage = 0;
+    if ($total_questions > 0) {
+        $correct_percentage = ($total_correct / $total_questions) * 100;
+    }
+    $question_text = "End Of Quiz<br><br>You Got " . round($correct_percentage) . "% of Questions Correct!";
+    $_SESSION['quiz_over'] = true;
+
+    // Insert the quiz result into the database
+    $userId = $_SESSION['User_id']; // Ensure you have the user_id stored in the session
+    if (!isset($_SESSION['User_id'])) {
+        echo '<script>alert("User ID not set in SESSION."); </script>';
+        exit;
+    }
+    $quizId = $category_id;
+    $score = $total_correct;
+
+    $sql_insert = "INSERT INTO quiz (Quiz_id, User_id, Category_id, Score) VALUES (?, ?, ?, ?)";
+    $stmt_insert = $conn->prepare($sql_insert);
+    $stmt_insert->bind_param("iiii", $quizId, $userId, $category_id, $score);
+    $stmt_insert->execute();
 }
 
+// Check if the end quiz action has been triggered
+if (isset($_POST['action']) && $_POST['action'] == 'end_quiz') {
+    // Unset specific session variables
+    unset($_SESSION['quiz_over']);
+    unset($_SESSION['category_id']);
+    unset($_SESSION['question_index']);
 
 
+    // Redirect to the Choose Quiz page
+    header("Location: ../HTML/Choose_Quiz.html");
+    exit;
+}
 
+// Check if the check answers quiz action has been triggered
+if (isset($_POST['action']) && $_POST['action'] == 'check_quiz') {
+    // Unset specific session variables
+    unset($_SESSION['quiz_over']);
+
+
+    // Redirect to the Choose Quiz page
+    header("Location: ../HTML/Answers.php");
+    exit;
+}
+
+$conn->close();

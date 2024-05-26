@@ -26,9 +26,6 @@ $sql_users = "CREATE TABLE IF NOT EXISTS users (
     Mode BOOLEAN,
     Password VARCHAR(255) NOT NULL,
     Role ENUM('0','1') DEFAULT '0',
-    Total_attempts INT(6),
-    Average_score DECIMAL(5,2),
-    Best_score INT(6)
 )";
 
 $conn->query($sql_users);
@@ -65,9 +62,6 @@ $sql_quiz = "CREATE TABLE IF NOT EXISTS quiz (
     Quiz_id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     User_id INT(6) UNSIGNED,
     Category_id INT(6) UNSIGNED,
-    Start_time DATETIME,
-    End_time DATETIME,
-    Attempts INT(0) UNSIGNED,
     Score INT(6),
     FOREIGN KEY (User_id) REFERENCES users(User_id),
     FOREIGN KEY (Category_id) REFERENCES category(Category_id)

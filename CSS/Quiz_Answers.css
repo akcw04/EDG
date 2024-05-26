@@ -1,0 +1,52 @@
+body {
+    font-family: 'Dosis', sans-serif; /* Using Dosis for a clean and modern look */
+    background-color: whitesmoke; /* Soft background that's easy on the eyes */
+    margin: 0;
+    padding: 20px;
+    color: black; /* Ensuring good contrast for readability */
+}
+
+table {
+    width: 80%; /* Optimal width for reading */
+    margin: 20px auto; /* Centering the table on the page */
+    border-collapse: collapse;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+}
+
+th, td {
+    text-align: left;
+    padding: 12px;
+    border-bottom: 2px solid #779ECB; /* Blue used for subtle color pops */
+}
+
+th {
+    background-color: #779ECB; /* Soft blue for headers */
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: whitesmoke; /* Using whitesmoke for alternate rows */
+}
+
+tr:hover {
+    background-color: #FFC0CB; /* Pink for hover to make interactive elements obvious */
+    cursor: pointer;
+}
+
+h1 {
+    text-align: center;
+    color: #779ECB; /* Keeping the title in theme */
+    padding-bottom: 20px;
+    font-size: 40px; /* Increased font size for better visibility */
+}
+
+footer {
+    text-align: center;
+    padding: 10px 0;
+    background-color: #779ECB; /* Blue to match the headers */
+    color: white;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+

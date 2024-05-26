@@ -14,16 +14,25 @@
     <div class="form-container">
         <form action="../PHP/addition_quiz.php" method="post">
             <div class="progress-container">
-                <?php echo round($progress_percent); ?>%
+                <div class="progress-bar" style="width:<?php echo round($progress_percent); ?>%;">
+                    <?php echo round($progress_percent); ?>%
+                </div>
             </div>
-            <h1><?php echo $question_text; ?></h1>
+            <h1><?php echo isset($question_text) ? $question_text : 'Quiz Over'; ?></h1>
             <div class="button-container">
-                <?php if (!empty($questions_and_choices)): ?>
+                <?php if (!isset($_SESSION['quiz_over'])): ?>
                     <?php foreach ($questions_and_choices as $choice): ?>
                         <button type="submit" class="choice" name="choice" value="<?php echo $choice['Choice_id']; ?>">
-                            <p><?php echo $choice['Choice_text']; ?></p>
+                            <p><?php echo htmlspecialchars($choice['Choice_text']); ?></p>
                         </button>
                     <?php endforeach; ?>
+                <?php else: ?>
+                    <!-- When quiz is over, change the form action to handle the end quiz logic -->
+                    <input type="hidden" name="action" value="end_quiz">
+                    <button type="submit" class="end-quiz-button">End Quiz</button>
+                    <br>
+                    <input type="hidden" name="action" value="check_quiz">
+                    <button type="submit" class="answers-button">Check Answers</button>
                 <?php endif; ?>
             </div>
         </form>

@@ -181,7 +181,7 @@ main {
 
 #part1 {
     background-color: #a7c7e7d5;
-    height: 54rem;
+    height: 60rem;
     margin-bottom: 0;
     padding-bottom: 0;
 }
@@ -273,11 +273,12 @@ main {
 
 #part3 {
   background-color: #a7c7e7d5;
-  margin-top: 20px;
   padding-top: 0;
+  margin: 0;
 }
 
 #part3 h1 {
+  margin: 0;
   font-size: 60px;
   padding-top: 1em;
   font-family: "Dosis", sans-serif;
@@ -332,18 +333,18 @@ main {
   margin: 0;
   padding: 0;
   background-color: #a7c7e7d5;
-  height: 48rem;
+  height: 50rem;
 }
 
 #section3 h1 {
   font-size: 90px;
-  margin-top: 5px;
+  margin-top: 0;
   margin-bottom: 6rem;
   padding-top: 0.3em;
   padding-bottom: 0.3em;
   font-family: "Dosis", sans-serif;
   font-style: normal;
-  background-color: #88a1b9;
+  background-color: rgb(55, 55, 55);
   color: white;
   text-shadow: 4px 5px 5px rgba(0,0,0,0.6);
   display: flex;
@@ -355,18 +356,34 @@ main {
 #section4 {
   background-color: #a7c7e7d5;
   height: 50rem;
-  margin-top: 3em;
 }
 
 #section4 h1 {
   font-size: 90px;
-  margin-top: 5px;
+  margin-top: 0;
   margin-bottom: 6rem;
   padding-top: 0.3em;
   padding-bottom: 0.3em;
   font-family: "Dosis", sans-serif;
   font-style: normal;
-  background-color: #88a1b9;
+  background-color: rgb(55, 55, 55);
+  color: white;
+  text-shadow: 4px 5px 5px rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  letter-spacing: 2px;
+}
+
+#section5 h1 {
+  font-size: 90px;
+  margin-top: 0;
+  margin-bottom: 6rem;
+  padding-top: 0.3em;
+  padding-bottom: 0.3em;
+  font-family: "Dosis", sans-serif;
+  font-style: normal;
+  background-color: rgb(55, 55, 55);
   color: white;
   text-shadow: 4px 5px 5px rgba(0,0,0,0.6);
   display: flex;
@@ -376,4 +393,57 @@ main {
 }
 
 
+.start_pic_container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
 
+.start_pic {
+
+  margin-top: 40px;
+  margin-left: 8rem;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background-color: white;
+}
+
+
+.start_pic:hover {
+  transform: scale(1.2);
+  background-color: #fdfd96af;
+}
+
+.pic {
+  width: 130%;
+  height: 130%;
+}
+
+#section4 h3 {
+  padding: 0;
+  margin-left: 4em;
+  margin-top: 3rem;
+  font-size: 40px;
+  font-family: "Dosis", sans-serif;
+  font-style: normal;
+  color: black;
+  text-align: right;
+  letter-spacing: 2px;
+}
+
+.encourage{
+  font-size: 25px;
+  font-family: "Dosis", sans-serif;
+  font-style: normal;
+  color: black;
+  letter-spacing: 2px;
+  text-align: center;
+}
+
+
+hr.new1 {
+  border-top: solid black;
+  margin: 0;
+  padding: 0;
+}
