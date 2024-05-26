@@ -12,13 +12,13 @@ if (isset($_GET['category_id'])) {
 
     // Determine the appropriate quiz page based on the category_id range
     if ($category_id >= 5 && $category_id <= 8) {
-        $redirectPage = "../HTML/Addition_Quiz.php";
+        $redirectPage = "../HTML/Quiz.php";
     } elseif ($category_id >= 9 && $category_id <= 12) {
-        $redirectPage = "../HTML/Addition_Quiz.php";
+        $redirectPage = "../HTML/Quiz.php";
     } elseif ($category_id >= 13 && $category_id <= 16) {
-        $redirectPage = "../HTML/Addition_Quiz.php";
+        $redirectPage = "../HTML/Quiz.php";
     } elseif ($category_id >= 17 && $category_id <= 20) {
-        $redirectPage = "../HTML/Addition_Quiz.php";
+        $redirectPage = "../HTML/Quiz.php";
     } else {
         // If the category_id does not fall into any expected range
         echo "Category ID is out of expected range.";

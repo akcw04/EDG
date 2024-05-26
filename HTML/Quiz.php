@@ -64,7 +64,7 @@ if (isset($_POST['choice'])) {
 
     $_SESSION['question_index']++;
 
-    header("Location: ../HTML/Addition_Quiz.php");
+    header("Location: ../HTML/Quiz.php");
     exit;
 }
 
@@ -136,7 +136,7 @@ $conn->close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Addition Quiz</title>
-    <link rel="stylesheet" href="../CSS/Addition_Quiz.css" />
+    <link rel="stylesheet" href="../CSS/<?php echo $css_folder; ?>/Quiz.css">
 </head>
 <body>
     <div class="logo-container">
