@@ -1,5 +1,5 @@
 body {
-    background-color: #FFC0CB;
+    background-color: #A7C7E7;
     /* #FFC0CB */
     margin: 0;
     padding: 0;
@@ -154,6 +154,6 @@ p {
 
 .answers-button:focus {
     outline: none; /* Remove focus outline to maintain the style integrity */
-    box-shadow: 0 0 0 2px rgba(255,255,255,0.5), 0 0 0 4px #4CAF50; /* Focus indicator for accessibility */
+    box-shadow: 0 0 0 2px rgba(255,255,255,0.5), 0 0 0 4px #A7C7E7; /* Focus indicator for accessibility */
 
 }

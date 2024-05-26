@@ -1,3 +1,51 @@
+<?php
+session_start();
+$color_mode = isset($_SESSION['color_mode']) ? $_SESSION['color_mode'] : 0;
+$css_folder = $color_mode ? "tritanopia" : "protanopia";
+
+// Check if User_id is set in the session before doing anything else
+if (!isset($_SESSION['User_id'])) {
+    die('User ID is not set in the session.');
+}
+
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "edg";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Query to fetch user data
+$sql = "SELECT FirstName, LastName, DOB, Gender, PhoneNumber, Email, Password FROM users WHERE User_id = ?";
+$stmt = $conn->prepare($sql);
+
+if (!$stmt) {
+    die('MySQL prepare error: ' . $conn->error);
+}
+
+// Bind the user ID from session
+$stmt->bind_param("i", $_SESSION['User_id']);
+$stmt->execute();
+
+// Fetch results
+$result = $stmt->get_result(); // Get the result set from the prepared statement
+
+if ($userData = $result->fetch_assoc()) {
+
+} else {
+    echo "No user found with that ID.";
+}
+
+$stmt->close();
+$conn->close();
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,7 +53,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile Page</title>
     <script defer src="../Javascript/script.js"></script>
-    <link rel="stylesheet" href="../CSS/Profile.css" />
+    <link rel="stylesheet" href="../CSS/<?php echo $css_folder; ?>/Profile.css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&display=swap" rel="stylesheet"/>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,11 +72,10 @@
 </head>
 
 <body>
-  <?php include '../PHP/profile.php'; ?>
     <nav class="navbar">
       <ul class="navbar-nav">
         <li class="logo">
-          <a href="../HTML/User_Dashboard.html" class="nav-link">
+          <a href="../HTML/User_Dashboard.php" class="nav-link">
             <span class="link-text logo-text">EDG</span>
             <svg
               aria-hidden="true"
@@ -64,21 +111,21 @@
         </li>
 
         <li class="nav-item">
-          <a href="../HTML/Addition.html" class="nav-link">
+          <a href="../HTML/Addition.php" class="nav-link">
             <svg xmlns="http://www.w3.org/2000/svg" height="30" width="30" viewBox="0 0 448 512" fill="white"><path d="M96 0C43 0 0 43 0 96V416c0 53 43 96 96 96H384h32c17.7 0 32-14.3 32-32s-14.3-32-32-32V384c17.7 0 32-14.3 32-32V32c0-17.7-14.3-32-32-32H384 96zm0 384H352v64H96c-17.7 0-32-14.3-32-32s14.3-32 32-32zm32-240c0-8.8 7.2-16 16-16H336c8.8 0 16 7.2 16 16s-7.2 16-16 16H144c-8.8 0-16-7.2-16-16zm16 48H336c8.8 0 16 7.2 16 16s-7.2 16-16 16H144c-8.8 0-16-7.2-16-16s7.2-16 16-16z"/></svg>
             <span class="link-text">Materials</span>
           </a>
         </li>
   
         <li class="nav-item">
-          <a href="../HTML/Choose_Quiz.html" class="nav-link">
+          <a href="../HTML/Choose_Quiz.php" class="nav-link">
             <svg xmlns="http://www.w3.org/2000/svg" height="30" width="30" viewBox="0 0 384 512" fill="white"><path d="M64 0C28.7 0 0 28.7 0 64V448c0 35.3 28.7 64 64 64H320c35.3 0 64-28.7 64-64V160H256c-17.7 0-32-14.3-32-32V0H64zM256 0V128H384L256 0zM112 256H272c8.8 0 16 7.2 16 16s-7.2 16-16 16H112c-8.8 0-16-7.2-16-16s7.2-16 16-16zm0 64H272c8.8 0 16 7.2 16 16s-7.2 16-16 16H112c-8.8 0-16-7.2-16-16s7.2-16 16-16zm0 64H272c8.8 0 16 7.2 16 16s-7.2 16-16 16H112c-8.8 0-16-7.2-16-16s7.2-16 16-16z"/></svg>          
             <span class="link-text">Assessments</span>
           </a>
         </li>
   
         <li class="nav-item">
-          <a href="../HTML/User_Dashboard.html#section5" class="nav-link">
+          <a href="../HTML/User_Dashboard.php#section5" class="nav-link">
             <svg xmlns="http://www.w3.org/2000/svg" height="30" width="30" viewBox="0 0 650 520" fill="white"><path d="M144 0a80 80 0 1 1 0 160A80 80 0 1 1 144 0zM512 0a80 80 0 1 1 0 160A80 80 0 1 1 512 0zM0 298.7C0 239.8 47.8 192 106.7 192h42.7c15.9 0 31 3.5 44.6 9.7c-1.3 7.2-1.9 14.7-1.9 22.3c0 38.2 16.8 72.5 43.3 96c-.2 0-.4 0-.7 0H21.3C9.6 320 0 310.4 0 298.7zM405.3 320c-.2 0-.4 0-.7 0c26.6-23.5 43.3-57.8 43.3-96c0-7.6-.7-15-1.9-22.3c13.6-6.3 28.7-9.7 44.6-9.7h42.7C592.2 192 640 239.8 640 298.7c0 11.8-9.6 21.3-21.3 21.3H405.3zM224 224a96 96 0 1 1 192 0 96 96 0 1 1 -192 0zM128 485.3C128 411.7 187.7 352 261.3 352H378.7C452.3 352 512 411.7 512 485.3c0 14.7-11.9 26.7-26.7 26.7H154.7c-14.7 0-26.7-11.9-26.7-26.7z"/></svg>          
             <path d="M144 0a80 80 0 1 1 0 160A80 80 0 1 1 144 0zM512 0a80 80 0 1 1 0 160A80 80 0 1 1 512 0zM0 298.7C0 239.8 47.8 192 106.7 192h42.7c15.9 0 31 3.5 44.6 9.7c-1.3 7.2-1.9 14.7-1.9 22.3c0 38.2 16.8 72.5 43.3 96c-.2 0-.4 0-.7 0H21.3C9.6 320 0 310.4 0 298.7zM405.3 320c-.2 0-.4 0-.7 0c26.6-23.5 43.3-57.8 43.3-96c0-7.6-.7-15-1.9-22.3c13.6-6.3 28.7-9.7 44.6-9.7h42.7C592.2 192 640 239.8 640 298.7c0 11.8-9.6 21.3-21.3 21.3H405.3zM224 224a96 96 0 1 1 192 0 96 96 0 1 1 -192 0zM128 485.3C128 411.7 187.7 352 261.3 352H378.7C452.3 352 512 411.7 512 485.3c0 14.7-11.9 26.7-26.7 26.7H154.7c-14.7 0-26.7-11.9-26.7-26.7z"/>
             </svg>

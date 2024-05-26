@@ -1,0 +1,158 @@
+body {
+    background-color: #9ADBB3;
+    margin: 0;
+    padding: 0;
+}
+
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+}
+
+form {
+    background-color: #F0F0F0;
+    padding: 20px;
+    box-shadow: 2px 10px 15px 0px rgba(0,0,0,0.75)
+
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.choice {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+    background: none;       /* Removes the background */
+    border: black solid transparent;
+    padding: 0;             /* Removes padding */
+    margin: 40px;              /* Removes margin */
+    text-align: left;       /* Aligns text to the left */
+    cursor: pointer;        /* Keeps the pointer cursor to signify it's clickable */
+    font-family: Dosis;
+    font-size: 40px;
+    transition: transform 0.3s ease;
+}
+
+.choice:hover {
+    background-color: #a7c7e770;
+    transform: matrix(1.1, 0, 0, 1.1, 0, 0);
+}
+
+h1 {
+    font-size: 40px;
+    font-family: "Dosis", sans-serif;
+    text-align: left;
+    margin: 40px;
+    padding-top: 40px;
+}
+
+.logo-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.logo {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
+
+p {
+    margin: 20px;
+}
+
+/* Container for the progress bar */
+.progress-container {
+    width: 100%; /* Full width */
+    background-color: #a4a4a4; /* Light grey background */
+    padding: 3px; /* Some padding inside */
+    border-radius: 5px; /* Rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Slight shadow for depth */
+    position: relative; /* Ensures that :after pseudo-element is positioned relative to this container */
+    margin-top: 20px; /* Space above the progress bar */
+    margin-right: 5px;
+    overflow: hidden; /* Ensures no content spills out */
+}
+
+/* The progress bar itself */
+.progress-bar {
+    height: 30px; /* Adjusted height for a thinner appearance */
+    background-color: #727272; /* Darker grey color */
+    width: 0%; /* Start width, dynamically updated */
+    border-radius: 3px; /* Slightly rounded corners on the bar */
+    transition: width 0.4s ease; /* Smooth transition for the bar growth */
+    text-align: center; /* Center-align text */
+    line-height: 30px; /* Adjust line height to match the bar height */
+    color: white; /* White text for contrast */
+}
+
+/* Positioned text to the right of the progress bar */
+.progress-text {
+    position: absolute;
+    top: 50%; /* Vertically center */
+    transform: translateY(-50%); /* Adjust vertical alignment */
+    font-size: 18px; /* Font size */
+    font-family: 'Dosis', sans-serif; /* Font family */
+    color: black; /* Ensuring visibility against a lighter background */
+}
+
+.end-quiz-button {
+    display: inline-block;
+    background-color: white; /* White background for contrast */
+    color: black; /* black text for contrast */
+    margin: 10px;
+    padding: 10px 20px; /* Adequate padding for a better touch area */
+    font-size: 18px; /* Appropriate font size for readability */
+    font-family: 'Dosis', sans-serif; /* Maintain font consistency */
+    border: none; /* No border for a cleaner look */
+    border-radius: 5px; /* Rounded corners for a softer appearance */
+    text-decoration: none; /* Remove underline from the link */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3); /* Subtle shadow for depth */
+    transition: background-color 0.3s, transform 0.2s; /* Smooth transition for interactions */
+    cursor: pointer; /* Cursor to pointer to indicate clickable */
+}
+
+.end-quiz-button:hover {
+    background-color: #9ADBB3; /* Darker shade of green on hover for feedback */
+    transform: scale(1.05); /* Slight enlargement on hover for interaction feedback */
+}
+
+.end-quiz-button:focus {
+    outline: none; /* Remove focus outline to maintain the style integrity */
+    box-shadow: 0 0 0 2px rgba(255,255,255,0.5), 0 0 0 4px #9ADBB3; /* Focus indicator for accessibility */
+
+}
+
+.answers-button {
+    display: inline-block;
+    background-color: white; /* White background for contrast */
+    color: black; /* black text for contrast */
+    margin: 10px;
+    padding: 10px 20px; /* Adequate padding for a better touch area */
+    font-size: 18px; /* Appropriate font size for readability */
+    font-family: 'Dosis', sans-serif; /* Maintain font consistency */
+    border: none; /* No border for a cleaner look */
+    border-radius: 5px; /* Rounded corners for a softer appearance */
+    text-decoration: none; /* Remove underline from the link */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3); /* Subtle shadow for depth */
+    transition: background-color 0.3s, transform 0.2s; /* Smooth transition for interactions */
+    cursor: pointer; /* Cursor to pointer to indicate clickable */
+}
+
+.answers-button:hover {
+    background-color: #9ADBB3; /* Darker shade of green on hover for feedback */
+    transform: scale(1.05); /* Slight enlargement on hover for interaction feedback */
+}
+
+.answers-button:focus {
+    outline: none; /* Remove focus outline to maintain the style integrity */
+    box-shadow: 0 0 0 2px rgba(255,255,255,0.5), 0 0 0 4px #9ADBB3; /* Focus indicator for accessibility */
+
+}

@@ -1,3 +1,7 @@
+<?php
+$color_mode = isset($_SESSION['color_mode']) ? $_SESSION['color_mode'] : 0;
+$css_folder = $color_mode ? "tritanopia" : "protanopia";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,7 +25,7 @@
         <nav class="navbar">
           <ul class="navbar-nav">
             <li class="logo">
-              <a href="../HTML/User_Dashboard.html" class="nav-link">
+              <a href="../HTML/User_Dashboard.php" class="nav-link">
                 <span class="link-text logo-text" >EDG</span>
                 <svg
                   aria-hidden="true"

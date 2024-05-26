@@ -1,0 +1,449 @@
+html {
+  scroll-behavior: smooth;
+  zoom: 100%;
+}
+
+:root {
+  font-size: 18px;
+  font-family: 'Open Sans';
+  --text-primary: rgb(227, 227, 227);
+  --text-secondary: white;
+  --bg-primary: #1c1c1c;
+  --bg-secondary: #000000;
+  --transition-speed: 600ms;
+}
+
+body {
+  background-color: white;
+  margin: 0;
+  padding: 0;
+}
+
+body::-webkit-scrollbar {
+  width: 0.25rem;
+}
+
+body::-webkit-scrollbar-track {
+  background: #1e1e24;
+}
+
+main {
+  margin-left: 5rem;
+}
+
+.navbar {
+  position: fixed;
+  background-color: var(--bg-primary);
+  transition: width var(--transition-speed) ease;
+  z-index: 1000; /* Ensures navbar is above other content */
+}
+
+.navbar-nav {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+}
+
+.nav-item {
+  width: 100%;
+}
+
+.nav-item img {
+  width: 20%;
+  height: 20%;
+}
+
+.nav-image {
+  display: none;
+}
+
+.nav-item:last-child {
+  margin-top: auto;
+}
+
+.nav-link {
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  height: 5rem;
+  color: var(--text-primary);
+  text-decoration: none;
+  filter: grayscale(100%) opacity(0.7);
+  transition: var(--transition-speed);
+}
+
+
+.nav-link:hover {
+  filter: grayscale(0%) opacity(1);
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+}
+
+.link-text {
+  font-size: 22px;
+  display: none;
+  margin-left: 1rem;
+  animation: fadeIn 1s;
+  -webkit-animation: fadeIn 3s;
+  -moz-animation: fadeIn 3s;
+  -o-animation: fadeIn 3s;
+  -ms-animation: fadeIn 3s;
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.nav-link svg {
+  width: 2rem;
+  min-width: 2rem;
+  margin: 0 1.5rem;
+}
+
+.fa-primary {
+  color: #ffd1dc;
+}
+
+.fa-secondary {
+  color: pink;
+}
+
+.fa-primary,
+.fa-secondary {
+  transition: var(--transition-speed);
+
+}
+
+.logo {
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  color: var(--text-secondary);
+  background: var(--bg-secondary);
+  font-size: 1.5rem;
+  letter-spacing: 0.3ch;
+  width: 100%;
+}
+
+.logo svg {
+  transform: rotate(180deg);
+  transition: var(--transition-speed);
+  margin-left: 1.5rem;
+}
+
+.logo-text
+{
+  position: relative;
+  transition: var(--transition-speed);
+  display: none ;
+  letter-spacing: 2ch;
+  padding-left: 20px;
+}
+
+.navbar:hover .logo svg {
+  transform: rotate(-360deg);
+}
+
+
+
+/* Large screens (desktops and larger tablets) */
+@media only screen and (min-width: 1025px) {
+  .navbar {
+    width: 5rem; /* Fixed width */
+    top: 0;
+    bottom: auto;
+    height: 100vh; /* Full viewport height */
+  }
+
+  .navbar:hover {
+    width: 16rem;
+  }
+
+  .navbar:hover .link-text,
+  .navbar:hover .logo svg {
+    display: block;
+  }
+
+  .navbar:hover .logo-text {
+    display: inline;
+  }
+
+  main {
+    padding-top: 0;
+    margin-left: 5rem; /* Make room for the navbar */
+  }
+}
+
+#part1 {
+    background-color: #9ADBB3;
+    height: 60rem;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+#part2 {
+  background-color: white;
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.user_dashboard_bg {
+  position: absolute;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 110%; 
+}
+
+
+
+#part1 h1 {
+    font-size: 90px;
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-right: 9rem; /* Remove margin to ensure centering */
+    padding-top: 17rem;
+    font-family: "Dosis", sans-serif;
+    font-style: normal;
+    color: Black;
+    display: flex;
+    justify-content: right;
+    text-align: left;
+}
+
+.marquee {
+  width: 100%;
+  height: 5em;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+.marquee p {
+  position: absolute;
+  width: 280%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  line-height: 100px;  /* Adjust the line height to vertically center text */
+  text-align: center;
+  animation: scroll-left 35s linear infinite;
+  font-size: 45px;
+  font-family: "Cinzel", serif;
+  word-spacing: 10px;
+  white-space: nowrap;  /* Ensures the text stays in a single line */
+  font-style: bold;
+  letter-spacing: 2px;
+}
+
+@keyframes scroll-left {
+  0% {
+      transform: translateX(100%);
+  }
+  100% {
+      transform: translateX(-150%);
+  }
+}
+
+
+.img-container {
+  width: 300px; 
+  height: auto; 
+  box-shadow: 0 0 10px rgba(0, 0, 0, 1); 
+  margin-left: 100px; 
+  border-radius: 10px; 
+  transition: transform 0.3s ease; 
+  display: row;
+  justify-content: space-between;
+}
+
+.img-container:hover {
+  background-color: #ff6961;
+  transform: matrix(1.1, 0, 0, 1.1, 0, 0); 
+}
+
+#part3 {
+  background-color: #9ADBB3;
+  padding-top: 0;
+  margin: 0;
+}
+
+#part3 h1 {
+  margin: 0;
+  font-size: 60px;
+  padding-top: 1em;
+  font-family: "Dosis", sans-serif;
+  font-style: normal;
+  color: black;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  letter-spacing: 2px;
+}
+
+#part3 h2 {
+  font-size: 40px;
+  margin-top: 5px;
+  padding-bottom: 30px;
+  font-family: "Dosis", sans-serif;
+  font-style: normal;
+  color: black;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  letter-spacing: 2px;
+}
+
+.profile_pic_container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.user_profile_pic {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2em;
+}
+
+
+.user_profile_pic:hover {
+  transform: scale(1.2);
+  background-color: #ff6961;
+}
+
+#section3 {
+  margin: 0;
+  padding: 0;
+  background-color: #9ADBB3;
+  height: 50rem;
+}
+
+#section3 h1 {
+  font-size: 90px;
+  margin-top: 0;
+  margin-bottom: 6rem;
+  padding-top: 0.3em;
+  padding-bottom: 0.3em;
+  font-family: "Dosis", sans-serif;
+  font-style: normal;
+  background-color: rgb(55, 55, 55);
+  color: white;
+  text-shadow: 4px 5px 5px rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  letter-spacing: 2px;
+}
+
+#section4 {
+  background-color: #9ADBB3;
+  height: 50rem;
+}
+
+#section4 h1 {
+  font-size: 90px;
+  margin-top: 0;
+  margin-bottom: 6rem;
+  padding-top: 0.3em;
+  padding-bottom: 0.3em;
+  font-family: "Dosis", sans-serif;
+  font-style: normal;
+  background-color: rgb(55, 55, 55);
+  color: white;
+  text-shadow: 4px 5px 5px rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  letter-spacing: 2px;
+}
+
+#section5 h1 {
+  font-size: 90px;
+  margin-top: 0;
+  margin-bottom: 6rem;
+  padding-top: 0.3em;
+  padding-bottom: 0.3em;
+  font-family: "Dosis", sans-serif;
+  font-style: normal;
+  background-color: rgb(55, 55, 55);
+  color: white;
+  text-shadow: 4px 5px 5px rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  letter-spacing: 2px;
+}
+
+
+.start_pic_container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+.start_pic {
+
+  margin-top: 40px;
+  margin-left: 8rem;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background-color: white;
+}
+
+
+.start_pic:hover {
+  transform: scale(1.2);
+  background-color: #ff6961;
+}
+
+.pic {
+  width: 130%;
+  height: 130%;
+}
+
+#section4 h3 {
+  padding: 0;
+  margin-left: 4em;
+  margin-top: 3rem;
+  font-size: 40px;
+  font-family: "Dosis", sans-serif;
+  font-style: normal;
+  color: black;
+  text-align: right;
+  letter-spacing: 2px;
+}
+
+.encourage{
+  font-size: 25px;
+  font-family: "Dosis", sans-serif;
+  font-style: normal;
+  color: black;
+  letter-spacing: 2px;
+  text-align: center;
+}
+
+
+hr.new1 {
+  border-top: solid black;
+  margin: 0;
+  padding: 0;
+}

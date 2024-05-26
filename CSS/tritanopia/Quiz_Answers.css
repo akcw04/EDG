@@ -1,0 +1,89 @@
+/* Header styles */
+header {
+    text-align: center;
+    padding: 20px 0;
+    width: 100%;
+    background-color: whitesmoke; /* Light background for the header */
+}
+
+.header-logo {
+    width: 100px; /* Adjust width as needed */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 50%;
+}
+
+body {
+    font-family: 'Dosis', sans-serif; /* Using Dosis for a clean and modern look */
+    font-size: 25px;
+    background-color: whitesmoke; /* Soft background that's easy on the eyes */
+    margin: 0;
+    padding: 20px;
+    color: black; /* Ensuring good contrast for readability */
+}
+
+table {
+    width: 80%; /* Optimal width for reading */
+    margin: 20px auto; /* Centering the table on the page */
+    border-collapse: collapse;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+}
+
+/* Styles for table headers */
+th {
+    background-color: #9ADBB3; /* Light blue background for headers */
+    color: white;
+    padding: 15px;
+    font-size: 28px; /* Larger font size for headers */
+    border: 1px solid #DDD; /* Light grey border for some contrast */
+    text-align: left;
+}
+
+/* Styles for table cells */
+td {
+    text-align: left;
+    padding: 12px;
+    border: 1px solid #DDD; /* Consistent border styling with headers */
+}
+
+
+tr:nth-child(even) {
+    background-color: whitesmoke; /* Using whitesmoke for alternate rows */
+}
+
+tr:hover {
+    background-color: #FFC0CB; /* Pink for hover to make interactive elements obvious */
+    cursor: pointer;
+}
+
+h1 {
+    text-align: center;
+    color: #9ADBB3; /* Keeping the title in theme */
+    padding-bottom: 20px;
+    font-size: 40px; /* Increased font size for better visibility */
+}
+
+/* Footer style updated with a link button */
+footer {
+    text-align: center;
+    font-size: 25px;
+    padding: 20px 0;
+    color: black;
+    width: 100%;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Adds depth by casting a shadow upwards */
+}
+
+.footer-link {
+    text-decoration: none;
+    color: black; /* Ensuring contrast with the button background */
+    background-color: #FFF; /* Light background for the link */
+    padding: 10px 20px;
+    border-radius: 5px; /* Rounded corners for a softer look */
+    transition: background-color 0.3s, text-decoration 0.3s ease-in-out; /* Smooth transition for interactive feedback */
+}
+
+.footer-link:hover {
+    text-decoration: underline; /* Underline on hover for better feedback */
+    background-color: #f8f8f8; /* Slightly darker background on hover */
+}
+
+

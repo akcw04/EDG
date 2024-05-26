@@ -1,5 +1,7 @@
 <?php
 session_start();  // Start the session or continue the existing one
+$color_mode = isset($_SESSION['color_mode']) ? $_SESSION['color_mode'] : 0;
+$css_folder = $color_mode ? "tritanopia" : "protanopia";
 
 // Check if category_id is provided in the URL
 if (isset($_GET['category_id'])) {

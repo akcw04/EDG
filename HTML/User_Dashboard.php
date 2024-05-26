@@ -1,3 +1,26 @@
+<?php
+session_start();
+$color_mode = isset($_SESSION['color_mode']) ? $_SESSION['color_mode'] : 0;
+$css_folder = $color_mode ? "tritanopia" : "protanopia";
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <link rel="stylesheet" href="../CSS/<?php echo $css_folder; ?>/User_Dashboard.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Your content here -->
+</body>
+</html>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -138,7 +161,7 @@
         <h1>Assessments</h1>
         <div class="start_pic_container">
             <div class="start_pic">
-              <a href="../HTML/Choose_Quiz.html"><img class="pic" src="../IMG/start_attempting_pic.png" alt="start_attempting_quiz"></a>
+              <a href="../HTML/Choose_Quiz.php"><img class="pic" src="../IMG/start_attempting_pic.png" alt="start_attempting_quiz"></a>
             </div>
             <h3>Tap on the Picture to Start Attempting A Quiz Now !
               <br>
