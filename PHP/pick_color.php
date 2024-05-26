@@ -26,9 +26,8 @@ if ($stmt) {
     $stmt->bind_param("ii", $mode, $_SESSION['User_id']);
     $stmt->execute();
     $mode_selected = $mode ? "Mode 2 Selected" : "Mode 1 Selected";
-    $redirect_page = $mode ? "User_Dashboard.php" : "User_Dashboard.php";
     $stmt->close();
-    echo '<script>alert("'.$mode_selected.'"); window.location.href = "http://localhost/EDG/HTML/'.$redirect_page.'";</script>';
+    echo '<script>alert("'.$mode_selected.'"); window.location.href = "http://localhost/EDG/HTML/Pick_Size";</script>';
 } else {
     echo "Error preparing statement: " . $conn->error;
 }
