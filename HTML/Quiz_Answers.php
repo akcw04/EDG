@@ -1,14 +1,19 @@
+<?php
+session_start();
+$color_mode = isset($_SESSION['color_mode']) ? $_SESSION['color_mode'] : 0;
+$css_folder = $color_mode ? "tritanopia" : "protanopia";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz Answers</title>
-    <link rel="stylesheet" href="../CSS/Quiz_Answers.css" />
+    <link rel="stylesheet" href="../CSS/<?php echo $css_folder; ?>/Quiz_Answers.css">
 </head>
 <body>
     <header>
-        <a href="../HTML/User_Dashboard.html"><img src="../IMG/logo.png" alt="EDG Logo" class="header-logo"></a>
+        <a href="../HTML/User_Dashboard.php"><img src="../IMG/logo.png" alt="EDG Logo" class="header-logo"></a>
     </header>
     <div class="answers-container">
         <?php
@@ -45,7 +50,7 @@
         ?>
     </div>
     <footer>
-        <a href="../HTML/Choose_Quiz.html" class="footer-link">Choose Another Quiz</a>
+        <a href="../HTML/Choose_Quiz.php" class="footer-link">Choose Another Quiz</a>
     </footer>
 </body>
 </html>

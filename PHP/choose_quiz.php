@@ -2,6 +2,7 @@
 session_start();  // Start the session or continue the existing one
 $color_mode = isset($_SESSION['color_mode']) ? $_SESSION['color_mode'] : 0;
 $css_folder = $color_mode ? "tritanopia" : "protanopia";
+unset($_SESSION['quiz_over']);
 
 // Check if category_id is provided in the URL
 if (isset($_GET['category_id'])) {
@@ -13,15 +14,15 @@ if (isset($_GET['category_id'])) {
     if ($category_id >= 5 && $category_id <= 8) {
         $redirectPage = "../HTML/Addition_Quiz.php";
     } elseif ($category_id >= 9 && $category_id <= 12) {
-        $redirectPage = "../HTML/Subtraction_Quiz.php";
+        $redirectPage = "../HTML/Addition_Quiz.php";
     } elseif ($category_id >= 13 && $category_id <= 16) {
-        $redirectPage = "../HTML/Multiplication_Quiz.php";
+        $redirectPage = "../HTML/Addition_Quiz.php";
     } elseif ($category_id >= 17 && $category_id <= 20) {
-        $redirectPage = "../HTML/Division_Quiz.php";
+        $redirectPage = "../HTML/Addition_Quiz.php";
     } else {
         // If the category_id does not fall into any expected range
         echo "Category ID is out of expected range.";
-        header("Location: Choose_Quiz.html"); // Redirect to the quiz selection page
+        header("Location: Choose_Quiz.php"); // Redirect to the quiz selection page
         exit;
     }
 
@@ -31,7 +32,7 @@ if (isset($_GET['category_id'])) {
 } else {
     echo "No category specified.";
     // Redirect back to a default page or error handling
-    header("Location: Choose_Quiz.html");
+    header("Location: Choose_Quiz.php");
     exit;
 }
 
