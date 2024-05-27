@@ -5,7 +5,7 @@ if (!isset($_SESSION['User_id'])) {
     die('User ID is not set in the session.');
 }
 
-include '../PHP/conn.php';
+include 'conn.php';
 
 
 // Determine the selected text size

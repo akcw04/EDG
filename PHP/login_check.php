@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-include '../PHP/conn.php';
+include 'conn.php';
 
 function check_data($Email, $Password, $conn) {
     // Use prepared statements to prevent SQL Injection

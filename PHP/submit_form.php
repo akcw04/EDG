@@ -1,13 +1,30 @@
 <?php
+// Database connection settings
+$servername = "localhost";
+$username = "root";
+$password = "";
 
-include '../PHP/conn.php';
+// Create connection to MySQL server
+$conn = new mysqli($servername, $username, $password);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
 
 // Create database if it does not exist
 $sql = "CREATE DATABASE IF NOT EXISTS edg";
-$conn->query($sql);
+if ($conn->query($sql) === TRUE) {
+    echo "Database created successfully or already exists.";
+} else {
+    echo "Error creating database: " . $conn->error;
+}
 
-// Establish a new connection to the created database
-$conn = new mysqli($servername, $username, $password, "edg");
+// Close the initial connection
+$conn->close();
+
+// Include the connection to the newly created database
+include 'conn.php';
 
 // SQL to create table for users
 $sql_users = "CREATE TABLE IF NOT EXISTS users (

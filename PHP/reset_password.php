@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-include '../PHP/conn.php';
+include 'conn.php';
 
 
 $timeout_duration = 60; // Timeout duration in seconds

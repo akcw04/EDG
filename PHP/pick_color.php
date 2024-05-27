@@ -6,7 +6,7 @@ if (!isset($_SESSION['User_id'])) {
     exit;
 }
 
-include '../PHP/conn.php';
+include 'conn.php';
 
 
 $mode = isset($_POST['mode2']) ? 1 : 0; // Simplified mode check

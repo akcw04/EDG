@@ -6,7 +6,7 @@ unset($_SESSION['User_id']);
 
 require 'C:/xampp/htdocs/EDG/vendor/autoload.php';
 
-include '../PHP/conn.php';
+include 'conn.php';
 
 
 function check_data($email, $conn) {
