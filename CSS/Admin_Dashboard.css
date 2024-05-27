@@ -358,6 +358,18 @@
     font-size: 30px;
   }
   
+  #section5 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #FFD1DC;
+    margin: 0;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    font-family: "Dosis", sans-serif;
+    font-size: 30px;
+  }
+  
   .About-Us {
       display: flex;
       justify-content: center;
