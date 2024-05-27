@@ -1,5 +1,5 @@
 body {
-    background-color: #FFD1Dc;
+    background-color: #FFD1DC;
     background-image: url("../IMG/admin_bg.png");
     font-family: 'Open Sans', sans-serif;
     margin: 0;
@@ -9,6 +9,10 @@ body {
     align-items: center;
     height: 100vh;
     color: #333;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
 }
 
 h1 {
@@ -16,6 +20,7 @@ h1 {
     font-family: 'Dosis', sans-serif;
     color: #1c1c1c;
     text-align: center;
+    margin-bottom: 20px;
 }
 
 form {
@@ -32,11 +37,13 @@ form {
 label {
     font-size: 18px; 
     margin-bottom: 8px;
+    color: #333;
 }
 
 input[type="text"],
 input[type="date"],
-input[type="email"] {
+input[type="email"],
+select {
     font-size: 18px; 
     padding: 10px;
     margin-bottom: 15px;
@@ -57,6 +64,6 @@ button[type="submit"] {
 }
 
 button[type="submit"]:hover {
-    background-color: #FFD1Dc;
+    background-color: #FFD1DC;
     color: black;
 }
