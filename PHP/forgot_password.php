@@ -6,16 +6,7 @@ unset($_SESSION['User_id']);
 
 require 'C:/xampp/htdocs/EDG/vendor/autoload.php';
 
-
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "edg";
-
-$conn = new mysqli($servername, $username, $password, $dbname);
-if ($conn->connect_error) {
-    die('<script class="alert" >alert("Connection Failed")</script>' . $conn->connect_error);
-}
+include '../PHP/conn.php';
 
 
 function check_data($email, $conn) {

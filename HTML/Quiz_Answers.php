@@ -25,19 +25,8 @@ $font_size = isset($_SESSION['font_size']) ? $_SESSION['font_size'] : 'medium';
     </header>
     <div class="answers-container">
         <?php
-        // Database connection setup
-        $servername = "localhost";
-        $username = "root";
-        $password = "";
-        $dbname = "edg";
+        include '../PHP/conn.php';
 
-        // Create connection
-        $conn = new mysqli($servername, $username, $password, $dbname);
-
-        // Check connection
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        }
 
         // Fetch all questions and their correct answers
         $sql = "SELECT q.Question_Text, c.Choice_text FROM questions q JOIN choices c ON q.Questions_id = c.Question_id WHERE c.Is_correct = 1";

@@ -11,16 +11,7 @@ if (!isset($_SESSION['category_id'])) {
     exit;
 }
 
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "edg";
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check database connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+include '../PHP/conn.php';
 
 $category_id = $_SESSION['category_id'];
 $current_question_index = isset($_SESSION['question_index']) ? $_SESSION['question_index'] : 0;

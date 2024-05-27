@@ -10,18 +10,8 @@ if (!isset($_SESSION['User_id'])) {
     die('User ID is not set in the session.');
 }
 
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "edg";
+include '../PHP/conn.php';
 
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
 
 // Query to fetch user data
 $sql = "SELECT FirstName, LastName, DOB, Gender, PhoneNumber, Email, Password FROM users WHERE User_id = ?";

@@ -5,15 +5,8 @@ if (!isset($_SESSION['User_id'])) {
     die('User ID is not set in the session.');
 }
 
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "edg";
+include '../PHP/conn.php';
 
-$conn = new mysqli($servername, $username, $password, $dbname);
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
 
 // Determine the selected text size
 $font_size = 'medium'; // Default size

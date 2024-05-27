@@ -6,15 +6,8 @@ if (!isset($_SESSION['User_id'])) {
     exit;
 }
 
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "edg";
+include '../PHP/conn.php';
 
-$conn = new mysqli($servername, $username, $password, $dbname);
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
 
 $mode = isset($_POST['mode2']) ? 1 : 0; // Simplified mode check
 $_SESSION['color_mode'] = $mode; // Store the selected mode in the session

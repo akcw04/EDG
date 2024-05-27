@@ -1,15 +1,8 @@
 <?php
 session_start();
 
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "edg";
+include '../PHP/conn.php';
 
-$conn = new mysqli($servername, $username, $password, $dbname);
-if ($conn->connect_error) {
-    die('<script>alert("Connection Failed: ' . $conn->connect_error . '"); window.location.href = "http://localhost/EDG/HTML/Reset_Password.html";</script>');
-}
 
 $timeout_duration = 60; // Timeout duration in seconds
 

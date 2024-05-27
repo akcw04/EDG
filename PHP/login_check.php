@@ -1,15 +1,7 @@
 <?php
 session_start();
 
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "edg";
-
-$conn = new mysqli($servername, $username, $password, $dbname);
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+include '../PHP/conn.php';
 
 function check_data($Email, $Password, $conn) {
     // Use prepared statements to prevent SQL Injection

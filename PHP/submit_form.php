@@ -1,11 +1,6 @@
 <?php
 
-$servername = "localhost";
-$username = "root";
-$password = "";
-
-// Create connection
-$conn = new mysqli($servername, $username, $password);
+include '../PHP/conn.php';
 
 // Create database if it does not exist
 $sql = "CREATE DATABASE IF NOT EXISTS edg";
