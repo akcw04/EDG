@@ -1,3 +1,12 @@
+:root {
+    font-family: 'Open Sans';
+    --text-primary: rgb(227, 227, 227);
+    --text-secondary: white;
+    --bg-primary: #1c1c1c;
+    --bg-secondary: #000000;
+    --transition-speed: 600ms;
+}
+
 /* Header styles */
 header {
     text-align: center;
@@ -14,7 +23,7 @@ header {
 
 body {
     font-family: 'Dosis', sans-serif; /* Using Dosis for a clean and modern look */
-    font-size: 25px;
+    font-size: calc(var(--font-size-base) * 1.5625); /* 25px / 16px */
     background-color: whitesmoke; /* Soft background that's easy on the eyes */
     margin: 0;
     padding: 20px;
@@ -33,7 +42,7 @@ th {
     background-color: #779ECB; /* Light blue background for headers */
     color: white;
     padding: 15px;
-    font-size: 28px; /* Larger font size for headers */
+    font-size: calc(var(--font-size-base) * 1.75); /* 28px / 16px */
     border: 1px solid #DDD; /* Light grey border for some contrast */
     text-align: left;
 }
@@ -59,13 +68,13 @@ h1 {
     text-align: center;
     color: #779ECB; /* Keeping the title in theme */
     padding-bottom: 20px;
-    font-size: 40px; /* Increased font size for better visibility */
+    font-size: calc(var(--font-size-base) * 2.5); /* 40px / 16px */
 }
 
 /* Footer style updated with a link button */
 footer {
     text-align: center;
-    font-size: 25px;
+    font-size: calc(var(--font-size-base) * 1.5625); /* 25px / 16px */
     padding: 20px 0;
     color: black;
     width: 100%;

@@ -1,5 +1,4 @@
 :root {
-    font-size: 18px;
     font-family: 'Open Sans';
     --text-primary: rgb(227, 227, 227);
     --text-secondary: white;
@@ -79,7 +78,7 @@
   }
   
   .link-text {
-    font-size: 22px;
+    font-size: calc(var(--font-size-base) * 1.375); /* 22px / 16px = 1.375 */
     display: none;
     margin-left: 1rem;
     animation: fadeIn 1s;
@@ -120,7 +119,7 @@
     margin-bottom: 1rem;
     color: var(--text-secondary);
     background: var(--bg-secondary);
-    font-size: 1.5rem;
+    font-size: calc(var(--font-size-base) * 1.5); /* 24px / 16px = 1.5 */
     letter-spacing: 0.3ch;
     width: 100%;
   }
@@ -175,7 +174,7 @@
   }
   
   #section_bg {
-    background-color: #A7C7E7 ;
+    background-color: #9ADBB3 ;
     margin: 0;
     padding-top: 30px;
     padding-left: 40px;
@@ -184,7 +183,7 @@
   }
   
   #section_bg h2 {
-    font-size: 60px;
+    font-size: calc(var(--font-size-base) * 3.75); /* 60px / 16px = 3.75 */
     margin: 0;
     padding-top: 20px;
     padding-right: 65px;

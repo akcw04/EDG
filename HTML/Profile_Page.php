@@ -2,6 +2,8 @@
 session_start();
 $color_mode = isset($_SESSION['color_mode']) ? $_SESSION['color_mode'] : 0;
 $css_folder = $color_mode ? "tritanopia" : "protanopia";
+$font_size = isset($_SESSION['font_size']) ? $_SESSION['font_size'] : 'medium';
+
 
 // Check if User_id is set in the session before doing anything else
 if (!isset($_SESSION['User_id'])) {
@@ -53,6 +55,7 @@ $conn->close();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile Page</title>
     <script defer src="../Javascript/script.js"></script>
+    <link rel="stylesheet" href="../CSS/font_sizes.css">
     <link rel="stylesheet" href="../CSS/<?php echo $css_folder; ?>/Profile.css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&display=swap" rel="stylesheet"/>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -68,7 +71,11 @@ $conn->close();
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Dosis:wght@200..800&family=Permanent+Marker&family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
-
+    <style>
+        :root {
+            --font-size-base: var(--font-size-<?php echo $font_size; ?>);
+        }
+    </style>
 </head>
 
 <body>

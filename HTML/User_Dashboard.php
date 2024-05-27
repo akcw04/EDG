@@ -160,11 +160,113 @@ $font_size = isset($_SESSION['font_size']) ? $_SESSION['font_size'] : 'medium';
       </section>
       
       <section id="section5">
-        <h1>About Us</h1>
+      <h1>About Us</h1>
+      
+      <p class="About-Us">Welcome to Educational Goat, where curiosity meets fun and learning! Founded by a passionate team of quiz lovers and lifelong learners, Educational Goat is dedicated to creating a vibrant community through interactive quizzes. The unique part of website is that it is friendly to protanopia and tritanopia users. Our platform offers tutorials for basic math, which included the materials for the users to learn, then assessments which allows the users to evaluate themselves. At Educational Goat, we believe in the power of knowledge and the joy of discovery. Whether you're looking to challenge yourself, compete with friends, or simply explore new subjects, our quizzes are designed to educate, entertain, and inspire. Join us on this exciting journey of learning, one question at a time!</p> 
+      
+      <div class="Banner-Wrapper">
+        <div>
+          <img src="../IMG/lion.png" alt="lion">
+        </div>
+        <div>
+          <img src="../IMG/elephant.png" alt="lion">
+        </div>
+        <div>
+          <img src="../IMG/giraffe.png" alt="lion">
+        </div>
+        <div>
+          <img src="../IMG/turtle.png" alt="lion">
+        </div>
+        <div>
+          <img src="../IMG/shark.png" alt="lion">
+        </div>
+        <div>
+          <img src="../IMG/fox.png" alt="lion">
+        </div>
+      </div>
 
-      </section>
+      <div>
 
+      <div class="About-EDG">
+        <h2>EDG - Educational Goat</h2>
+      </div>
+      <div class="EDG-Logo">
+        <img src="../IMG/logo.png" class="logo-style" ></img>
+      </div>
+      <div class="About-EDG-Text">
+        <p>What is Educational Goat? Educational Goat is founded by 4 students from the Asian Pacific University of Technology and Innovation. It is dedicated to transform the way mathematics is learned and taught, specifically designed for individuals with protanopia and tritanopia color-blindness. Our platform features a user-friendly interface and specially adapted visual content that enhances learning without the barrier of color visibility issues. At Educational Goat, we believe that everyone deserves access to quality math education.</p>
+      </div>
+      <div class="Contributers-Header">
+        <p>Below are the contributers of Educational Goat.</p> 
+      </div>
+      <div class="Contributers-Content-Wrapper"> <!-- Wrapper to hold contributers box -->
+        
+        <div> <!-- Box to hold image and caption of contributers -->
+          <div class="Contributers-IMG">
+            <img src="../IMG/astronaut1.png" alt="Contributer1" class="Contributers-IMG-Style">
+          </div>
+          <div class="Contributers-Caption">
+            <p>Annie Kiu Chi Wen</p>
+          </div>
+        </div>
 
-    </main>
-  </body>
+        <div> 
+          <div class="Contributers-IMG">
+            <img src="../IMG/astronaut2.png" alt="Contributer2" class="Contributers-IMG-Style">
+          </div>
+          <div class="Contributers-Caption">
+            <p>Chua Kian Ho</p>
+          </div>
+        </div>
+
+        <div> 
+          <div class="Contributers-IMG">
+            <img src="../IMG/astronaut3.png" alt="Contributer3" class="Contributers-IMG-Style">
+          </div>
+          <div class="Contributers-Caption">
+            <p>Ding Der-Xin</p>
+          </div>
+        </div>
+
+        <div> 
+          <div class="Contributers-IMG">
+            <img src="../IMG/astronaut4.png" alt="Contributer4" class="Contributers-IMG-Style">
+          </div>
+          <div class="Contributers-Caption">
+            <p>Cheng Xi Hong</p>
+          </div>
+        </div>
+        
+      </div>
+
+      <div class="Contact-Us">
+        <div class="Contact-Us-Header">
+          <h2>Contact us if you have any inquires!</h2>
+        </div>
+        <div class="Contact-Us-Icon-Wrapper">
+          <div class="Icon-Box">
+            <a href="https://facebook.com">
+            <svg xmlns="http://www.w3.org/2000/svg" height= "100" width= "100" viewBox="0 0 512 512"><path d="M512 256C512 114.6 397.4 0 256 0S0 114.6 0 256C0 376 82.7 476.8 194.2 504.5V334.2H141.4V256h52.8V222.3c0-87.1 39.4-127.5 125-127.5c16.2 0 44.2 3.2 55.7 6.4V172c-6-.6-16.5-1-29.6-1c-42 0-58.2 15.9-58.2 57.2V256h83.6l-14.4 78.2H287V510.1C413.8 494.8 512 386.9 512 256h0z"/></svg>
+            </a>
+          </div>
+          <div class="Icon-Box">
+            <a href="https://instagram.com">
+            <svg xmlns="http://www.w3.org/2000/svg" height= "100" width= "100" viewBox="0 0 448 512"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg>
+            </a>
+          </div>
+          <div class="Icon-details">
+            <svg xmlns="http://www.w3.org/2000/svg" height= "100" width= "100" viewBox="0 0 512 512"><path d="M64 112c-8.8 0-16 7.2-16 16v22.1L220.5 291.7c20.7 17 50.4 17 71.1 0L464 150.1V128c0-8.8-7.2-16-16-16H64zM48 212.2V384c0 8.8 7.2 16 16 16H448c8.8 0 16-7.2 16-16V212.2L322 328.8c-38.4 31.5-93.7 31.5-132 0L48 212.2zM0 128C0 92.7 28.7 64 64 64H448c35.3 0 64 28.7 64 64V384c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V128z"/></svg>
+            <p class="Email">Email: edg@mail.edu.my</p>
+          </div>
+          <div class="Icon-details">
+            <svg xmlns="http://www.w3.org/2000/svg" height= "100" width= "100" viewBox="0 0 512 512"><path d="M164.9 24.6c-7.7-18.6-28-28.5-47.4-23.2l-88 24C12.1 30.2 0 46 0 64C0 311.4 200.6 512 448 512c18 0 33.8-12.1 38.6-29.5l24-88c5.3-19.4-4.6-39.7-23.2-47.4l-96-40c-16.3-6.8-35.2-2.1-46.3 11.6L304.7 368C234.3 334.7 177.3 277.7 144 207.3L193.3 167c13.7-11.2 18.4-30 11.6-46.3l-40-96z"/></svg>
+            <p class="Phone-Number">Tel: 012-3456789</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </section>
+  </main>
+</body>
 </html>

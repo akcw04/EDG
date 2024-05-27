@@ -1,7 +1,7 @@
 :root {
-    --font-size-small: 12px;
+    --font-size-small: 14px;
     --font-size-medium: 16px;
-    --font-size-large: 20px;
+    --font-size-large: 18px;
     --font-size-base: var(--font-size-medium); /* Default size */
 }
 

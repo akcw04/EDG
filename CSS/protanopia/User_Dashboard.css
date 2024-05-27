@@ -178,7 +178,7 @@ main {
   background-color: #a7c7e7d5;
   height: 60rem;
   margin-bottom: 0;
-  padding-bottom: 0;
+  padding-bottom: 10rem;
 }
 
 #part2 {
@@ -217,7 +217,7 @@ main {
   position: relative;
   display: flex;
   align-items: center;
-  margin: 0;
+  margin: 20px;
   padding: 0;
 }
 
@@ -366,6 +366,12 @@ main {
   letter-spacing: 2px;
 }
 
+
+#section5 {
+  background-color: #a7c7e7d5;
+  height: 200rem;
+}
+
 #section5 h1 {
   font-size: calc(var(--font-size-base) * 5.625); /* 90px / 16px = 5.625 */
   margin-top: 0;
@@ -433,4 +439,183 @@ hr.new1 {
   border-top: solid black;
   margin: 0;
   padding: 0;
+}
+
+.About-Us {
+  display: flex;
+  justify-content: center;
+  margin: 0 100px;
+  text-align: center;
+  padding-top: 20px;
+  line-height: 1.8;
+  font-family:"Dosis", sans-serif;
+  font-size: calc(var(--font-size-base) * 1.875); /* 30px / 16px = 1.875 */
+  font-weight: bold;
+  margin-bottom: 40px;
+}
+
+.Banner-Wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  height: 400px;
+}
+
+.Banner-Wrapper img {
+  width: 100%;
+  height: 50%;
+  filter: grayscale(100%);
+}
+
+.About-EDG {
+  display: flex;
+  justify-content: center;
+  margin-top: -150px;
+  font-size: calc(var(--font-size-base) * 1.5625); /* 25px / 16px = 1.5625 */
+}
+
+.EDG-Logo {
+  display: flex;
+  justify-content: center;
+}
+
+.logo-style {
+  height: 20%;
+  width: 20%;
+  border-radius: 50%;
+  margin-bottom: 40px;
+}
+
+.About-EDG-Text {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin: 0 100px;
+  font-family: 'Trebuchet MS', sans-serif;
+  line-height: 1.8;
+  font-size: calc(var(--font-size-base) * 1.5625); /* 25px / 16px = 1.5625 */
+  font-weight: bold;
+  margin-top: -50px;
+}
+
+.Contributers-Header {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin: 0 100px;
+  margin-top: 50px;
+  font-family: 'Trebuchet MS', sans-serif;
+  line-height: 1.8;
+  font-size: calc(var(--font-size-base) * 1.5625); /* 25px / 16px = 1.5625 */
+  font-weight: bold;
+}
+
+.Contributers-Content-Wrapper {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+}
+
+.Contributers-IMG {
+  display: flex;
+  justify-content: center;
+  filter: grayscale(100%);
+}
+
+.Contributers-IMG-Style {
+  width: 100%;
+  height: 100%;
+  filter: grayscale(100%);
+}
+
+.Contributers-Caption {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  font-weight: bold;
+  font-size: calc(var(--font-size-base) * 1.25); /* 20px / 16px = 1.25 */
+}
+
+.Contact-Us {
+  padding-top: 50px;
+}
+
+.Contact-Us-Header {
+  display: flex;
+  justify-content: center;
+  margin-top: 70px;
+}
+
+.Contact-Us-Icon-Wrapper {
+  display: grid;
+  grid-template-columns: 500px 500px;
+  grid-template-rows: 300px 300px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.Icon-Box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Icon-details {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.Email, .Phone-Number {
+  width: 200px;
+  height: 50px;
+  font-size: calc(var(--font-size-base) * 1.25); /* 20px / 16px = 1.25 */
+}
+
+.instruction {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding-top: 50px;
+}
+
+.symbolwrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.imgstyle {
+  width: 30%;
+  height: 100%;
+  display: block;
+  transition: 0.5s ease;
+  filter: grayscale(100%);
+}
+
+.symbol:hover .overlay {
+  opacity: 1;
+  transform: scale(1.5);
+  height: 100%;
+}
+
+.overlay {
+  position: absolute;
+  background-color: #a7c7e7d5;
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  width: 30%;
+  height: 100%;
+  border-radius: 100%;
+  font-family: "Dosis", sans-serif;
+  font-weight: bold;
+  font-size: calc(var(--font-size-base) * 1.25); /* 20px / 16px = 1.25 */
 }

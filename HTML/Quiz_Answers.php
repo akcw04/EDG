@@ -2,6 +2,8 @@
 session_start();
 $color_mode = isset($_SESSION['color_mode']) ? $_SESSION['color_mode'] : 0;
 $css_folder = $color_mode ? "tritanopia" : "protanopia";
+$font_size = isset($_SESSION['font_size']) ? $_SESSION['font_size'] : 'medium';
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -9,7 +11,13 @@ $css_folder = $color_mode ? "tritanopia" : "protanopia";
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz Answers</title>
+    <link rel="stylesheet" href="../CSS/font_sizes.css">
     <link rel="stylesheet" href="../CSS/<?php echo $css_folder; ?>/Quiz_Answers.css">
+    <style>
+        :root {
+            --font-size-base: var(--font-size-<?php echo $font_size; ?>);
+        }
+    </style>
 </head>
 <body>
     <header>

@@ -1,5 +1,4 @@
 :root {
-    font-size: 18px;
     font-family: 'Open Sans';
     --text-primary: rgb(227, 227, 227);
     --text-secondary: white;
@@ -79,7 +78,7 @@
   }
   
   .link-text {
-    font-size: 22px;
+    font-size: calc(var(--font-size-base) * 1.375); /* 22px / 16px = 1.375 */
     display: none;
     margin-left: 1rem;
     animation: fadeIn 1s;
@@ -120,7 +119,7 @@
     margin-bottom: 1rem;
     color: var(--text-secondary);
     background: var(--bg-secondary);
-    font-size: 1.5rem;
+    font-size: calc(var(--font-size-base) * 1.5); /* 24px / 16px = 1.5 */
     letter-spacing: 0.3ch;
     width: 100%;
   }
@@ -194,7 +193,7 @@
 }
 
 h1 {
-    font-size: 80px;
+    font-size: calc(var(--font-size-base) * 5); /* 80px / 16px = 5 */
     font-family: Dosis;
     letter-spacing: 0.2rem;
     text-align: center;
@@ -204,7 +203,7 @@ h1 {
 }
 
 h2 {
-  font-size: 40px;
+  font-size: calc(var(--font-size-base) * 2.5); /* 40px / 16px = 2.5 */
   font-family: Dosis;
   color: black;
   text-align: center;
@@ -231,7 +230,7 @@ h2 {
 }
 
 .table_design tr {
-  font-size: 30px;
+  font-size: calc(var(--font-size-base) * 1.875); /* 30px / 16px = 1.875 */
   font-family: Dosis;
   text-align: left;
   margin-top: 15px;
@@ -244,14 +243,14 @@ h2 {
 
 .table_design td {
   text-align: left;
-  font-size: 30px;
+  font-size: calc(var(--font-size-base) * 1.875); /* 30px / 16px = 1.875 */
   font-family: Dosis;
   padding-right: 80px;
 }
 
 
 .button {
-  font-size: 20px;
+  font-size: calc(var(--font-size-base) * 1.25); /* 20px / 16px = 1.25 */
   font-family: Dosis;
   background-color: #9ADBB3;
   border: none;

@@ -1,3 +1,12 @@
+:root {
+    font-family: 'Open Sans';
+    --text-primary: rgb(227, 227, 227);
+    --text-secondary: white;
+    --bg-primary: #1c1c1c;
+    --bg-secondary: #000000;
+    --transition-speed: 600ms;
+}
+
 body {
     background-color: #A7C7E7;
     /* #FFC0CB */
@@ -36,7 +45,7 @@ form {
     text-align: left;       /* Aligns text to the left */
     cursor: pointer;        /* Keeps the pointer cursor to signify it's clickable */
     font-family: Dosis;
-    font-size: 40px;
+    font-size: calc(var(--font-size-base) * 2.5); /* 40px / 16px */
     transition: transform 0.3s ease;
 }
 
@@ -46,7 +55,7 @@ form {
 }
 
 h1 {
-    font-size: 40px;
+    font-size: calc(var(--font-size-base) * 2.5); /* 40px / 16px */
     font-family: "Dosis", sans-serif;
     text-align: left;
     margin: 40px;
@@ -99,7 +108,7 @@ p {
     position: absolute;
     top: 50%; /* Vertically center */
     transform: translateY(-50%); /* Adjust vertical alignment */
-    font-size: 18px; /* Font size */
+    font-size: calc(var(--font-size-base) * 1.125); /* 18px / 16px */
     font-family: 'Dosis', sans-serif; /* Font family */
     color: black; /* Ensuring visibility against a lighter background */
 }
@@ -110,7 +119,7 @@ p {
     color: black; /* black text for contrast */
     margin: 10px;
     padding: 10px 20px; /* Adequate padding for a better touch area */
-    font-size: 18px; /* Appropriate font size for readability */
+    font-size: calc(var(--font-size-base) * 1.125); /* 18px / 16px */
     font-family: 'Dosis', sans-serif; /* Maintain font consistency */
     border: none; /* No border for a cleaner look */
     border-radius: 5px; /* Rounded corners for a softer appearance */
@@ -137,7 +146,7 @@ p {
     color: black; /* black text for contrast */
     margin: 10px;
     padding: 10px 20px; /* Adequate padding for a better touch area */
-    font-size: 18px; /* Appropriate font size for readability */
+    font-size: calc(var(--font-size-base) * 1.125); /* 18px / 16px */
     font-family: 'Dosis', sans-serif; /* Maintain font consistency */
     border: none; /* No border for a cleaner look */
     border-radius: 5px; /* Rounded corners for a softer appearance */
