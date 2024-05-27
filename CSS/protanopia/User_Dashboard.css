@@ -4,7 +4,6 @@ html {
 }
 
 :root {
-  font-size: 18px;
   font-family: 'Open Sans';
   --text-primary: rgb(227, 227, 227);
   --text-secondary: white;
@@ -17,6 +16,7 @@ body {
   background-color: white;
   margin: 0;
   padding: 0;
+  font-size: var(--font-size-base);
 }
 
 body::-webkit-scrollbar {
@@ -74,8 +74,8 @@ main {
   text-decoration: none;
   filter: grayscale(100%) opacity(0.7);
   transition: var(--transition-speed);
+  font-size: var(--font-size-base);
 }
-
 
 .nav-link:hover {
   filter: grayscale(0%) opacity(1);
@@ -84,7 +84,7 @@ main {
 }
 
 .link-text {
-  font-size: 22px;
+  font-size: calc(var(--font-size-base) * 1.375); /* 22px / 16px = 1.375 */
   display: none;
   margin-left: 1rem;
   animation: fadeIn 1s;
@@ -116,7 +116,6 @@ main {
 .fa-primary,
 .fa-secondary {
   transition: var(--transition-speed);
-
 }
 
 .logo {
@@ -125,7 +124,7 @@ main {
   margin-bottom: 1rem;
   color: var(--text-secondary);
   background: var(--bg-secondary);
-  font-size: 1.5rem;
+  font-size: var(--font-size-base);
   letter-spacing: 0.3ch;
   width: 100%;
 }
@@ -136,11 +135,10 @@ main {
   margin-left: 1.5rem;
 }
 
-.logo-text
-{
+.logo-text {
   position: relative;
   transition: var(--transition-speed);
-  display: none ;
+  display: none;
   letter-spacing: 2ch;
   padding-left: 20px;
 }
@@ -149,9 +147,6 @@ main {
   transform: rotate(-360deg);
 }
 
-
-
-/* Large screens (desktops and larger tablets) */
 @media only screen and (min-width: 1025px) {
   .navbar {
     width: 5rem; /* Fixed width */
@@ -180,10 +175,10 @@ main {
 }
 
 #part1 {
-    background-color: #a7c7e7d5;
-    height: 60rem;
-    margin-bottom: 0;
-    padding-bottom: 0;
+  background-color: #a7c7e7d5;
+  height: 60rem;
+  margin-bottom: 0;
+  padding-bottom: 0;
 }
 
 #part2 {
@@ -201,20 +196,18 @@ main {
   height: 110%; 
 }
 
-
-
 #part1 h1 {
-    font-size: 90px;
-    margin-top: 0;
-    margin-bottom: 0;
-    margin-right: 9rem; /* Remove margin to ensure centering */
-    padding-top: 17rem;
-    font-family: "Dosis", sans-serif;
-    font-style: normal;
-    color: Black;
-    display: flex;
-    justify-content: right;
-    text-align: left;
+  font-size: calc(var(--font-size-base) * 5.625); /* 90px / 16px = 5.625 */
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-right: 9rem; /* Remove margin to ensure centering */
+  padding-top: 17rem;
+  font-family: "Dosis", sans-serif;
+  font-style: normal;
+  color: Black;
+  display: flex;
+  justify-content: right;
+  text-align: left;
 }
 
 .marquee {
@@ -237,7 +230,7 @@ main {
   line-height: 100px;  /* Adjust the line height to vertically center text */
   text-align: center;
   animation: scroll-left 35s linear infinite;
-  font-size: 45px;
+  font-size: calc(var(--font-size-base) * 2.8125); /* 45px / 16px = 2.8125 */
   font-family: "Cinzel", serif;
   word-spacing: 10px;
   white-space: nowrap;  /* Ensures the text stays in a single line */
@@ -253,7 +246,6 @@ main {
       transform: translateX(-150%);
   }
 }
-
 
 .img-container {
   width: 300px; 
@@ -279,7 +271,7 @@ main {
 
 #part3 h1 {
   margin: 0;
-  font-size: 60px;
+  font-size: calc(var(--font-size-base) * 3.75); /* 60px / 16px = 3.75 */
   padding-top: 1em;
   font-family: "Dosis", sans-serif;
   font-style: normal;
@@ -291,7 +283,7 @@ main {
 }
 
 #part3 h2 {
-  font-size: 40px;
+  font-size: calc(var(--font-size-base) * 2.5); /* 40px / 16px = 2.5 */
   margin-top: 5px;
   padding-bottom: 30px;
   font-family: "Dosis", sans-serif;
@@ -323,7 +315,6 @@ main {
   margin: 2em;
 }
 
-
 .user_profile_pic:hover {
   transform: scale(1.2);
   background-color: #fdfd96af;
@@ -337,7 +328,7 @@ main {
 }
 
 #section3 h1 {
-  font-size: 90px;
+  font-size: calc(var(--font-size-base) * 5.625); /* 90px / 16px = 5.625 */
   margin-top: 0;
   margin-bottom: 6rem;
   padding-top: 0.3em;
@@ -359,7 +350,7 @@ main {
 }
 
 #section4 h1 {
-  font-size: 90px;
+  font-size: calc(var(--font-size-base) * 5.625); /* 90px / 16px = 5.625 */
   margin-top: 0;
   margin-bottom: 6rem;
   padding-top: 0.3em;
@@ -376,7 +367,7 @@ main {
 }
 
 #section5 h1 {
-  font-size: 90px;
+  font-size: calc(var(--font-size-base) * 5.625); /* 90px / 16px = 5.625 */
   margin-top: 0;
   margin-bottom: 6rem;
   padding-top: 0.3em;
@@ -392,7 +383,6 @@ main {
   letter-spacing: 2px;
 }
 
-
 .start_pic_container {
   width: 100%;
   height: 100%;
@@ -400,7 +390,6 @@ main {
 }
 
 .start_pic {
-
   margin-top: 40px;
   margin-left: 8rem;
   width: 300px;
@@ -408,7 +397,6 @@ main {
   border-radius: 50%;
   background-color: white;
 }
-
 
 .start_pic:hover {
   transform: scale(1.2);
@@ -424,7 +412,7 @@ main {
   padding: 0;
   margin-left: 4em;
   margin-top: 3rem;
-  font-size: 40px;
+  font-size: calc(var(--font-size-base) * 2.5); /* 40px / 16px = 2.5 */
   font-family: "Dosis", sans-serif;
   font-style: normal;
   color: black;
@@ -432,15 +420,14 @@ main {
   letter-spacing: 2px;
 }
 
-.encourage{
-  font-size: 25px;
+.encourage {
+  font-size: calc(var(--font-size-base) * 1.5625); /* 25px / 16px = 1.5625 */
   font-family: "Dosis", sans-serif;
   font-style: normal;
   color: black;
   letter-spacing: 2px;
   text-align: center;
 }
-
 
 hr.new1 {
   border-top: solid black;

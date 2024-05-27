@@ -27,7 +27,7 @@ if ($stmt) {
     $stmt->execute();
     $mode_selected = $mode ? "Mode 2 Selected" : "Mode 1 Selected";
     $stmt->close();
-    echo '<script>alert("'.$mode_selected.'"); window.location.href = "http://localhost/EDG/HTML/Pick_Size";</script>';
+    echo '<script>alert("'.$mode_selected.'"); window.location.href = "http://localhost/EDG/HTML/Pick_Size.html";</script>';
 } else {
     echo "Error preparing statement: " . $conn->error;
 }

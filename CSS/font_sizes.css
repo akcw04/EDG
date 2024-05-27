@@ -1,0 +1,24 @@
+:root {
+    --font-size-small: 12px;
+    --font-size-medium: 16px;
+    --font-size-large: 20px;
+    --font-size-base: var(--font-size-medium); /* Default size */
+}
+
+body {
+    font-size: var(--font-size-base);
+}
+
+h1 {
+    font-size: calc(var(--font-size-base) * 2);
+}
+
+h2 {
+    font-size: calc(var(--font-size-base) * 1.5);
+}
+
+p {
+    font-size: var(--font-size-base);
+}
+
+/* Add more styles as needed */

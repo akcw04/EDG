@@ -26,7 +26,9 @@ $sql_users = "CREATE TABLE IF NOT EXISTS users (
     Mode BOOLEAN,
     Password VARCHAR(255) NOT NULL,
     Role ENUM('0','1') DEFAULT '0',
+    Font_Size VARCHAR(10) DEFAULT 'medium'
 )";
+
 
 $conn->query($sql_users);
 
