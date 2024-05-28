@@ -195,7 +195,7 @@ function editQuestion(questionId) {
       </div>
 
       <div class="button-container">
-          <button type="button" onclick="window.location.href='/EDG/EDG/PHP/Add_Assessment.php'">Add Assessment</button>
+          <button type="button" onclick="window.location.href='../PHP/Add_Assessment.php'">Add Assessment</button>
       </div>
   </div>
 
