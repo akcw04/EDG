@@ -11,6 +11,6 @@ $css_folder = $color_mode ? "tritanopia" : "protanopia";
     <title>Division Page</title>
 </head>
 <body>
-    
+    <h2>Division Page</h2>
 </body>
 </html>
