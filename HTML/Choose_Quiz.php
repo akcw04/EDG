@@ -9,7 +9,7 @@ $font_size = isset($_SESSION['font_size']) ? $_SESSION['font_size'] : 'medium';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz Page</title>
+    <title>Choose Quiz Page</title>
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <script defer src="../Javascript/Sample_Materials.js"></script>
