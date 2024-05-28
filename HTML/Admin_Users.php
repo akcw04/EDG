@@ -68,22 +68,22 @@
     transition: background-color 0.3s ease;
 }
 
-.cancel-button {
+.confirm-button {
     background-color: #1c1c1c;
     color: white;
 }
 
-.cancel-button:hover {
+.confirm-button:hover {
     background-color: #FFD1DC;
     color: black;
 }
 
-.confirm-button {
+.cancel-button {
     background-color: #ccc;
     color: black;
 }
 
-.confirm-button:hover {
+.cancel-button:hover {
     background-color: #bbb;
 }
 </style>
@@ -207,8 +207,8 @@
         <p>Are you sure you want to log out?</p>
         <form method="POST" action="../PHP/logout.php">
             <div class="button-group">
-                <button type="submit" name="confirm_logout" class="confirm-button">Yes</button>
-                <button type="button" class="cancel-button" onclick="closeModal()">No</button>
+                <button type="submit" name="confirm_logout" class="cancel-button">Yes</button>
+                <button type="button" class="confirm-button" onclick="closeModal()">No</button>
             </div>
         </form>
     </div>
