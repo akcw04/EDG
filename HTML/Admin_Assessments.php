@@ -4,21 +4,22 @@ include '../PHP/conn.php';
 // Handle form submissions for add, edit, delete
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $action = $_POST["action"];
-    $question_text = $_POST["question"];
     $id = $_POST["id"] ?? null;
 
-    if ($action == "add") {
-        $sql = "INSERT INTO questions (Question_Text) VALUES ('$question_text')";
-    } elseif ($action == "edit") {
-        $sql = "UPDATE questions SET Question_Text='$question_text' WHERE Questions_id='$id'";
-    } elseif ($action == "delete") {
-        $sql = "DELETE FROM questions WHERE Questions_id='$id'";
-    }
-
-    if ($conn->query($sql) === TRUE) {
-        echo "Record updated successfully";
-    } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
+    if ($action == "delete") {
+        // First delete associated choices
+        $choice_sql = "DELETE FROM choices WHERE Question_id='$id'";
+        if ($conn->query($choice_sql) === TRUE) {
+            // Then delete the question
+            $question_sql = "DELETE FROM questions WHERE Questions_id='$id'";
+            if ($conn->query($question_sql) === TRUE) {
+                echo '<script>alert("Record deleted successfully"); window.location.href = "admin_assessments.php";</script>';
+            } else {
+                echo "Error deleting question: " . $conn->error;
+            }
+        } else {
+            echo "Error deleting choices: " . $conn->error;
+        }
     }
 }
 
@@ -28,23 +29,32 @@ $categories_result = $conn->query($categories_sql);
 
 $categories = [];
 if ($categories_result->num_rows > 0) {
-    while($row = $categories_result->fetch_assoc()) {
+    while ($row = $categories_result->fetch_assoc()) {
         $categories[$row['Parent_id']][] = $row;
     }
 }
 
-$parent_category_names = [
-    1 => "Addition",
-    2 => "Subtraction",
-    3 => "Multiply",
-    4 => "Divide"
+$parent_category_symbols = [
+    1 => "+",
+    2 => "-",
+    3 => "*",
+    4 => "/"
 ];
 
 // Fetch questions based on category filter
 $filter_category_id = $_GET['category'] ?? null;
-$questions_sql = "SELECT Questions_id, Category_id, Question_Text FROM questions";
-if ($filter_category_id) {
-    $questions_sql .= " WHERE Category_id='$filter_category_id'";
+$questions_sql = "SELECT q.Questions_id, q.Category_id, q.Question_Text, 
+                  c1.Choice_text AS choice1, c1.Is_correct AS is_correct1, 
+                  c2.Choice_text AS choice2, c2.Is_correct AS is_correct2, 
+                  c3.Choice_text AS choice3, c3.Is_correct AS is_correct3, 
+                  c4.Choice_text AS choice4, c4.Is_correct AS is_correct4
+                  FROM questions q
+                  LEFT JOIN choices c1 ON q.Questions_id = c1.Question_id AND c1.Choice_id = 1
+                  LEFT JOIN choices c2 ON q.Questions_id = c2.Question_id AND c2.Choice_id = 2
+                  LEFT JOIN choices c3 ON q.Questions_id = c3.Question_id AND c3.Choice_id = 3
+                  LEFT JOIN choices c4 ON q.Questions_id = c4.Question_id AND c4.Choice_id = 4";
+if ($filter_category_id && $filter_category_id !== 'all') {
+    $questions_sql .= " WHERE q.Category_id='$filter_category_id'";
 }
 $result = $conn->query($questions_sql);
 ?>
@@ -64,6 +74,44 @@ $result = $conn->query($questions_sql);
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
+  <style>
+  .flex-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+  }
+  .form-container, .button-container {
+      margin: 10px;
+  }
+  .table-container table {
+      width: 100%;
+      border-collapse: collapse;
+  }
+  .table-container th, .table-container td {
+      border: 1px solid #ddd;
+      padding: 8px;
+  }
+  .table-container th {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      text-align: left;
+      background-color: #f2f2f2;
+      color: black;
+  }
+</style>
+<script>
+function confirmDelete(questionId) {
+    if (confirm("Are you sure you want to delete this question?")) {
+        document.getElementById('deleteForm' + questionId).submit();
+    }
+}
+
+function editQuestion(questionId) {
+    document.getElementById('editForm' + questionId).style.display = 'block';
+    document.getElementById('displayRow' + questionId).style.display = 'none';
+}
+</script>
+</style>
 </head>
 
 <body>
@@ -131,83 +179,89 @@ $result = $conn->query($questions_sql);
 
   <h1>Manage Assessments</h1>
 
-<!-- Search form for filtering questions by category -->
-<div class="form-container">
-    <form action="admin_assessments.php" method="GET">
-        <label for="category">Filter by Category:</label>
-        <select name="category" id="category">
-            <?php
-            foreach ($categories as $parent_id => $subcategories) {
-                $parent_category_name = $parent_category_names[$parent_id];
-                echo "<optgroup label='$parent_category_name'>";
-                foreach ($subcategories as $subcategory) {
-                    $selected = $filter_category_id == $subcategory['Category_id'] ? 'selected' : '';
-                    echo "<option value='{$subcategory['Category_id']}' $selected>{$subcategory['Category_Name']}</option>";
-                }
-                echo "</optgroup>";
-            }
-            ?>
-        </select>
-        <button type="submit">Filter</button>
-    </form>
-</div>
+  <div class="flex-container">
+      <div class="form-container">
+          <form action="admin_assessments.php" method="GET">
+              <label for="category">Filter by Category:</label>
+              <select name="category" id="category">
+                  <option value="all" <?php if ($filter_category_id === 'all' || !$filter_category_id) echo 'selected'; ?>>ALL</option>
+                  <?php
+                  foreach ($categories as $parent_id => $subcategories) {
+                      $parent_category_symbol = $parent_category_symbols[$parent_id];
+                      echo "<optgroup label='$parent_category_symbol'>";
+                      foreach ($subcategories as $subcategory) {
+                          $selected = $filter_category_id == $subcategory['Category_id'] ? 'selected' : '';
+                          echo "<option value='{$subcategory['Category_id']}' $selected>{$subcategory['Category_Name']}</option>";
+                      }
+                      echo "</optgroup>";
+                  }
+                  ?>
+              </select>
+              <button type="submit">Filter</button>
+          </form>
+      </div>
 
-<!-- Form for adding new assessment -->
-<div class="form-container">
-    <form action="admin_assessments.php" method="POST">
-        <label for="question">Question Text:</label>
-        <input type="text" id="question" name="question" required>
-        <input type="hidden" name="action" value="add">
-        <button type="submit">Add Assessment</button>
-    </form>
-</div>
+      <div class="button-container">
+          <button type="button" onclick="window.location.href='/EDG/EDG/PHP/Add_Assessment.php'">Add Assessment</button>
+      </div>
+  </div>
 
-<div class="table-container">
-    <table>
-        <thead>
-            <tr>
-                <th>Question ID</th>
-                <th>Category</th>
-                <th>Question Text</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        <?php
+  <div class="table-container">
+      <table>
+          <thead>
+              <tr>
+                  <th>Question ID</th>
+                  <th>Parent Category</th>
+                  <th>Category</th>
+                  <th>Question Text</th>
+                  <th>Choice 1</th>
+                  <th>Choice 2</th>
+                  <th>Choice 3</th>
+                  <th>Choice 4</th>
+                  <th>Actions</th>
+              </tr>
+          </thead>
+          <tbody>
+          <?php
           if ($result->num_rows > 0) {
               while($row = $result->fetch_assoc()) {
                   $category_id = $row["Category_id"];
-                  $category_name_sql = "SELECT Category_Name FROM category WHERE Category_id='$category_id'";
+                  $category_name_sql = "SELECT Category_Name, Parent_id FROM category WHERE Category_id='$category_id'";
                   $category_name_result = $conn->query($category_name_sql);
                   $category_name_row = $category_name_result->fetch_assoc();
                   $category_name = $category_name_row['Category_Name'];
+                  $parent_category_id = $category_name_row['Parent_id'];
+                  $parent_category_symbol = $parent_category_symbols[$parent_category_id];
 
                   echo "<tr>";
                   echo "<td>" . $row["Questions_id"] . "</td>";
+                  echo "<td>" . $parent_category_symbol . "</td>";
                   echo "<td>" . $category_name . "</td>";
                   echo "<td>" . $row["Question_Text"] . "</td>";
+                  echo "<td>" . $row["choice1"] . " " . ($row["is_correct1"] ? "(Correct)" : "") . "</td>";
+                  echo "<td>" . $row["choice2"] . " " . ($row["is_correct2"] ? "(Correct)" : "") . "</td>";
+                  echo "<td>" . $row["choice3"] . " " . ($row["is_correct3"] ? "(Correct)" : "") . "</td>";
+                  echo "<td>" . $row["choice4"] . " " . ($row["is_correct4"] ? "(Correct)" : "") . "</td>";
                   echo "<td>
-                          <form action='admin_assessments.php' method='POST' style='display:inline-block;'>
+                          <form action='/EDG/EDG/PHP/Edit_Assessment.php' method='GET' style='display:inline-block;'>
                             <input type='hidden' name='id' value='" . $row["Questions_id"] . "'>
-                            <input type='hidden' name='action' value='edit'>
-                            <input type='text' name='question' value='" . $row["Question_Text"] . "' required>
                             <button type='submit'>Edit</button>
                           </form>
-                          <form action='admin_assessments.php' method='POST' style='display:inline-block;'>
+                          <form id='deleteForm" . $row["Questions_id"] . "' action='admin_assessments.php' method='POST' style='display:inline-block;'>
                             <input type='hidden' name='id' value='" . $row["Questions_id"] . "'>
                             <input type='hidden' name='action' value='delete'>
-                            <button type='submit'>Delete</button>
+                            <button type='button' onclick='confirmDelete(" . $row["Questions_id"] . ")'>Delete</button>
                           </form>
                         </td>";
                   echo "</tr>";
               }
           } else {
-              echo "<tr><td colspan='4'>No assessments found</td></tr>";
+              echo "<tr><td colspan='9'>No assessments found</td></tr>";
           }
           ?>
-        </tbody>
-    </table>
-</div>
+          </tbody>
+      </table>
+  </div>
 </main>
 </body>
 </html>
