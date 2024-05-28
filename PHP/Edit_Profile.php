@@ -26,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->bind_param("ssssssi", $FirstName, $LastName, $DOB, $Gender, $PhoneNumber, $Email, $user_id);
         $stmt->execute();
         if ($stmt->affected_rows > 0) {
-            echo '<script>alert("Profile updated successfully"); window.location.href = "../HTML/User_Dashboard.php";</script>';
+            echo '<script>alert("Profile updated successfully"); window.location.href = "../HTML/Profil_Page.php";</script>';
         } else {
             echo '<script>alert("No changes made to the profile or update failed."); window.location.href = "../HTML/Edit_Profile.php";</script>';
         }
@@ -42,7 +42,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->execute();
     $result = $stmt->get_result();
     if ($row = $result->fetch_assoc()) {
-        // Load the form with the user's data
         ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -82,12 +81,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <button type="button" onclick="window.location.href='../HTML/Profile_Page.php'">Cancel</button>
         </div>
         <div class="form-footer">
-            <a href="Reset_Password.html">Reset Password</a>
+            <a href="../HTML/Reset_Password.html">Reset Password</a>
         </div>
     </form>
 </body>
 </html>
-
         <?php
     } else {
         echo "<p>User not found.</p>";
