@@ -17,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <head>
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-            <title>Edit User</title>
+            <title>Edit User Profile Information</title>
             <link rel="stylesheet" href="../CSS/manage_users.css" />
             <script>
               function validateForm() {
@@ -48,16 +48,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 return true;
               }
             </script>
-            <style>
-              .button-group {
-                display: flex;
-                justify-content: space-between;
-              }
-              .button-group button {
-                flex: 1;
-                margin: 5px;
-              }
-            </style>
             </head>
             <body>  
               <form action="manage_user.php" method="POST" onsubmit="return validateForm()">

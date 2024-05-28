@@ -67,3 +67,25 @@ button[type="submit"]:hover {
     background-color: #FFD1DC;
     color: black;
 }
+
+
+.form-footer a {
+    color: #1c1c1c; /* Set the color to match your design */
+    text-decoration: none; /* Removes underline */
+    font-weight: bold; /* Optional: makes the text bold */
+    transition: color 0.3s ease; /* Smooth color transition on hover */
+}
+
+.form-footer a:hover {
+    color: #FFD1Dc; /* Changes color on hover */
+}
+
+.button-group {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+.button-group button {
+    flex: 1;
+    margin: 5px;
+  }
