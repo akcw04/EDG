@@ -7,7 +7,6 @@ if (!isset($_SESSION['User_id'])) {
 
 include 'conn.php';
 
-
 // Determine the selected text size
 $font_size = 'medium'; // Default size
 if (isset($_POST['size1'])) {
@@ -27,7 +26,16 @@ if ($stmt) {
     $stmt->execute();
     $_SESSION['font_size'] = $font_size; // Update the session variable
     $stmt->close();
-    echo '<script>alert("Text size updated to ' . $font_size . '"); window.location.href = "../HTML/User_Dashboard.php";</script>';
+
+    // Check the user's role
+    $role = $_SESSION['Role'];
+    if ($role == '0') {
+        echo '<script>alert("Text size updated to ' . $font_size . '"); window.location.href = "../HTML/User_Dashboard.php";</script>';
+    } elseif ($role == '1') {
+        echo '<script>alert("Text size updated to ' . $font_size . '"); window.location.href = "../HTML/Admin_Dashboard.html";</script>';
+    } else {
+        echo '<script>alert("Invalid role"); window.location.href = "../HTML/Login.html";</script>';
+    }
 } else {
     echo "Error preparing statement: " . $conn->error;
 }
