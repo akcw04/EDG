@@ -68,6 +68,11 @@ button[type="submit"]:hover {
     color: black;
 }
 
+.form-footer {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+}
 
 .form-footer a {
     color: #1c1c1c; /* Set the color to match your design */
@@ -84,7 +89,7 @@ button[type="submit"]:hover {
     display: flex;
     justify-content: space-between;
   }
-  
+
 .button-group button {
     flex: 1;
     margin: 5px;
