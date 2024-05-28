@@ -173,7 +173,42 @@ $font_size = isset($_SESSION['font_size']) ? $_SESSION['font_size'] : 'medium';
         </nav>
       
         <main>
-            <!-- ur content code goes here -->
+          <!-- Content Code -->
+          <h2>Addition</h2>
+
+          <div class="Introduction-Container">
+            <div class="Introduction-Box">
+              <p>Introduction Text</p>
+            </div>
+          </div>
+          <div class="Example-One-Container">
+            <div class="Example-One-Box1">
+              <p>Let’s plant a flower garden! First, we have two yellow flowers </p>
+              <img src="../IMG/48.png" alt="flower1" class="">
+            </div>
+            <div class="Example-One-Box2">
+              <p>Then, we decide to plant three more blue flowers.</p>
+              <img src="../IMG/49.png" alt="flower2" class="">
+            </div>
+            <div class="Example-One-Box3">
+              <p>How many flowers are there in total? We add the yellow flowers and the blue flowers together.</p>
+            </div>
+            <div class="Example-One-Box4">
+              <p>First, we count the yellow flowers: one, two.</p>
+              <img src="../IMG/50.png" alt="flower3" class="">
+            </div>
+            <div class="Example-One-Box5">
+              <p>Then, we add the blue flowers: three, four, five.</p>
+              <img src="../IMG/51.png" alt="flower4" class="">
+            </div>
+            <div class="Example-One-Box6">
+              <p>Now, let's count all the flowers together: one, two, three, four, five. So, two yellow flowers plus three blue flowers give us five beautiful flowers in our garden.</p>
+              <img src="../IMG/52.png" alt="flower5" class="">
+            </div>
+          </div>
+          <div class="Outro">
+            <p>Addition Done!</p>
+          </div>
 
         </main>
 
