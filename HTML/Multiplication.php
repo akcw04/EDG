@@ -179,7 +179,7 @@ $font_size = isset($_SESSION['font_size']) ? $_SESSION['font_size'] : 'medium';
 
           <div class="Introduction-Container"> <!-- Introduction Section -->
             <div>
-              <p class="Introduction-Text">Subtraction is a way of finding out how many are left when we take some away. Picture yourself with a box of crayons. If you start with ten crayons and give away three to your friend, subtraction helps you figure out how many crayons you have left. It's like when you're sharing cookies or figuring out how many candies are left after eating some. Subtraction tells us how much remains after something is gone.</p>
+              <p class="Introduction-Text">Multiplication is a quick way to add the same number several times. For example, if you have four baskets, and each basket has five apples, instead of adding five apples over and over four times, you can multiply! Multiplication combines groups of the same size quickly and efficiently. It's very useful, especially when you're trying to count lots of things at once, like packets of seeds in a garden or rows of chairs in a classroom.</p>
             </div>
           </div>
           <div class="Example-One-Container">
@@ -274,7 +274,7 @@ $font_size = isset($_SESSION['font_size']) ? $_SESSION['font_size'] : 'medium';
           </div>
           <div class="Example-Three-Box1">
             <div class="Text-Content">
-              <p class="Text">We’re preparing for a school play, and we need to set up chairs for the audience. To start with, there are four rows.</p>
+              <p class="Text">We’re preparing for a school play, and we need to set up chairs for the audience. To start with, five person in each group.</p>
             </div>
             <div class="Image-Content">
               <img src="../IMG/80.png" alt="icecream1">
