@@ -178,7 +178,7 @@ $font_size = isset($_SESSION['font_size']) ? $_SESSION['font_size'] : 'medium';
           </div>
 
           <div class="Introduction-Container"> <!-- Introduction Section -->
-            <div class="Introduction-Box">
+            <div>
               <p class="Introduction-Text">Addition is like putting things together to see how many you have in total. Imagine you have a basket of apples. If you put three red apples and two green apples into the basket, you can add them together to find out how many apples you have altogether. When we add, we combine things to see how much there is. It's a useful skill that helps us in many day-to-day situations, like collecting stickers, counting candies, or adding up the number of friends coming to your birthday party!</p>
             </div>
           </div>

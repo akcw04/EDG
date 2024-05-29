@@ -179,7 +179,8 @@ html {
 
 
 .Title-Box {
-  padding: 10px;
+  height: auto;
+  padding-top: 20px;
   border-radius: 8px;
   text-align: center;
 }
@@ -187,7 +188,7 @@ html {
 .Title-Text {
   margin-left: auto;
   margin-right: auto;
-  font-size: 40px;
+  font-size: 46px;
   font-weight: bold;
   color: black
 }
@@ -201,11 +202,7 @@ html {
   margin-bottom: 10px;
   margin-left: 20px;
   margin-right: 20px;
-  box-shadow: 0 5px 7px rgba(0,0,0,0.1);
-}
-
-.Introduction-Box {
-  margin: 10px 0;
+  box-shadow: 5px 5px rgba(0,0,0,0.1);
 }
 
 .Introduction-Text {
