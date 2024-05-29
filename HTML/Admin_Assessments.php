@@ -261,31 +261,32 @@ function closeModal() {
   <h1>Manage Assessments</h1>
 
   <div class="flex-container">
-      <div class="form-container">
-          <form action="admin_assessments.php" method="GET">
-              <label for="category">Filter by Category:</label>
-              <select name="category" id="category">
-                  <option value="all" <?php if ($filter_category_id === 'all' || !$filter_category_id) echo 'selected'; ?>>ALL</option>
-                  <?php
-                  foreach ($categories as $parent_id => $subcategories) {
-                      $parent_category_symbol = $parent_category_symbols[$parent_id];
-                      echo "<optgroup label='$parent_category_symbol'>";
-                      foreach ($subcategories as $subcategory) {
-                          $selected = $filter_category_id == $subcategory['Category_id'] ? 'selected' : '';
-                          echo "<option value='{$subcategory['Category_id']}' $selected>{$subcategory['Category_Name']}</option>";
-                      }
-                      echo "</optgroup>";
-                  }
-                  ?>
-              </select>
-              <button type="submit">Filter</button>
-          </form>
-      </div>
+    <div class="form-container">
+        <form action="admin_assessments.php" method="GET" class="filter-form">
+            <label for="category">Filter by Category:</label>
+            <select name="category" id="category">
+                <option value="all" <?php if ($filter_category_id === 'all' || !$filter_category_id) echo 'selected'; ?>>ALL</option>
+                <?php
+                foreach ($categories as $parent_id => $subcategories) {
+                    $parent_category_symbol = $parent_category_symbols[$parent_id];
+                    echo "<optgroup label='$parent_category_symbol'>";
+                    foreach ($subcategories as $subcategory) {
+                        $selected = $filter_category_id == $subcategory['Category_id'] ? 'selected' : '';
+                        echo "<option value='{$subcategory['Category_id']}' $selected>{$subcategory['Category_Name']}</option>";
+                    }
+                    echo "</optgroup>";
+                }
+                ?>
+            </select>
+            <button type="submit" class="filter-button">Filter</button>
+        </form>
+    </div>
 
-      <div class="button-container">
-          <button type="button" onclick="window.location.href='../PHP/Add_Assessment.php'">Add Assessment</button>
-      </div>
-  </div>
+    <div class="button-container">
+        <button type="button" class="add-button" onclick="window.location.href='../PHP/Add_Assessment.php'">Add Assessment</button>
+    </div>
+</div>
+
 
   <div class="table-container">
       <table>
