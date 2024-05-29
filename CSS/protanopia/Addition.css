@@ -176,8 +176,6 @@ html {
 
   /* Start css for <main> */
 
-
-
 .Title-Box {
   height: auto;
   padding-top: 20px;
@@ -186,7 +184,7 @@ html {
 }
 
 .Title-Text {
-  font-size: 46px;
+  font-size: calc(var(--font-size-base) * 2.875);
   font-weight: bold;
   color: black
 }
@@ -204,7 +202,7 @@ html {
 }
 
 .Introduction-Text {
-  font-size: 18px;
+  font-size: calc(var(--font-size-base) * 1.125);
   font-weight: bold;
   color: black;
   text-align: justify;
@@ -214,6 +212,7 @@ html {
   background-color: white;
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  height:auto;
 }
 
 .Example-One-Text-Box, .Example-Two-Text-Box, .Example-Three-Text-Box {
@@ -221,12 +220,11 @@ html {
   justify-content: center;
   background-color: black;
   padding: 8px;
-  border-radius: 8px;
   margin-bottom: 10px;
 }
 
 .Example-One-Text, .Example-Two-Text, .Example-Three-Text {
-  font-size: 18px;
+  font-size: calc(var(--font-size-base) * 1.125);
   font-weight: bold;
   color: white;
 }
@@ -251,7 +249,7 @@ html {
   }
 
   .Text {
-    font-size: 18px;
+    font-size: calc(var(--font-size-base) * 1.125);
     font-weight: bold;
     color: black;
     text-align: center;
@@ -270,9 +268,7 @@ img {
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   align-items: center;
-  filter: hue-rotate(10deg) /* slightly shifts colors on the spectrum */
-          saturate(80%) /* lowers the saturation to reduce the intensity of colors */
-          contrast(120%);
+  filter: invert(0.1) saturate(120%) hue-rotate(180deg) contrast(90%);
 }
 
 .Outro {
