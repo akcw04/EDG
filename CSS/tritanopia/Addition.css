@@ -168,10 +168,118 @@ html {
       display: inline;
     }
 
-    main {
+    .main {
         padding-top: 0;
         margin-left: 5rem; /* Make room for the navbar */
       }
   }
 
   /* Start css for <main> */
+
+.Title-Box {
+  height: auto;
+  padding-top: 20px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.Title-Text {
+  font-size: calc(var(--font-size-base) * 2.875);
+  font-weight: bold;
+  color: black
+}
+
+
+.Introduction-Container {
+  background-color: #fff;
+  border-radius: 8px;
+  padding-top: 5px;
+  padding-bottom: 15px;
+  margin-bottom: 10px;
+  margin-left: 20px;
+  margin-right: 20px;
+  box-shadow: 5px 5px rgba(0,0,0,0.1);
+}
+
+.Introduction-Text {
+  font-size: calc(var(--font-size-base) * 1.125);
+  font-weight: bold;
+  color: black;
+  text-align: justify;
+}
+
+.Example-One-Container, .Example-Two-Container, .Example-Three-Container {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  height:auto;
+}
+
+.Example-One-Text-Box, .Example-Two-Text-Box, .Example-Three-Text-Box {
+  display: flex;
+  justify-content: center;
+  background-color: black;
+  padding: 8px;
+  margin-bottom: 10px;
+}
+
+.Example-One-Text, .Example-Two-Text, .Example-Three-Text {
+  font-size: calc(var(--font-size-base) * 1.125);
+  font-weight: bold;
+  color: white;
+}
+
+.Example-One-Box1, .Example-One-Box2, .Example-One-Box3,
+.Example-One-Box4, .Example-One-Box5, .Example-One-Box6,
+.Example-Two-Box1, .Example-Two-Box2, .Example-Two-Box3,
+.Example-Two-Box4, .Example-Two-Box5, .Example-Two-Box6,
+.Example-Three-Box1, .Example-Three-Box2, .Example-Three-Box3,
+.Example-Three-Box4, .Example-Three-Box5, .Example-Three-Box6
+{
+  display: grid;
+  grid-template-rows: 50px auto;
+  align-items: center;
+}
+
+  .Text-Content {
+    height: auto;
+    width: auto;
+    display: flex;
+    justify-content: center;
+  }
+
+  .Text {
+    font-size: calc(var(--font-size-base) * 1.125);
+    font-weight: bold;
+    color: black;
+    text-align: center;
+  }
+
+  .Image-Content {
+    height: auto;
+    width: auto;
+    display: flex;
+    justify-content: center;
+  }
+
+img {
+  width: 35%;
+  height: auto;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  align-items: center;
+  filter: contrast(90%) saturate(70%) hue-rotate(90deg)
+}
+
+.Outro {
+  background-color: black;
+  padding-top: 20px;
+  padding-bottom: 50px;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-top: 20px;
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+  color: white
+}
