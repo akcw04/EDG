@@ -173,41 +173,168 @@ $font_size = isset($_SESSION['font_size']) ? $_SESSION['font_size'] : 'medium';
         </nav>
       
         <main>
-          <!-- Content Code -->
-          <h2>Addition</h2>
+          <div class="Title-Box">
+          <p class="Title-Text">Addition</p> <!-- Title -->
+          </div>
 
-          <div class="Introduction-Container">
+          <div class="Introduction-Container"> <!-- Introduction Section -->
             <div class="Introduction-Box">
-              <p>Introduction Text</p>
+              <p class="Introduction-Text">Addition is like putting things together to see how many you have in total. Imagine you have a basket of apples. If you put three red apples and two green apples into the basket, you can add them together to find out how many apples you have altogether. When we add, we combine things to see how much there is. It's a useful skill that helps us in many day-to-day situations, like collecting stickers, counting candies, or adding up the number of friends coming to your birthday party!</p>
             </div>
           </div>
           <div class="Example-One-Container">
-            <div class="Example-One-Box1">
-              <p>Let’s plant a flower garden! First, we have two yellow flowers </p>
-              <img src="../IMG/48.png" alt="flower1" class="">
+          <div class="Example-One-Text-Box">
+            <p class="Example-One-Text">Example One</p>
+          </div>
+          <div class="Example-One-Box1">
+            <div class="Text-Content">
+              <p class="Text">Let’s plant a flower garden! First, we have two yellow flowers.</p>
             </div>
-            <div class="Example-One-Box2">
-              <p>Then, we decide to plant three more blue flowers.</p>
-              <img src="../IMG/49.png" alt="flower2" class="">
-            </div>
-            <div class="Example-One-Box3">
-              <p>How many flowers are there in total? We add the yellow flowers and the blue flowers together.</p>
-            </div>
-            <div class="Example-One-Box4">
-              <p>First, we count the yellow flowers: one, two.</p>
-              <img src="../IMG/50.png" alt="flower3" class="">
-            </div>
-            <div class="Example-One-Box5">
-              <p>Then, we add the blue flowers: three, four, five.</p>
-              <img src="../IMG/51.png" alt="flower4" class="">
-            </div>
-            <div class="Example-One-Box6">
-              <p>Now, let's count all the flowers together: one, two, three, four, five. So, two yellow flowers plus three blue flowers give us five beautiful flowers in our garden.</p>
-              <img src="../IMG/52.png" alt="flower5" class="">
+            <div class="Image-Content">
+              <img src="../IMG/48.png" alt="flower1">
             </div>
           </div>
-          <div class="Outro">
-            <p>Addition Done!</p>
+          <div class="Example-One-Box2">
+            <div class="Text-Content">
+              <p class="Text">Then, we decide to plant three more blue flowers.</p>
+            </div>
+            <div class="Image-Content">
+              <img src="../IMG/49.png" alt="flower2">
+            </div>
+          </div>
+          <div class="Example-One-Box3">
+            <div class="Text-Content">
+              <p class="Text">How many flowers are there in total? We add the yellow flowers and the blue flowers together.</p>
+            </div>
+          </div>
+          <div class="Example-One-Box4">
+            <div class="Text-Content">
+              <p class="Text">First, we count the yellow flowers: one, two.</p>
+            </div>
+            <div class="Image-Content">
+              <img src="../IMG/50.png" alt="flower3">
+            </div>
+          </div>
+          <div class="Example-One-Box5">
+            <div class="Text-Content">
+              <p class="Text">Then, we add the blue flowers: three, four, five.</p>
+            </div>
+            <div class="Image-Content">
+              <img src="../IMG/51.png" alt="flower4">
+            </div>
+          </div>
+          <div class="Example-One-Box6">
+            <div class="Text-Content">
+              <p class="Text">Now, let's count all the flowers together: one, two, three, four, five. So, two yellow flowers plus three blue flowers give us five beautiful flowers in our garden.</p>
+            </div>
+            <div class="Image-Content">
+              <img src="../IMG/52.png" alt="flower5">
+            </div>
+          </div>
+        </div>
+
+        <div class="Example-Two-Container">
+          <div class="Example-Two-Text-Box">
+            <p class="Example-Two-Text">Example Two</p>
+          </div>
+          <div class="Example-Two-Box1">
+            <div class="Text-Content">
+              <p class="Text">Today, we're going on a picnic adventure! Before we can start, we need to pack our picnic basket. Let's see what we have: six sandwiches.</p>
+            </div>
+            <div class="Image-Content">
+              <img src="../IMG/53.png" alt="food1">
+            </div>
+          </div>
+          <div class="Example-Two-Box2">
+            <div class="Text-Content">
+              <p class="Text">and three bottles of juice.</p>
+            </div>
+            <div class="Image-Content">
+              <img src="../IMG/54.png" alt="food2">
+            </div>
+          </div>
+          <div class="Example-Two-Box3">
+            <div class="Text-Content">
+              <p class="Text">How many items do we have altogether? Let's add them together.</p>
+            </div>
+          </div>
+          <div class="Example-Two-Box4">
+            <div class="Text-Content">
+              <p class="Text">First, we place the three sandwiches in the basket—one, two, three.</p>
+            </div>
+            <div class="Image-Content">
+              <img src="../IMG/55.png" alt="food3">
+            </div>
+          </div>
+          <div class="Example-Two-Box5">
+            <div class="Text-Content">
+              <p class="Text">Now, let's add the two bottles of juice—one, two.</p>
+            </div>
+            <div class="Image-Content">
+              <img src="../IMG/56.png" alt="food4">
+            </div>
+          </div>
+          <div class="Example-Two-Box6">
+            <div class="Text-Content">
+              <p class="Text">Now, let’s count everything in the basket to see how many items we have in total: one, two, three, four, five. So, three sandwiches plus two bottles of juice equals five items altogether.</p>
+            </div>
+            <div class="Image-Content">
+              <img src="../IMG/57.png" alt="food5">
+            </div>
+          </div>
+        </div>
+
+        <div class="Example-Three-Container">
+          <div class="Example-Three-Text-Box">
+            <p class="Example-Three-Text">Example Three</p>
+          </div>
+          <div class="Example-Three-Box1">
+            <div class="Text-Content">
+              <p class="Text">Imagine we're having a fun ice cream party! We start with four scoops of vanilla ice cream in a big bowl.</p>
+            </div>
+            <div class="Image-Content">
+              <img src="../IMG/58.png" alt="icecream1">
+            </div>
+          </div>
+          <div class="Example-Three-Box2">
+            <div class="Text-Content">
+              <p class="Text">Then, we decide to make it even more delicious by adding three scoops of chocolate ice cream.</p>
+            </div>
+            <div class="Image-Content">
+              <img src="../IMG/59.png" alt="icecream2">
+            </div>
+          </div>
+          <div class="Example-Three-Box3">
+            <div class="Text-Content">
+              <p class="Text">How many scoops of ice cream do we have now? Let's add them together to find out.</p>
+            </div>
+          </div>
+          <div class="Example-Three-Box4">
+            <div class="Text-Content">
+              <p class="Text">First, we count the vanilla scoops: one, two, three, four.</p>
+            </div>
+            <div class="Image-Content">
+              <img src="../IMG/60.png" alt="icecream3">
+            </div>
+          </div>
+          <div class="Example-Three-Box5">
+            <div class="Text-Content">
+              <p class="Text">Now, let's add the chocolate scoops: five, six, seven.</p>
+            </div>
+            <div class="Image-Content">
+              <img src="../IMG/61.png" alt="icecream4">
+            </div>
+          </div>
+          <div class="Example-Three-Box6">
+            <div class="Text-Content">
+              <p class="Text">Now, let's count all the scoops together: one, two, three, four, five, six, seven. So, four scoops of vanilla plus three scoops of chocolate give us seven scoops altogether.</p>
+            </div>
+            <div class="Image-Content">
+              <img src="../IMG/62.png" alt="icecream5">
+            </div>
+          </div>
+          <div class="Outro"> <!-- Addition-Outro -->
+            <p>Congratulations on finishing your addition tutorial! You've learned how to combine numbers and find totals, which is a fundamental skill in math. Your ability to add will help you in many everyday situations. Great job on taking this important step in your math journey!</p>
           </div>
 
         </main>
