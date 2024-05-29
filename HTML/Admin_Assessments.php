@@ -283,7 +283,7 @@ function closeModal() {
     </div>
 
     <div class="button-container">
-        <button type="button" class="add-button" onclick="window.location.href='../PHP/Add_Assessment.php'">Add Assessment</button>
+        <button type="button" class="add-button" onclick="window.location.href='../PHP/Add_Assessment.php'">Add Quiz</button>
     </div>
 </div>
 
