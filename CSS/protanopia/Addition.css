@@ -270,6 +270,9 @@ img {
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   align-items: center;
+  filter: hue-rotate(10deg) /* slightly shifts colors on the spectrum */
+          saturate(80%) /* lowers the saturation to reduce the intensity of colors */
+          contrast(120%);
 }
 
 .Outro {
