@@ -9,7 +9,7 @@ $font_size = isset($_SESSION['font_size']) ? $_SESSION['font_size'] : 'medium';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Division</title>
+    <title>Nav Bar for Chua Sample</title>
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <script defer src="../Javascript/Sample_Materials.js"></script>
@@ -173,132 +173,132 @@ $font_size = isset($_SESSION['font_size']) ? $_SESSION['font_size'] : 'medium';
         </nav>
       
         <main>
-        <div class="Title-Box">
-          <p class="Title-Text">Division</p> <!-- Title -->
+          <div class="Title-Box">
+            <p class="Title-Text">Division</p> <!-- Title -->
+            </div>
+
+            <div class="Introduction-Container"> <!-- Introduction Section -->
+              <div>
+                <p class="Introduction-Text">Division is how we split things into equal parts. Imagine you have twelve cookies, and you want to share them equally among four friends. Division would help you figure out how many cookies each friend gets. It's a way of sharing fairly so that everyone gets the same amount. Division is handy in everyday life, such as dividing up slices of pizza at a party or sharing toys during playtime to make sure everyone has fun together.</p>
+              </div>
+            </div>
+            <div class="Example-One-Container">
+            <div class="Example-One-Text-Box">
+              <p class="Example-One-Text">Example One</p>
+            </div>
+            <div class="Example-One-Box1">
+              <div class="Text-Content">
+                <p class="Text">You have ten yummy cookies.</p>
+              </div>
+              <div class="Image-Content">
+                <img src="../IMG/93.png" alt="flower1">
+              </div>
+            </div>
+            <div class="Example-One-Box2">
+              <div class="Text-Content">
+                <p class="Text">you want to share them equally between you and your friend so that it's fair.</p>
+              </div>
+              <div class="Image-Content">
+                <img src="../IMG/94.png" alt="flower2">
+              </div>
+            </div>
+            <div class="Example-One-Box3">
+              <div class="Text-Content">
+                <p class="Text">We have ten cookies in total.</p>
+              </div>
+              <div class="Image-Content">
+                <img src="../IMG/95.png" alt="flower3">
+              </div>
+            </div>
+            <div class="Example-One-Box4">
+              <div class="Text-Content">
+                <p class="Text">So, when we divide ten cookies by two, each person gets five cookies. Division helps us share things equally.</p>
+              </div>
+              <div class="Image-Content">
+                <img src="../IMG/96.png" alt="flower3">
+              </div>
+            </div>
           </div>
 
-          <div class="Introduction-Container"> <!-- Introduction Section -->
-            <div>
-              <p class="Introduction-Text">Division is how we split things into equal parts. Imagine you have twelve cookies, and you want to share them equally among four friends. Division would help you figure out how many cookies each friend gets. It's a way of sharing fairly so that everyone gets the same amount. Division is handy in everyday life, such as dividing up slices of pizza at a party or sharing toys during playtime to make sure everyone has fun together.</p>
+          <div class="Example-Two-Container">
+            <div class="Example-Two-Text-Box">
+              <p class="Example-Two-Text">Example Two</p>
             </div>
-          </div>
-          <div class="Example-One-Container">
-          <div class="Example-One-Text-Box">
-            <p class="Example-One-Text">Example One</p>
-          </div>
-          <div class="Example-One-Box1">
-            <div class="Text-Content">
-              <p class="Text">You have ten yummy cookies.</p>
+            <div class="Example-Two-Box1">
+              <div class="Text-Content">
+                <p class="Text">In our art class, we have twelve crayons.</p>
+              </div>
+              <div class="Image-Content">
+                <img src="../IMG/97.png" alt="food1">
+              </div>
             </div>
-            <div class="Image-Content">
-              <img src="../IMG/93.png" alt="flower1">
+            <div class="Example-Two-Box2">
+              <div class="Text-Content">
+                <p class="Text">We want to share them equally among four friends so that everyone has the same number of crayons to color with.</p>
+              </div>
+              <div class="Image-Content">
+                <img src="../IMG/98.png" alt="food2">
+              </div>
             </div>
-          </div>
-          <div class="Example-One-Box2">
-            <div class="Text-Content">
-              <p class="Text">you want to share them equally between you and your friend so that it's fair.</p>
+            <div class="Example-Two-Box3">
+              <div class="Text-Content">
+                <p class="Text">We have twelve crayons in total.</p>
+              </div>
+              <div class="Image-Content">
+                <img src="../IMG/99.png" alt="food3">
+              </div>
             </div>
-            <div class="Image-Content">
-              <img src="../IMG/94.png" alt="flower2">
+            <div class="Example-Two-Box4">
+              <div class="Text-Content">
+                <p class="Text">Each friend gets three crayons: twelve divided by four equals three. Division helps us share things fairly, ensuring everyone gets an equal part.</p>
+              </div>
+              <div class="Image-Content">
+                <img src="../IMG/100.png" alt="food3">
+              </div>
             </div>
-          </div>
-          <div class="Example-One-Box3">
-            <div class="Text-Content">
-              <p class="Text">We have ten cookies in total.</p>
-            </div>
-            <div class="Image-Content">
-              <img src="../IMG/95.png" alt="flower3">
-            </div>
-          </div>
-          <div class="Example-One-Box4">
-            <div class="Text-Content">
-              <p class="Text">So, when we divide ten cookies by two, each person gets five cookies. Division helps us share things equally.</p>
-            </div>
-            <div class="Image-Content">
-              <img src="../IMG/96.png" alt="flower3">
-            </div>
-          </div>
-        </div>
-
-        <div class="Example-Two-Container">
-          <div class="Example-Two-Text-Box">
-            <p class="Example-Two-Text">Example Two</p>
-          </div>
-          <div class="Example-Two-Box1">
-            <div class="Text-Content">
-              <p class="Text">In our art class, we have twelve crayons.</p>
-            </div>
-            <div class="Image-Content">
-              <img src="../IMG/97.png" alt="food1">
-            </div>
-          </div>
-          <div class="Example-Two-Box2">
-            <div class="Text-Content">
-              <p class="Text">We want to share them equally among four friends so that everyone has the same number of crayons to color with.</p>
-            </div>
-            <div class="Image-Content">
-              <img src="../IMG/98.png" alt="food2">
-            </div>
-          </div>
-          <div class="Example-Two-Box3">
-            <div class="Text-Content">
-              <p class="Text">We have twelve crayons in total.</p>
-            </div>
-            <div class="Image-Content">
-              <img src="../IMG/99.png" alt="food3">
-            </div>
-          </div>
-          <div class="Example-Two-Box4">
-            <div class="Text-Content">
-              <p class="Text">Each friend gets three crayons: twelve divided by four equals three. Division helps us share things fairly, ensuring everyone gets an equal part.</p>
-            </div>
-            <div class="Image-Content">
-              <img src="../IMG/100.png" alt="food3">
-            </div>
-          </div>
-        </div>
-
-        <div class="Example-Three-Container">
-          <div class="Example-Three-Text-Box">
-            <p class="Example-Three-Text">Example Three</p>
-          </div>
-          <div class="Example-Three-Box1">
-            <div class="Text-Content">
-              <p class="Text">During a fun pizza party, we have fifteen delicious slices of pizza.</p>
-            </div>
-            <div class="Image-Content">
-              <img src="../IMG/101.png" alt="icecream1">
-            </div>
-          </div>
-          <div class="Example-Three-Box2">
-            <div class="Text-Content">
-              <p class="Text">Three hungry children are ready to eat.</p>
-            </div>
-            <div class="Image-Content">
-              <img src="../IMG/102.png" alt="icecream2">
-            </div>
-          </div>
-          <div class="Example-Three-Box3">
-            <div class="Text-Content">
-              <p class="Text">We have fifteen pizzas in total.</p>
-            </div>
-            <div class="Image-Content">
-              <img src="../IMG/103.png" alt="icecream5">
-            </div>
-          </div>
-          <div class="Example-Three-Box4">
-            <div class="Text-Content">
-              <p class="Text">We use division to divide the twelve slices by the number of children, which is three. That means we can divide the pizza slices evenly, each child gets four slices.</p>
-            </div>
-            <div class="Image-Content">
-              <img src="../IMG/104.png" alt="icecream3">
-            </div>
-          </div>
-          <div class="Outro"> <!-- Division-Outro -->
-            <p>Great job on finishing your division tutorial! Understanding how to divide things into equal parts is crucial for fair sharing and solving complex problems. You’ve tackled an important mathematical concept, and you should be proud of your progress. Keep striving and exploring more!</p>
           </div>
 
-        </main>
+          <div class="Example-Three-Container">
+            <div class="Example-Three-Text-Box">
+              <p class="Example-Three-Text">Example Three</p>
+            </div>
+            <div class="Example-Three-Box1">
+              <div class="Text-Content">
+                <p class="Text">During a fun pizza party, we have fifteen delicious slices of pizza.</p>
+              </div>
+              <div class="Image-Content">
+                <img src="../IMG/101.png" alt="icecream1">
+              </div>
+            </div>
+            <div class="Example-Three-Box2">
+              <div class="Text-Content">
+                <p class="Text">Three hungry children are ready to eat.</p>
+              </div>
+              <div class="Image-Content">
+                <img src="../IMG/102.png" alt="icecream2">
+              </div>
+            </div>
+            <div class="Example-Three-Box3">
+              <div class="Text-Content">
+                <p class="Text">We have fifteen pizzas in total.</p>
+              </div>
+              <div class="Image-Content">
+                <img src="../IMG/103.png" alt="icecream5">
+              </div>
+            </div>
+            <div class="Example-Three-Box4">
+              <div class="Text-Content">
+                <p class="Text">We use division to divide the twelve slices by the number of children, which is three. That means we can divide the pizza slices evenly, each child gets four slices.</p>
+              </div>
+              <div class="Image-Content">
+                <img src="../IMG/104.png" alt="icecream3">
+              </div>
+            </div>
+            <div class="Outro"> <!-- Division-Outro -->
+              <p>Great job on finishing your division tutorial! Understanding how to divide things into equal parts is crucial for fair sharing and solving complex problems. You’ve tackled an important mathematical concept, and you should be proud of your progress. Keep striving and exploring more!</p>
+            </div>
+
+          </main>
 
         <div id="settings-modal" class="modal">
           <div class="modal-content">

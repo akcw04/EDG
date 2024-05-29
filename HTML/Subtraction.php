@@ -9,7 +9,7 @@ $font_size = isset($_SESSION['font_size']) ? $_SESSION['font_size'] : 'medium';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Subtraction</title>
+    <title>Nav Bar for Chua Sample</title>
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <script defer src="../Javascript/Sample_Materials.js"></script>
@@ -173,171 +173,171 @@ $font_size = isset($_SESSION['font_size']) ? $_SESSION['font_size'] : 'medium';
         </nav>
       
         <main>
-        <div class="Title-Box">
-          <p class="Title-Text">Subtraction</p> <!-- Title -->
+          <div class="Title-Box">
+            <p class="Title-Text">Subtraction</p> <!-- Title -->
+            </div>
+
+            <div class="Introduction-Container"> <!-- Introduction Section -->
+              <div>
+                <p class="Introduction-Text">Subtraction is a way of finding out how many are left when we take some away. Picture yourself with a box of crayons. If you start with ten crayons and give away three to your friend, subtraction helps you figure out how many crayons you have left. It's like when you're sharing cookies or figuring out how many candies are left after eating some. Subtraction tells us how much remains after something is gone.</p>
+              </div>
+            </div>
+            <div class="Example-One-Container">
+            <div class="Example-One-Text-Box">
+              <p class="Example-One-Text">Example One</p>
+            </div>
+            <div class="Example-One-Box1">
+              <div class="Text-Content">
+                <p class="Text">Imagine we are building a tall tower with ten colorful blocks. </p>
+              </div>
+              <div class="Image-Content">
+                <img src="../IMG/64.png" alt="flower1">
+              </div>
+            </div>
+            <div class="Example-One-Box2">
+              <div class="Text-Content">
+                <p class="Text">After a while, we decide to remove three blocks to make a smaller tower. </p>
+              </div>
+              <div class="Image-Content">
+                <img src="../IMG/65.png" alt="flower2">
+              </div>
+            </div>
+            <div class="Example-One-Box3">
+              <div class="Text-Content">
+                <p class="Text">How many blocks are left?</p>
+              </div>
+              <div class="Image-Content">
+                <img src="../IMG/66.png" alt="flower3">
+              </div>
+            </div>
+            <div class="Example-One-Box4">
+              <div class="Text-Content">
+                <p class="Text">We start with ten and take away three blocks: one, two, three.</p>
+              </div>
+              <div class="Image-Content">
+                <img src="../IMG/67.png" alt="flower3">
+              </div>
+            </div>
+            <div class="Example-One-Box5">
+              <div class="Text-Content">
+                <p class="Text">Now, let’s count the blocks that are still making up the tower: one, two, three, four, five, six, seven.</p>
+              </div>
+              <div class="Image-Content">
+                <img src="../IMG/68.png" alt="flower4">
+              </div>
+            </div>
+            <div class="Example-One-Box6">
+              <div class="Text-Content">
+                <p class="Text">Subtraction helps us understand how many are left when we take some away, like when we share our snacks or give away some of our stickers.</p>
+              </div>
+            </div>
           </div>
 
-          <div class="Introduction-Container"> <!-- Introduction Section -->
-            <div>
-              <p class="Introduction-Text">Subtraction is a way of finding out how many are left when we take some away. Picture yourself with a box of crayons. If you start with ten crayons and give away three to your friend, subtraction helps you figure out how many crayons you have left. It's like when you're sharing cookies or figuring out how many candies are left after eating some. Subtraction tells us how much remains after something is gone.</p>
+          <div class="Example-Two-Container">
+            <div class="Example-Two-Text-Box">
+              <p class="Example-Two-Text">Example Two</p>
             </div>
-          </div>
-          <div class="Example-One-Container">
-          <div class="Example-One-Text-Box">
-            <p class="Example-One-Text">Example One</p>
-          </div>
-          <div class="Example-One-Box1">
-            <div class="Text-Content">
-              <p class="Text">Imagine we are building a tall tower with ten colorful blocks. </p>
+            <div class="Example-Two-Box1">
+              <div class="Text-Content">
+                <p class="Text">Imagine you have seven bright, colorful balloons at your birthday party</p>
+              </div>
+              <div class="Image-Content">
+                <img src="../IMG/69.png" alt="food1">
+              </div>
             </div>
-            <div class="Image-Content">
-              <img src="../IMG/64.png" alt="flower1">
+            <div class="Example-Two-Box2">
+              <div class="Text-Content">
+                <p class="Text">Oh no! Two balloons escaped and floated up into the sky</p>
+              </div>
+              <div class="Image-Content">
+                <img src="../IMG/70.png" alt="food2">
+              </div>
             </div>
-          </div>
-          <div class="Example-One-Box2">
-            <div class="Text-Content">
-              <p class="Text">After a while, we decide to remove three blocks to make a smaller tower. </p>
+            <div class="Example-Two-Box3">
+              <div class="Text-Content">
+                <p class="Text">How many balloons are left with you? Let's figure it out together. We start by counting the balloons we have in the beginning.</p>
+              </div>
+              <div class="Image-Content">
+                <img src="../IMG/71.png" alt="food3">
+              </div>
             </div>
-            <div class="Image-Content">
-              <img src="../IMG/65.png" alt="flower2">
+            <div class="Example-Two-Box4">
+              <div class="Text-Content">
+                <p class="Text">Then, we count the balloons thagt flew away, one, two.</p>
+              </div>
+              <div class="Image-Content">
+                <img src="../IMG/72.png" alt="food3">
+              </div>
             </div>
-          </div>
-          <div class="Example-One-Box3">
-            <div class="Text-Content">
-              <p class="Text">How many blocks are left?</p>
+            <div class="Example-Two-Box5">
+              <div class="Text-Content">
+                <p class="Text">As we count each one left—five, four, three, yellow, green, and purple—we see there are five balloons remaining.</p>
+              </div>
+              <div class="Image-Content">
+                <img src="../IMG/73.png" alt="food4">
+              </div>
             </div>
-            <div class="Image-Content">
-              <img src="../IMG/66.png" alt="flower3">
+            <div class="Example-Two-Box6">
+              <div class="Text-Content">
+                <p class="Text">This shows us that when we subtract two from seven, five balloons are left. Subtraction helps us find out how many things remain after some are taken away.</p>
+              </div>
             </div>
-          </div>
-          <div class="Example-One-Box4">
-            <div class="Text-Content">
-              <p class="Text">We start with ten and take away three blocks: one, two, three.</p>
-            </div>
-            <div class="Image-Content">
-              <img src="../IMG/67.png" alt="flower3">
-            </div>
-          </div>
-          <div class="Example-One-Box5">
-            <div class="Text-Content">
-              <p class="Text">Now, let’s count the blocks that are still making up the tower: one, two, three, four, five, six, seven.</p>
-            </div>
-            <div class="Image-Content">
-              <img src="../IMG/68.png" alt="flower4">
-            </div>
-          </div>
-          <div class="Example-One-Box6">
-            <div class="Text-Content">
-              <p class="Text">Subtraction helps us understand how many are left when we take some away, like when we share our snacks or give away some of our stickers.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="Example-Two-Container">
-          <div class="Example-Two-Text-Box">
-            <p class="Example-Two-Text">Example Two</p>
-          </div>
-          <div class="Example-Two-Box1">
-            <div class="Text-Content">
-              <p class="Text">Imagine you have seven bright, colorful balloons at your birthday party</p>
-            </div>
-            <div class="Image-Content">
-              <img src="../IMG/69.png" alt="food1">
-            </div>
-          </div>
-          <div class="Example-Two-Box2">
-            <div class="Text-Content">
-              <p class="Text">Oh no! Two balloons escaped and floated up into the sky</p>
-            </div>
-            <div class="Image-Content">
-              <img src="../IMG/70.png" alt="food2">
-            </div>
-          </div>
-          <div class="Example-Two-Box3">
-            <div class="Text-Content">
-              <p class="Text">How many balloons are left with you? Let's figure it out together. We start by counting the balloons we have in the beginning.</p>
-            </div>
-            <div class="Image-Content">
-              <img src="../IMG/71.png" alt="food3">
-            </div>
-          </div>
-          <div class="Example-Two-Box4">
-            <div class="Text-Content">
-              <p class="Text">Then, we count the balloons thagt flew away, one, two.</p>
-            </div>
-            <div class="Image-Content">
-              <img src="../IMG/72.png" alt="food3">
-            </div>
-          </div>
-          <div class="Example-Two-Box5">
-            <div class="Text-Content">
-              <p class="Text">As we count each one left—five, four, three, yellow, green, and purple—we see there are five balloons remaining.</p>
-            </div>
-            <div class="Image-Content">
-              <img src="../IMG/73.png" alt="food4">
-            </div>
-          </div>
-          <div class="Example-Two-Box6">
-            <div class="Text-Content">
-              <p class="Text">This shows us that when we subtract two from seven, five balloons are left. Subtraction helps us find out how many things remain after some are taken away.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="Example-Three-Container">
-          <div class="Example-Three-Text-Box">
-            <p class="Example-Three-Text">Example Three</p>
-          </div>
-          <div class="Example-Three-Box1">
-            <div class="Text-Content">
-              <p class="Text">Imagine a sunny day in the garden where ten happy bees are buzzing around, visiting five colorful flowers.</p>
-            </div>
-            <div class="Image-Content">
-              <img src="../IMG/74.png" alt="icecream1">
-            </div>
-          </div>
-          <div class="Example-Three-Box2">
-            <div class="Text-Content">
-              <p class="Text">Suddenly, three bees decide to fly back to their hive for a little rest.</p>
-            </div>
-            <div class="Image-Content">
-              <img src="../IMG/75.png" alt="icecream2">
-            </div>
-          </div>
-          <div class="Example-Three-Box3">
-            <div class="Text-Content">
-              <p class="Text">How many bees are still flying around the flowers? Let's find out together. We start with ten bees and subtract the three bees that flew away. </p>
-            </div>
-            <div class="Image-Content">
-              <img src="../IMG/76.png" alt="icecream5">
-            </div>
-          </div>
-          <div class="Example-Three-Box4">
-            <div class="Text-Content">
-              <p class="Text">We then, count the bees that flew away, one, two, three.</p>
-            </div>
-            <div class="Image-Content">
-              <img src="../IMG/77.png" alt="icecream3">
-            </div>
-          </div>
-          <div class="Example-Three-Box5">
-            <div class="Text-Content">
-              <p class="Text">We count the remaining bees as they buzz from flower to flower—seven, six, and finally, we have seven bees left.</p>
-            </div>
-            <div class="Image-Content">
-              <img src="../IMG/78.png" alt="icecream4">
-            </div>
-          </div>
-          <div class="Example-Three-Box6">
-            <div class="Text-Content">
-              <p class="Text">This helps us see that when we subtract three from ten, we end up with seven buzzing bees.</p>
-            </div>
-          </div>
-          <div class="Outro"> <!-- Subtraction-Outro -->
-            <p>Well done on completing your subtraction tutorial! You now know how to find out what's left when something is taken away. This skill is essential for solving everyday problems and will serve you well in future math challenges. Keep up the excellent work!</p>
           </div>
 
-        </main>
+          <div class="Example-Three-Container">
+            <div class="Example-Three-Text-Box">
+              <p class="Example-Three-Text">Example Three</p>
+            </div>
+            <div class="Example-Three-Box1">
+              <div class="Text-Content">
+                <p class="Text">Imagine a sunny day in the garden where ten happy bees are buzzing around, visiting five colorful flowers.</p>
+              </div>
+              <div class="Image-Content">
+                <img src="../IMG/74.png" alt="icecream1">
+              </div>
+            </div>
+            <div class="Example-Three-Box2">
+              <div class="Text-Content">
+                <p class="Text">Suddenly, three bees decide to fly back to their hive for a little rest.</p>
+              </div>
+              <div class="Image-Content">
+                <img src="../IMG/75.png" alt="icecream2">
+              </div>
+            </div>
+            <div class="Example-Three-Box3">
+              <div class="Text-Content">
+                <p class="Text">How many bees are still flying around the flowers? Let's find out together. We start with ten bees and subtract the three bees that flew away. </p>
+              </div>
+              <div class="Image-Content">
+                <img src="../IMG/76.png" alt="icecream5">
+              </div>
+            </div>
+            <div class="Example-Three-Box4">
+              <div class="Text-Content">
+                <p class="Text">We then, count the bees that flew away, one, two, three.</p>
+              </div>
+              <div class="Image-Content">
+                <img src="../IMG/77.png" alt="icecream3">
+              </div>
+            </div>
+            <div class="Example-Three-Box5">
+              <div class="Text-Content">
+                <p class="Text">We count the remaining bees as they buzz from flower to flower—seven, six, and finally, we have seven bees left.</p>
+              </div>
+              <div class="Image-Content">
+                <img src="../IMG/78.png" alt="icecream4">
+              </div>
+            </div>
+            <div class="Example-Three-Box6">
+              <div class="Text-Content">
+                <p class="Text">This helps us see that when we subtract three from ten, we end up with seven buzzing bees.</p>
+              </div>
+            </div>
+            <div class="Outro"> <!-- Subtraction-Outro -->
+              <p>Well done on completing your subtraction tutorial! You now know how to find out what's left when something is taken away. This skill is essential for solving everyday problems and will serve you well in future math challenges. Keep up the excellent work!</p>
+            </div>
+
+          </main>
 
         <div id="settings-modal" class="modal">
           <div class="modal-content">
