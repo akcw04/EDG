@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Then delete the question
             $question_sql = "DELETE FROM questions WHERE Questions_id='$id'";
             if ($conn->query($question_sql) === TRUE) {
-                echo '<script>alert("Record deleted successfully"); window.location.href = "admin_assessments.php";</script>';
+                echo '<script>alert("Record deleted successfully"); window.location.href = "Admin_Assessments.php";</script>';
             } else {
                 echo "Error deleting question: " . $conn->error;
             }
@@ -41,22 +41,31 @@ $parent_category_symbols = [
     4 => "/"
 ];
 
-// Fetch questions based on category filter
+// Fetch questions and their choices
 $filter_category_id = $_GET['category'] ?? null;
-$questions_sql = "SELECT q.Questions_id, q.Category_id, q.Question_Text, 
-                  c1.Choice_text AS choice1, c1.Is_correct AS is_correct1, 
-                  c2.Choice_text AS choice2, c2.Is_correct AS is_correct2, 
-                  c3.Choice_text AS choice3, c3.Is_correct AS is_correct3, 
-                  c4.Choice_text AS choice4, c4.Is_correct AS is_correct4
+$questions_sql = "SELECT q.Questions_id, q.Category_id, q.Question_Text, c.Choice_text, c.Is_correct
                   FROM questions q
-                  LEFT JOIN choices c1 ON q.Questions_id = c1.Question_id AND c1.Choice_id = 1
-                  LEFT JOIN choices c2 ON q.Questions_id = c2.Question_id AND c2.Choice_id = 2
-                  LEFT JOIN choices c3 ON q.Questions_id = c3.Question_id AND c3.Choice_id = 3
-                  LEFT JOIN choices c4 ON q.Questions_id = c4.Question_id AND c4.Choice_id = 4";
+                  LEFT JOIN choices c ON q.Questions_id = c.Question_id";
 if ($filter_category_id && $filter_category_id !== 'all') {
     $questions_sql .= " WHERE q.Category_id='$filter_category_id'";
 }
+$questions_sql .= " ORDER BY q.Questions_id, c.Choice_id";
 $result = $conn->query($questions_sql);
+
+$questions = [];
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        $questions[$row['Questions_id']]['info'] = [
+            'Questions_id' => $row['Questions_id'],
+            'Category_id' => $row['Category_id'],
+            'Question_Text' => $row['Question_Text']
+        ];
+        $questions[$row['Questions_id']]['choices'][] = [
+            'Choice_text' => $row['Choice_text'],
+            'Is_correct' => $row['Is_correct']
+        ];
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -75,101 +84,101 @@ $result = $conn->query($questions_sql);
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
   <style>
-  .flex-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-  }
-  .form-container, .button-container {
-      margin: 10px;
-  }
-  .table-container table {
-      width: 100%;
-      border-collapse: collapse;
-  }
-  .table-container th, .table-container td {
-      border: 1px solid #ddd;
-      padding: 8px;
-  }
-  .table-container th {
-      padding-top: 12px;
-      padding-bottom: 12px;
-      text-align: left;
-      background-color: #f2f2f2;
-      color: black;
-  }
-  .modal {
-    display: none; /* Hidden by default */
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgb(0,0,0);
-    background-color: rgba(0,0,0,0.4);
-}
+    .flex-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .form-container, .button-container {
+        margin: 10px;
+    }
+    .table-container table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    .table-container th, .table-container td {
+        border: 1px solid #ddd;
+        padding: 8px;
+    }
+    .table-container th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #f2f2f2;
+        color: black;
+    }
+    .modal {
+        display: none; /* Hidden by default */
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgb(0,0,0);
+        background-color: rgba(0,0,0,0.4);
+    }
 
-.modal-content {
-    background-color: #fefefe;
-    margin: 15% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-    max-width: 400px;
-    text-align: center;
-    border-radius: 10px;
-}
+    .modal-content {
+        background-color: #fefefe;
+        margin: 15% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+        max-width: 400px;
+        text-align: center;
+        border-radius: 10px;
+    }
 
-.close-button {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
+    .close-button {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
 
-.close-button:hover,
-.close-button:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-}
+    .close-button:hover,
+    .close-button:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
 
-.button-group {
-    display: flex;
-    justify-content: space-between;
-}
+    .button-group {
+        display: flex;
+        justify-content: space-between;
+    }
 
-.button-group button {
-    flex: 1;
-    margin: 5px;
-    padding: 10px;
-    font-size: 18px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
+    .button-group button {
+        flex: 1;
+        margin: 5px;
+        padding: 10px;
+        font-size: 18px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
 
-.confirm-button {
-    background-color: #1c1c1c;
-    color: white;
-}
+    .confirm-button {
+        background-color: #1c1c1c;
+        color: white;
+    }
 
-.confirm-button:hover {
-    background-color: #FFD1DC;
-    color: black;
-}
+    .confirm-button:hover {
+        background-color: #FFD1DC;
+        color: black;
+    }
 
-.cancel-button {
-    background-color: #ccc;
-    color: black;
-}
+    .cancel-button {
+        background-color: #ccc;
+        color: black;
+    }
 
-.cancel-button:hover {
-    background-color: #bbb;
-}
+    .cancel-button:hover {
+        background-color: #bbb;
+    }
 </style>
 <script>
 function confirmDelete(questionId) {
@@ -191,7 +200,6 @@ function closeModal() {
     document.getElementById('logout-modal').style.display = 'none';
 }
 </script>
-</style>
 </head>
 
 <body>
@@ -287,18 +295,15 @@ function closeModal() {
                   <th>Parent Category</th>
                   <th>Category</th>
                   <th>Question Text</th>
-                  <th>Choice 1</th>
-                  <th>Choice 2</th>
-                  <th>Choice 3</th>
-                  <th>Choice 4</th>
+                  <th>Choices</th>
                   <th>Actions</th>
               </tr>
           </thead>
           <tbody>
           <?php
-          if ($result->num_rows > 0) {
-              while($row = $result->fetch_assoc()) {
-                  $category_id = $row["Category_id"];
+          if (!empty($questions)) {
+              foreach ($questions as $question_id => $question) {
+                  $category_id = $question['info']['Category_id'];
                   $category_name_sql = "SELECT Category_Name, Parent_id FROM category WHERE Category_id='$category_id'";
                   $category_name_result = $conn->query($category_name_sql);
                   $category_name_row = $category_name_result->fetch_assoc();
@@ -307,29 +312,30 @@ function closeModal() {
                   $parent_category_symbol = $parent_category_symbols[$parent_category_id];
 
                   echo "<tr>";
-                  echo "<td>" . $row["Questions_id"] . "</td>";
+                  echo "<td>" . $question['info']['Questions_id'] . "</td>";
                   echo "<td>" . $parent_category_symbol . "</td>";
                   echo "<td>" . $category_name . "</td>";
-                  echo "<td>" . $row["Question_Text"] . "</td>";
-                  echo "<td>" . $row["choice1"] . " " . ($row["is_correct1"] ? "(Correct)" : "") . "</td>";
-                  echo "<td>" . $row["choice2"] . " " . ($row["is_correct2"] ? "(Correct)" : "") . "</td>";
-                  echo "<td>" . $row["choice3"] . " " . ($row["is_correct3"] ? "(Correct)" : "") . "</td>";
-                  echo "<td>" . $row["choice4"] . " " . ($row["is_correct4"] ? "(Correct)" : "") . "</td>";
+                  echo "<td>" . $question['info']['Question_Text'] . "</td>";
+                  echo "<td>";
+                  foreach ($question['choices'] as $choice) {
+                      echo $choice['Choice_text'] . " " . ($choice['Is_correct'] ? "(Correct)" : "") . "<br>";
+                  }
+                  echo "</td>";
                   echo "<td>
                           <form action='../PHP/Edit_Assessment.php' method='GET' style='display:inline-block;'>
-                            <input type='hidden' name='id' value='" . $row["Questions_id"] . "'>
+                            <input type='hidden' name='id' value='" . $question['info']['Questions_id'] . "'>
                             <button type='submit'>Edit</button>
                           </form>
-                          <form id='deleteForm" . $row["Questions_id"] . "' action='Admin_Assessments.php' method='POST' style='display:inline-block;'>
-                            <input type='hidden' name='id' value='" . $row["Questions_id"] . "'>
+                          <form id='deleteForm" . $question['info']['Questions_id'] . "' action='Admin_Assessments.php' method='POST' style='display:inline-block;'>
+                            <input type='hidden' name='id' value='" . $question['info']['Questions_id'] . "'>
                             <input type='hidden' name='action' value='delete'>
-                            <button type='button' onclick='confirmDelete(" . $row["Questions_id"] . ")'>Delete</button>
+                            <button type='button' onclick='confirmDelete(" . $question['info']['Questions_id'] . ")'>Delete</button>
                           </form>
                         </td>";
                   echo "</tr>";
               }
           } else {
-              echo "<tr><td colspan='9'>No assessments found</td></tr>";
+              echo "<tr><td colspan='6'>No assessments found</td></tr>";
           }
           ?>
           </tbody>
@@ -343,12 +349,12 @@ function closeModal() {
         <p>Are you sure you want to log out?</p>
         <form method="POST" action="../PHP/logout.php">
             <div class="button-group">
-                <button type="submit" name="confirm_logout" class="cancel-button">Yes</button>
-                <button type="button" class="confirm-button" onclick="closeModal()">No</button>
+                <button type="submit" name="confirm_logout" class="confirm-button">Yes</button>
+                <button type="button" class="cancel-button" onclick="closeModal()">No</button>
             </div>
         </form>
     </div>
-  </div>
+</div>
 </body>
 </html>
 
