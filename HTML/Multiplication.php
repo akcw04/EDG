@@ -9,12 +9,12 @@ $font_size = isset($_SESSION['font_size']) ? $_SESSION['font_size'] : 'medium';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Multiplication</title>
+    <title>Nav Bar for Chua Sample</title>
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <script defer src="../Javascript/Sample_Materials.js"></script>
         <link rel="stylesheet" href="../CSS/font_sizes.css">
-        <link rel="stylesheet" href="../CSS/<?php echo $css_folder; ?>/Multiplication.css">
+        <link rel="stylesheet" href="../CSS/<?php echo $css_folder; ?>/Division.css">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&display=swap" rel="stylesheet"/>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -173,149 +173,148 @@ $font_size = isset($_SESSION['font_size']) ? $_SESSION['font_size'] : 'medium';
         </nav>
       
         <main>
-        <div class="Title-Box">
-          <p class="Title-Text">Multiplication</p> <!-- Title -->
-          </div>
+          <div class="Title-Box">
+            <p class="Title-Text">Multiplication</p> <!-- Title -->
+            </div>
 
-          <div class="Introduction-Container"> <!-- Introduction Section -->
-            <div>
-              <p class="Introduction-Text">Multiplication is a quick way to add the same number several times. For example, if you have four baskets, and each basket has five apples, instead of adding five apples over and over four times, you can multiply! Multiplication combines groups of the same size quickly and efficiently. It's very useful, especially when you're trying to count lots of things at once, like packets of seeds in a garden or rows of chairs in a classroom.</p>
+            <div class="Introduction-Container"> <!-- Introduction Section -->
+              <div>
+                <p class="Introduction-Text">Multiplication is a quick way to add the same number several times. For example, if you have four baskets, and each basket has five apples, instead of adding five apples over and over four times, you can multiply! Multiplication combines groups of the same size quickly and efficiently. It's very useful, especially when you're trying to count lots of things at once, like packets of seeds in a garden or rows of chairs in a classroom.</p>
+              </div>
             </div>
-          </div>
-          <div class="Example-One-Container">
-          <div class="Example-One-Text-Box">
-            <p class="Example-One-Text">Example One</p>
-          </div>
-          <div class="Example-One-Box1">
-            <div class="Text-Content">
-              <p class="Text">In each row, there are three lovely flowers.</p>
+            <div class="Example-One-Container">
+            <div class="Example-One-Text-Box">
+              <p class="Example-One-Text">Example One</p>
             </div>
-            <div class="Image-Content">
-              <img src="../IMG/84.png" alt="flower1">
+            <div class="Example-One-Box1">
+              <div class="Text-Content">
+                <p class="Text">In each row, there are three lovely flowers.</p>
+              </div>
+              <div class="Image-Content">
+                <img src="../IMG/84.png" alt="flower1">
+              </div>
             </div>
-          </div>
-          <div class="Example-One-Box2">
-            <div class="Text-Content">
-              <p class="Text">There are 3 neat rows.</p>
+            <div class="Example-One-Box2">
+              <div class="Text-Content">
+                <p class="Text">There are 3 neat rows.</p>
+              </div>
+              <div class="Image-Content">
+                <img src="../IMG/85.png" alt="flower2">
+              </div>
             </div>
-            <div class="Image-Content">
-              <img src="../IMG/85.png" alt="flower2">
+            <div class="Example-One-Box3">
+              <div class="Text-Content">
+                <p class="Text">How many flowers are there in total?. We multiply the number of rows, which is two, by the number of flowers in each row, which is three</p>
+              </div>
+              <div class="Image-Content">
+                <img src="../IMG/86.png" alt="flower3">
+              </div>
             </div>
-          </div>
-          <div class="Example-One-Box3">
-            <div class="Text-Content">
-              <p class="Text">How many flowers are there in total?. We multiply the number of rows, which is two, by the number of flowers in each row, which is three</p>
+            <div class="Example-One-Box4">
+              <div class="Text-Content">
+                <p class="Text">Multiplying is just adding the same number several times. So, two times three equals six</p>
+              </div>
+              <div class="Image-Content">
+                <img src="../IMG/87.png" alt="flower3">
+              </div>
             </div>
-            <div class="Image-Content">
-              <img src="../IMG/86.png" alt="flower3">
-            </div>
-          </div>
-          <div class="Example-One-Box4">
-            <div class="Text-Content">
-              <p class="Text">Multiplying is just adding the same number several times. So, two times three equals six</p>
-            </div>
-            <div class="Image-Content">
-              <img src="../IMG/87.png" alt="flower3">
-            </div>
-          </div>
-          <div class="Example-One-Box5">
-            <div class="Text-Content">
-              <p class="Text">This means there are six beautiful flowers in total in our garden. Multiplication helps us count things faster, especially when they are grouped together like our flowers.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="Example-Two-Container">
-          <div class="Example-Two-Text-Box">
-            <p class="Example-Two-Text">Example Two</p>
-          </div>
-          <div class="Example-Two-Box1">
-            <div class="Text-Content">
-              <p class="Text">Inside our classroom, we have a mini orchestra! There are two groups of children.</p>
-            </div>
-            <div class="Image-Content">
-              <img src="../IMG/88.png" alt="food1">
-            </div>
-          </div>
-          <div class="Example-Two-Box2">
-            <div class="Text-Content">
-              <p class="Text">There are a total of 2 groups.</p>
-            </div>
-            <div class="Image-Content">
-              <img src="../IMG/89.png" alt="food2">
-            </div>
-          </div>
-          <div class="Example-Two-Box3">
-            <div class="Text-Content">
-              <p class="Text">How many students are in the classroom? Instead of counting each student one by one, we use multiplication. We start by counting one, two, ..., six!</p>
-            </div>
-            <div class="Image-Content">
-              <img src="../IMG/90.png" alt="food3">
-            </div>
-          </div>
-          <div class="Example-Two-Box4">
-            <div class="Text-Content">
-              <p class="Text">Two times three equals six. So, there are six students making music together.</p>
-            </div>
-            <div class="Image-Content">
-              <img src="../IMG/91.png" alt="food3">
-            </div>
-          </div>
-          <div class="Example-Two-Box5">
-            <div class="Text-Content">
-              <p class="Text">Multiplication helps us see how big things are when they're grouped, like when you gather your blocks or crayons together.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="Example-Three-Container">
-          <div class="Example-Three-Text-Box">
-            <p class="Example-Three-Text">Example Three</p>
-          </div>
-          <div class="Example-Three-Box1">
-            <div class="Text-Content">
-              <p class="Text">We’re preparing for a school play, and we need to set up chairs for the audience. To start with, five person in each group.</p>
-            </div>
-            <div class="Image-Content">
-              <img src="../IMG/80.png" alt="icecream1">
-            </div>
-          </div>
-          <div class="Example-Three-Box2">
-            <div class="Text-Content">
-              <p class="Text">There is a total of 4 rows.</p>
-            </div>
-            <div class="Image-Content">
-              <img src="../IMG/81.png" alt="icecream2">
-            </div>
-          </div>
-          <div class="Example-Three-Box3">
-            <div class="Text-Content">
-              <p class="Text">How many chairs do we have altogether? First, we start by counting how many chairs there are in a row first. One, two, three, four, five.</p>
-            </div>
-            <div class="Image-Content">
-              <img src="../IMG/82.png" alt="icecream5">
-            </div>
-          </div>
-          <div class="Example-Three-Box4">
-            <div class="Text-Content">
-              <p class="Text">Four rows times five chairs equals twenty chairs.</p>
-            </div>
-            <div class="Image-Content">
-              <img src="../IMG/83.png" alt="icecream3">
-            </div>
-          </div>
-          <div class="Example-Three-Box5">
-            <div class="Text-Content">
-              <p class="Text">Multiplication is a quick way to add the same number many times, helping us set up faster so we can enjoy the play!</p>
+            <div class="Example-One-Box5">
+              <div class="Text-Content">
+                <p class="Text">This means there are six beautiful flowers in total in our garden. Multiplication helps us count things faster, especially when they are grouped together like our flowers.</p>
+              </div>
             </div>
           </div>
 
-          <div class="Outro"> <!-- Muntiplication-Outro -->
-            <p>Congratulations on mastering your multiplication tutorial! You've learned a quick way to add numbers repeatedly, which is incredibly useful for dealing with larger amounts. This skill will make many aspects of math much easier for you. Fantastic effort!</p>
+          <div class="Example-Two-Container">
+            <div class="Example-Two-Text-Box">
+              <p class="Example-Two-Text">Example Two</p>
+            </div>
+            <div class="Example-Two-Box1">
+              <div class="Text-Content">
+                <p class="Text">Inside our classroom, we have a mini orchestra! There are two groups of children.</p>
+              </div>
+              <div class="Image-Content">
+                <img src="../IMG/88.png" alt="food1">
+              </div>
+            </div>
+            <div class="Example-Two-Box2">
+              <div class="Text-Content">
+                <p class="Text">There are a total of 2 groups.</p>
+              </div>
+              <div class="Image-Content">
+                <img src="../IMG/89.png" alt="food2">
+              </div>
+            </div>
+            <div class="Example-Two-Box3">
+              <div class="Text-Content">
+                <p class="Text">How many students are in the classroom? Instead of counting each student one by one, we use multiplication. We start by counting one, two, ..., six!</p>
+              </div>
+              <div class="Image-Content">
+                <img src="../IMG/90.png" alt="food3">
+              </div>
+            </div>
+            <div class="Example-Two-Box4">
+              <div class="Text-Content">
+                <p class="Text">Two times three equals six. So, there are six students making music together.</p>
+              </div>
+              <div class="Image-Content">
+                <img src="../IMG/91.png" alt="food3">
+              </div>
+            </div>
+            <div class="Example-Two-Box5">
+              <div class="Text-Content">
+                <p class="Text">Multiplication helps us see how big things are when they're grouped, like when you gather your blocks or crayons together.</p>
+              </div>
+            </div>
           </div>
 
-        </main>
+          <div class="Example-Three-Container">
+            <div class="Example-Three-Text-Box">
+              <p class="Example-Three-Text">Example Three</p>
+            </div>
+            <div class="Example-Three-Box1">
+              <div class="Text-Content">
+                <p class="Text">We’re preparing for a school play, and we need to set up chairs for the audience. To start with, five person in each group.</p>
+              </div>
+              <div class="Image-Content">
+                <img src="../IMG/80.png" alt="icecream1">
+              </div>
+            </div>
+            <div class="Example-Three-Box2">
+              <div class="Text-Content">
+                <p class="Text">There is a total of 4 rows.</p>
+              </div>
+              <div class="Image-Content">
+                <img src="../IMG/81.png" alt="icecream2">
+              </div>
+            </div>
+            <div class="Example-Three-Box3">
+              <div class="Text-Content">
+                <p class="Text">How many chairs do we have altogether? First, we start by counting how many chairs there are in a row first. One, two, three, four, five.</p>
+              </div>
+              <div class="Image-Content">
+                <img src="../IMG/82.png" alt="icecream5">
+              </div>
+            </div>
+            <div class="Example-Three-Box4">
+              <div class="Text-Content">
+                <p class="Text">Four rows times five chairs equals twenty chairs.</p>
+              </div>
+              <div class="Image-Content">
+                <img src="../IMG/83.png" alt="icecream3">
+              </div>
+            </div>
+            <div class="Example-Three-Box5">
+              <div class="Text-Content">
+                <p class="Text">Multiplication is a quick way to add the same number many times, helping us set up faster so we can enjoy the play!</p>
+              </div>
+            </div>
 
+            <div class="Outro"> <!-- Muntiplication-Outro -->
+              <p>Congratulations on mastering your multiplication tutorial! You've learned a quick way to add numbers repeatedly, which is incredibly useful for dealing with larger amounts. This skill will make many aspects of math much easier for you. Fantastic effort!</p>
+            </div>
+
+          </main>
         <div id="settings-modal" class="modal">
           <div class="modal-content">
               <span class="close-button" onclick="closeSettingsModal()">&times;</span>
