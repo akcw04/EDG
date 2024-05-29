@@ -203,7 +203,7 @@ $font_size = isset($_SESSION['font_size']) ? $_SESSION['font_size'] : 'medium';
         <h1>Materials</h1>
         <div>
           <a href="../HTML/Addition.php"><img class="img-container" src="../IMG/ud_addition.png" alt="additionbtn"></a>
-          <a href="../HTML/Substraction.php"><img class="img-container" src="../IMG/ud_substraction.png" alt="substractionbtn"></a>
+          <a href="../HTML/Subtraction.php"><img class="img-container" src="../IMG/ud_substraction.png" alt="substractionbtn"></a>
           <a href="../HTML/Multiplication.php"><img class="img-container" src="../IMG/ud_multiply.png" alt="multiplicationbtn"></a>
           <a href="../HTML/Division.php"><img class="img-container" src="../IMG/ud_divide.png" alt="divisionbtn"></a>
         </div>
