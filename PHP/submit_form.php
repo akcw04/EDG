@@ -41,7 +41,6 @@ $sql_users = "CREATE TABLE IF NOT EXISTS users (
     Font_Size VARCHAR(10) DEFAULT 'medium'
 )";
 
-
 $conn->query($sql_users);
 
 // SQL to create table for questions
@@ -52,7 +51,7 @@ $sql_questions = "CREATE TABLE IF NOT EXISTS questions (
     FOREIGN KEY (Category_id) REFERENCES category(Category_id)
 )";
 
-//SQL to create table for choices
+// SQL to create table for choices
 $sql_choices = "CREATE TABLE IF NOT EXISTS choices (
     Choice_id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     Question_id INT(6) UNSIGNED,
@@ -61,17 +60,13 @@ $sql_choices = "CREATE TABLE IF NOT EXISTS choices (
     FOREIGN KEY (Question_id) REFERENCES questions(Questions_id)
 )";
 
-
-//SQL to create table for category
-
+// SQL to create table for category
 $sql_category = "CREATE TABLE IF NOT EXISTS category (
     Category_id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     Category_Name VARCHAR(255) NOT NULL
 )";
 
-
-//SQL to create table for quiz
-
+// SQL to create table for quiz
 $sql_quiz = "CREATE TABLE IF NOT EXISTS quiz (
     Quiz_id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     User_id INT(6) UNSIGNED,
@@ -81,33 +76,37 @@ $sql_quiz = "CREATE TABLE IF NOT EXISTS quiz (
     FOREIGN KEY (Category_id) REFERENCES category(Category_id)
 )";
 
-
 $conn->query($sql_category);
 $conn->query($sql_quiz);
 $conn->query($sql_questions);
 $conn->query($sql_choices);
 
-
-if(isset($_POST['submit'])) {
+if (isset($_POST['submit'])) {
     $FirstName = $_POST['FirstName'];
     $LastName = $_POST['LastName'];
     $DOB = $_POST['DOB'];
     $Gender = $_POST['Gender']; // Assuming Gender is a radio button input
-    $query = "INSERT INTO users (Gender) VALUES ('$Gender')";// Insert Gender into database
     $PhoneNumber = $_POST['PhoneNumber'];
     $Email = $_POST['Email'];
     $Password = $_POST['Password'];
     
-    
+    // Hash the password
+    $hashedPassword = password_hash($Password, PASSWORD_DEFAULT);
+
     // Insert user details into database
     $sql_insert = "INSERT INTO users (FirstName, LastName, DOB, Gender, PhoneNumber, Email, Password) 
-    VALUES ('$FirstName', '$LastName', '$DOB', '$Gender', '$PhoneNumber', '$Email', '$Password')";
-    
-    if ($conn->query($sql_insert) === TRUE) {
+                   VALUES (?, ?, ?, ?, ?, ?, ?)";
+    $stmt = $conn->prepare($sql_insert);
+    $stmt->bind_param("sssssss", $FirstName, $LastName, $DOB, $Gender, $PhoneNumber, $Email, $hashedPassword);
+
+    if ($stmt->execute()) {
         echo '<script>alert("Account Created Successfully"); window.location.href = "http://localhost/EDG/HTML/Login.html";</script>';
     } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
+        echo "Error: " . $stmt->error;
     }
+
+    $stmt->close();
 }
 
-
+$conn->close();
+?>
