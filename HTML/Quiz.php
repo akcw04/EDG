@@ -94,7 +94,7 @@ if ($result->num_rows > 0) {
 }
 
 // Check if the end quiz action has been triggered
-if (isset($_POST['action']) && $_POST['action'] == 'end_quiz') {
+if (isset($_POST['action1']) && $_POST['action1'] == 'end_quiz') {
     // Unset specific session variables
     unset($_SESSION['quiz_over']);
     unset($_SESSION['category_id']);
@@ -108,7 +108,7 @@ if (isset($_POST['action']) && $_POST['action'] == 'end_quiz') {
 }
 
 // Check if the check answers quiz action has been triggered
-if (isset($_POST['action']) && $_POST['action'] == 'check_quiz') {
+if (isset($_POST['action2']) && $_POST['action2'] == 'check_quiz') {
     // Unset specific session variables
     unset($_SESSION['quiz_over']);
     unset($_SESSION['category_id']);
@@ -158,10 +158,10 @@ $conn->close();
                     <?php endforeach; ?>
                 <?php else: ?>
                     <!-- When quiz is over, change the form action to handle the end quiz logic -->
-                    <input type="hidden" name="action" value="end_quiz">
+                    <input type="hidden" name="action1" value="end_quiz">
                     <button type="submit" class="end-quiz-button">End Quiz</button>
                     <br>
-                    <input type="hidden" name="action" value="check_quiz">
+                    <input type="hidden" name="action2" value="check_quiz">
                     <button type="submit" class="answers-button">Check Answers</button>
                 <?php endif; ?>
             </div>
