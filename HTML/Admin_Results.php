@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Admin Users</title>
   <script defer src="../Javascript/script.js"></script>
-  <link rel="stylesheet" href="../CSS/Admin_Users.css" />
+  <link rel="stylesheet" href="../CSS/Admin_Results.css" />
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&display=swap" rel="stylesheet"/>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -154,6 +154,7 @@
   </nav>
   <main>
     <h1>Manage Results</h1>
+
     <div class="table-container">
       <table>
         <thead>
