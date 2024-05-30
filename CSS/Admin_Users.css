@@ -239,6 +239,27 @@ form {
   margin: 0;
 }
 
+.search-container {
+  margin-bottom: 20px;
+}
+
+.search-container input[type=text] {
+  padding: 10px;
+  margin-right: 10px;
+  width: 300px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.search-container input[type=text]:focus {
+  outline: none;
+  border-color: #1c1c1c;
+}
+
+.search-container input[type=text]::placeholder {
+  color: #aaa;
+}
+
 
 
 

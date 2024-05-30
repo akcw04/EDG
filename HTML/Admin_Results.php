@@ -1,3 +1,72 @@
+<?php
+include '../PHP/conn.php';
+
+// Handle form submissions for add, edit, delete
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $action = $_POST["action"];
+    $id = $_POST["id"] ?? null;
+
+    if ($action == "delete") {
+        // First delete associated choices
+        $choice_sql = "DELETE FROM choices WHERE Question_id='$id'";
+        if ($conn->query($choice_sql) === TRUE) {
+            // Then delete the question
+            $question_sql = "DELETE FROM questions WHERE Questions_id='$id'";
+            if ($conn->query($question_sql) === TRUE) {
+                echo '<script>alert("Record deleted successfully"); window.location.href = "Admin_Assessments.php";</script>';
+            } else {
+                echo "Error deleting question: " . $conn->error;
+            }
+        } else {
+            echo "Error deleting choices: " . $conn->error;
+        }
+    }
+}
+
+// Fetch all categories
+$categories_sql = "SELECT Category_id, Category_Name, Parent_id FROM category WHERE Parent_id IS NOT NULL";
+$categories_result = $conn->query($categories_sql);
+
+$categories = [];
+if ($categories_result->num_rows > 0) {
+    while ($row = $categories_result->fetch_assoc()) {
+        $categories[$row['Parent_id']][] = $row;
+    }
+}
+
+$parent_category_symbols = [
+    1 => "+",
+    2 => "-",
+    3 => "*",
+    4 => "/"
+];
+
+// Fetch questions and their choices
+$filter_category_id = $_GET['category'] ?? null;
+$questions_sql = "SELECT q.Questions_id, q.Category_id, q.Question_Text, c.Choice_text, c.Is_correct
+                  FROM questions q
+                  LEFT JOIN choices c ON q.Questions_id = c.Question_id";
+if ($filter_category_id && $filter_category_id !== 'all') {
+    $questions_sql .= " WHERE q.Category_id='$filter_category_id'";
+}
+$questions_sql .= " ORDER BY q.Questions_id, c.Choice_id";
+$result = $conn->query($questions_sql);
+
+$questions = [];
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        $questions[$row['Questions_id']]['info'] = [
+            'Questions_id' => $row['Questions_id'],
+            'Category_id' => $row['Category_id'],
+            'Question_Text' => $row['Question_Text']
+        ];
+        $questions[$row['Questions_id']]['choices'][] = [
+            'Choice_text' => $row['Choice_text'],
+            'Is_correct' => $row['Is_correct']
+        ];
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -154,6 +223,28 @@
   </nav>
   <main>
     <h1>Manage Results</h1>
+    <div class="flex-container">
+        <div class="form-container">
+            <form action="admin_assessments.php" method="GET" class="filter-form">
+                <label for="category">Filter by Category:</label>
+                <select name="category" id="category">
+                    <option value="all" <?php if ($filter_category_id === 'all' || !$filter_category_id) echo 'selected'; ?>>ALL</option>
+                    <?php
+                    foreach ($categories as $parent_id => $subcategories) {
+                        $parent_category_symbol = $parent_category_symbols[$parent_id];
+                        echo "<optgroup label='$parent_category_symbol'>";
+                        foreach ($subcategories as $subcategory) {
+                            $selected = $filter_category_id == $subcategory['Category_id'] ? 'selected' : '';
+                            echo "<option value='{$subcategory['Category_id']}' $selected>{$subcategory['Category_Name']}</option>";
+                        }
+                        echo "</optgroup>";
+                    }
+                    ?>
+                </select>
+                <button type="submit" class="filter-button">Filter</button>
+            </form>
+        </div>
+    </div>
     <div class="table-container">
       <table>
         <thead>

@@ -154,6 +154,9 @@
   </nav>
   <main>
     <h1>Manage Users</h1>
+    <div class="search-container">
+        <input type="text" id="searchInput" onkeyup="filterUsers()" placeholder="Search for users...">
+    </div>
     <div class="table-container">
       <table>
         <thead>
