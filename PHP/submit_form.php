@@ -73,13 +73,27 @@ $sql_quiz = "CREATE TABLE IF NOT EXISTS quiz (
     Category_id INT(6) UNSIGNED,
     Score INT(6),
     FOREIGN KEY (User_id) REFERENCES users(User_id),
-    FOREIGN KEY (Category_id) REFERENCES category(Category_id)
+    FOREIGN KEY (Category_id) REFERENCES category(Category_id),
+    UNIQUE KEY (User_id, Category_id)
+)";
+
+// SQL to create table for user answers
+$sql_answers = "CREATE TABLE IF NOT EXISTS user_answers (
+    User_answer_id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    Quiz_id INT(6) UNSIGNED,
+    Question_id INT(6) UNSIGNED,
+    Choice_id INT(6) UNSIGNED,
+    Is_correct BOOLEAN NOT NULL,
+    FOREIGN KEY (Quiz_id) REFERENCES quiz(Quiz_id),
+    FOREIGN KEY (Question_id) REFERENCES questions(Questions_id),
+    FOREIGN KEY (Choice_id) REFERENCES choices(Choice_id)
 )";
 
 $conn->query($sql_category);
 $conn->query($sql_quiz);
 $conn->query($sql_questions);
 $conn->query($sql_choices);
+$conn->query($sql_answers);
 
 if (isset($_POST['submit'])) {
     $FirstName = $_POST['FirstName'];

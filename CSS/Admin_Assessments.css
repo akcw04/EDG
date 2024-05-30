@@ -1,6 +1,6 @@
 :root {
   font-size: 18px;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Open Sans';
   --text-primary: rgb(227, 227, 227);
   --text-secondary: white;
   --bg-primary: #1c1c1c;
@@ -12,7 +12,6 @@ body {
   background-color: white;
   margin: 0;
   padding: 0;
-  color: #333;
 }
 
 body::-webkit-scrollbar {
@@ -25,7 +24,6 @@ body::-webkit-scrollbar-track {
 
 main {
   margin-left: 5rem;
-  padding: 20px;
 }
 
 .navbar {
@@ -33,14 +31,6 @@ main {
   background-color: var(--bg-primary);
   transition: width var(--transition-speed) ease;
   z-index: 1000; /* Ensures navbar is above other content */
-  width: 5rem; /* Fixed width */
-  top: 0;
-  bottom: auto;
-  height: 100vh; /* Full viewport height */
-}
-
-.navbar:hover {
-  width: 16rem;
 }
 
 .navbar-nav {
@@ -57,6 +47,19 @@ main {
   width: 100%;
 }
 
+.nav-item img {
+  width: 20%;
+  height: 20%;
+}
+
+.nav-image {
+  display: none;
+}
+
+.nav-item:last-child {
+  margin-top: auto;
+}
+
 .nav-link {
   font-weight: bold;
   display: flex;
@@ -68,6 +71,7 @@ main {
   transition: var(--transition-speed);
 }
 
+
 .nav-link:hover {
   filter: grayscale(0%) opacity(1);
   background: var(--bg-secondary);
@@ -78,16 +82,22 @@ main {
   font-size: 22px;
   display: none;
   margin-left: 1rem;
+  animation: fadeIn 1s;
+  -webkit-animation: fadeIn 3s;
+  -moz-animation: fadeIn 3s;
+  -o-animation: fadeIn 3s;
+  -ms-animation: fadeIn 3s;
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
 }
 
 .nav-link svg {
   width: 2rem;
   min-width: 2rem;
   margin: 0 1.5rem;
-}
-
-.fa-primary, .fa-secondary {
-  transition: var(--transition-speed);
 }
 
 .fa-primary {
@@ -98,13 +108,20 @@ main {
   color: pink;
 }
 
+.fa-primary,
+.fa-secondary {
+  transition: var(--transition-speed);
+}
+
 .logo {
   font-weight: bold;
   text-transform: uppercase;
   margin-bottom: 1rem;
-  background: var(--bg-secondary);
   color: var(--text-secondary);
+  background: var(--bg-secondary);
   font-size: 1.5rem;
+  letter-spacing: 0.3ch;
+  width: 100%;
 }
 
 .logo svg {
@@ -113,8 +130,55 @@ main {
   margin-left: 1.5rem;
 }
 
-.logo:hover svg {
+.logo-text {
+  position: relative;
+  transition: var(--transition-speed);
+  display: none ;
+  letter-spacing: 2ch;
+  padding-left: 20px;
+}
+
+.navbar:hover .logo svg {
   transform: rotate(-180deg);
+}
+
+/* Large screens (desktops and larger tablets) */
+@media only screen and (min-width: 1025px) {
+  .navbar {
+    width: 5rem; /* Fixed width */
+    top: 0;
+    bottom: auto;
+    height: 100vh; /* Full viewport height */
+  }
+
+  .navbar:hover {
+    width: 16rem;
+  }
+
+  .navbar:hover .link-text,
+  .navbar:hover .logo svg {
+    display: block;
+  }
+
+  .navbar:hover .logo-text {
+    display: inline;
+  }
+
+  main {
+    padding-top: 0;
+    margin-left: 5rem; /* Make room for the navbar */
+  }
+}
+
+/* End of Nav Bar Design */
+/* General styles */
+
+h1 {
+  font-size: 2rem;
+  font-family: 'Dosis', sans-serif;
+  text-align: center;
+  margin: 2rem 0;
+  color: #333;
 }
 
 .flex-container {
@@ -126,7 +190,6 @@ main {
   margin-bottom: 20px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
-
 
 .form-container, .button-container {
   display: flex;

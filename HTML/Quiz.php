@@ -4,7 +4,6 @@ $color_mode = isset($_SESSION['color_mode']) ? $_SESSION['color_mode'] : 0;
 $css_folder = $color_mode ? "tritanopia" : "protanopia";
 $font_size = isset($_SESSION['font_size']) ? $_SESSION['font_size'] : 'medium';
 
-
 // Check if category_id is set in the session
 if (!isset($_SESSION['category_id'])) {
     header("Location: Choose_Quiz.php"); // Redirect if no quiz has been selected
@@ -19,7 +18,7 @@ $total_correct = isset($_SESSION['total_correct']) ? $_SESSION['total_correct'] 
 $incorrect_questions = isset($_SESSION['incorrect_questions']) ? $_SESSION['incorrect_questions'] : [];
 
 // Fetch the current question and all choices from the database
-$sql = "SELECT q.Question_Text, c.Choice_text, c.Is_correct, c.Choice_id
+$sql = "SELECT q.Question_Text, c.Choice_text, c.Is_correct, c.Choice_id, q.Questions_id
         FROM questions q
         JOIN choices c ON q.Questions_id = c.Question_id
         WHERE q.Category_id = ? AND q.Questions_id = (
@@ -42,7 +41,7 @@ $progress_percent = ($current_question_index / $total_questions) * 100;
 
 if (isset($_POST['choice'])) {
     $choice_id = $_POST['choice'];
-    $sql = "SELECT Is_correct FROM choices WHERE Choice_id = ?";
+    $sql = "SELECT Is_correct, Question_id FROM choices WHERE Choice_id = ?";
     $stmt_choice = $conn->prepare($sql);
     $stmt_choice->bind_param("i", $choice_id);
     $stmt_choice->execute();
@@ -53,6 +52,27 @@ if (isset($_POST['choice'])) {
         $_SESSION['total_correct']++;
     } else {
         $_SESSION['incorrect_questions'][] = $current_question_index;
+    }
+
+    // Only store the user's answer in the user_answers table if user_id is set
+    if (isset($_SESSION['User_id'])) {
+        $user_id = $_SESSION['User_id'];
+        $quiz_id = $category_id; // Assuming quiz_id is the same as category_id
+        $question_id = $choice['Question_id'];
+        $is_correct = $choice['Is_correct'];
+
+        // Ensure the quiz entry exists in the quiz table
+        $sql_insert_quiz = "INSERT INTO quiz (User_id, Category_id, Score) VALUES (?, ?, ?)
+                            ON DUPLICATE KEY UPDATE Score = ?";
+        $stmt_insert_quiz = $conn->prepare($sql_insert_quiz);
+        $stmt_insert_quiz->bind_param("iiii", $user_id, $category_id, $total_correct, $total_correct);
+        $stmt_insert_quiz->execute();
+
+        // Store the user's answer in the user_answers table
+        $sql_insert_answer = "INSERT INTO user_answers (Quiz_id, Question_id, Choice_id, Is_correct) VALUES (?, ?, ?, ?)";
+        $stmt_insert_answer = $conn->prepare($sql_insert_answer);
+        $stmt_insert_answer->bind_param("iiii", $quiz_id, $question_id, $choice_id, $is_correct);
+        $stmt_insert_answer->execute();
     }
 
     $_SESSION['question_index']++;
@@ -78,19 +98,17 @@ if ($result->num_rows > 0) {
     $_SESSION['quiz_over'] = true;
 
     // Insert or update the quiz result into the database
-    $userId = $_SESSION['User_id']; // Ensure you have the user_id stored in the session
-    if (!isset($_SESSION['User_id'])) {
-        echo '<script>alert("User ID not set in SESSION."); </script>';
-        exit;
-    }
-    $quizId = $category_id;
-    $score = $total_correct;
+    if (isset($_SESSION['User_id'])) {
+        $user_id = $_SESSION['User_id'];
+        $quiz_id = $category_id;
+        $score = $total_correct;
 
-    $sql_insert = "INSERT INTO quiz (Quiz_id, User_id, Category_id, Score) VALUES (?, ?, ?, ?)
-                   ON DUPLICATE KEY UPDATE Score = VALUES(Score)";
-    $stmt_insert = $conn->prepare($sql_insert);
-    $stmt_insert->bind_param("iiii", $quizId, $userId, $category_id, $score);
-    $stmt_insert->execute();
+        $sql_insert = "INSERT INTO quiz (User_id, Category_id, Score) VALUES (?, ?, ?)
+                       ON DUPLICATE KEY UPDATE Score = ?";
+        $stmt_insert = $conn->prepare($sql_insert);
+        $stmt_insert->bind_param("iiii", $user_id, $category_id, $score, $score);
+        $stmt_insert->execute();
+    }
 }
 
 // Check if the end quiz action has been triggered
@@ -139,7 +157,7 @@ $conn->close();
 </head>
 <body>
     <div class="logo-container">
-        <a href="../HTML/Choose_Quiz.html"><img class="logo" src="../IMG/logo.png" alt="EDG logo"></a>
+        <a href="../HTML/Choose_Quiz.php"><img class="logo" src="../IMG/logo.png" alt="EDG logo"></a>
     </div>
     <div class="form-container">
         <form method="post">
