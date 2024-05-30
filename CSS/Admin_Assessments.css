@@ -263,7 +263,7 @@ tr:hover {
 }
 
 button {
-  background-color: #FFC0CB;
+  background-color: #FFD1DC;
   color: black;
   border: none;
   padding: 0.5rem 0.5rem;
@@ -273,7 +273,7 @@ button {
 }
 
 button:hover {
-  background-color: #FFC0CB;
+  background-color: #FFD1DC;
 }
 
 button:focus {

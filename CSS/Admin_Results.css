@@ -239,4 +239,55 @@ form {
   margin: 0;
 }
 
+/* Style for the filter form container */
+.flex-container {
+  display: flex;
+  justify-content: center; /* Center the form horizontally */
+  margin-bottom: 20px; /* Add some space below the form */
+}
+
+.form-container {
+  max-width: 600px; /* Limit the width of the form container */
+  width: 100%;
+  padding: 20px;
+  background-color: #f9f9f9; /* Light gray background */
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+}
+
+/* Style for the filter form */
+.filter-form {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* Style for form labels */
+.filter-form label {
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+/* Style for form inputs */
+.filter-form input[type="text"] {
+  flex: 1; /* Take up remaining space */
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd; /* Light gray border */
+  border-radius: 4px;
+}
+
+/* Style for filter button */
+.filter-button {
+  padding: 8px 20px;
+  background-color: white; /* Green background */
+  color: white;
+  border: solid 1px #ddd;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.filter-button:hover {
+  background-color: #FFC0CB; /* Darker green on hover */
+}
+
 

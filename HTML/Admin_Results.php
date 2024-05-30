@@ -154,7 +154,6 @@
   </nav>
   <main>
     <h1>Manage Results</h1>
-
     <div class="table-container">
       <table>
         <thead>
