@@ -4,9 +4,8 @@ $color_mode = isset($_SESSION['color_mode']) ? $_SESSION['color_mode'] : 0;
 $css_folder = $color_mode ? "tritanopia" : "protanopia";
 $font_size = isset($_SESSION['font_size']) ? $_SESSION['font_size'] : 'medium';
 
-// Check if category_id is set in the session
-if (!isset($_SESSION['category_id'])) {
-    header("Location: Choose_Quiz.php"); // Redirect if no quiz has been selected
+if (!isset($_SESSION['category_id']) || !isset($_SESSION['User_id'])) {
+    header("Location: Choose_Quiz.php");
     exit;
 }
 
@@ -17,7 +16,21 @@ $current_question_index = isset($_SESSION['question_index']) ? $_SESSION['questi
 $total_correct = isset($_SESSION['total_correct']) ? $_SESSION['total_correct'] : 0;
 $incorrect_questions = isset($_SESSION['incorrect_questions']) ? $_SESSION['incorrect_questions'] : [];
 
-// Fetch the current question and all choices from the database
+// Initialize a new quiz session in the database
+if ($current_question_index === 0) {
+    $sql_insert_quiz = "INSERT INTO quiz (User_id, Category_id, Score) VALUES (?, ?, 0)";
+    $stmt_insert_quiz = $conn->prepare($sql_insert_quiz);
+    $stmt_insert_quiz->bind_param("ii", $_SESSION['User_id'], $category_id);
+    if ($stmt_insert_quiz->execute()) {
+        $quiz_id = $conn->insert_id; // Retrieve the new quiz ID
+        $_SESSION['current_quiz_id'] = $quiz_id;
+    } else {
+        die("Error creating quiz entry: " . $stmt_insert_quiz->error);
+    }
+} else {
+    $quiz_id = $_SESSION['current_quiz_id']; // Use the existing quiz ID from the session
+}
+
 $sql = "SELECT q.Question_Text, c.Choice_text, c.Is_correct, c.Choice_id, q.Questions_id
         FROM questions q
         JOIN choices c ON q.Questions_id = c.Question_id
@@ -29,7 +42,6 @@ $stmt->bind_param("iii", $category_id, $category_id, $current_question_index);
 $stmt->execute();
 $result = $stmt->get_result();
 
-// Calculate total number of questions
 $sql_count = "SELECT COUNT(*) as total FROM questions WHERE Category_id = ?";
 $stmt_count = $conn->prepare($sql_count);
 $stmt_count->bind_param("i", $category_id);
@@ -48,33 +60,19 @@ if (isset($_POST['choice'])) {
     $result_choice = $stmt_choice->get_result();
     $choice = $result_choice->fetch_assoc();
 
-    if ($choice['Is_correct']) {
+    $is_correct = $choice['Is_correct'];
+    if ($is_correct) {
         $_SESSION['total_correct']++;
     } else {
         $_SESSION['incorrect_questions'][] = $current_question_index;
     }
 
-    // Only store the user's answer in the user_answers table if user_id is set
-    if (isset($_SESSION['User_id'])) {
-        $user_id = $_SESSION['User_id'];
-        $quiz_id = $category_id; // Assuming quiz_id is the same as category_id
-        $question_id = $choice['Question_id'];
-        $is_correct = $choice['Is_correct'];
-
-        // Ensure the quiz entry exists in the quiz table
-        $sql_insert_quiz = "INSERT INTO quiz (User_id, Category_id, Score) VALUES (?, ?, ?)
-                            ON DUPLICATE KEY UPDATE Score = ?";
-        $stmt_insert_quiz = $conn->prepare($sql_insert_quiz);
-        $stmt_insert_quiz->bind_param("iiii", $user_id, $category_id, $total_correct, $total_correct);
-        $stmt_insert_quiz->execute();
-        $quiz_id = $stmt_insert_quiz->insert_id; // Get the inserted quiz_id
-
-        // Store the user's answer in the user_answers table
-        $sql_insert_answer = "INSERT INTO user_answers (Question_id, Choice_id, Is_correct) VALUES (?, ?, ?)";
-        $stmt_insert_answer = $conn->prepare($sql_insert_answer);
-        $stmt_insert_answer->bind_param("iii", $question_id, $choice_id, $is_correct);
-        $stmt_insert_answer->execute();
-    }
+    // Insert each answer's correctness into the database
+    $sql_insert_answer = "INSERT INTO user_answers (User_id, Quiz_id, Question_id, Choice_id, Is_correct)
+                          VALUES (?, ?, ?, ?, ?)";
+    $stmt_insert_answer = $conn->prepare($sql_insert_answer);
+    $stmt_insert_answer->bind_param("iiiii", $_SESSION['User_id'], $quiz_id, $choice['Question_id'], $choice_id, $is_correct);
+    $stmt_insert_answer->execute();
 
     $_SESSION['question_index']++;
 
@@ -90,52 +88,32 @@ if ($result->num_rows > 0) {
     shuffle($questions_and_choices);
     $question_text = $questions_and_choices[0]['Question_Text'];
 } else {
-    // Calculate the percentage when all questions have been answered
     $correct_percentage = 0;
     if ($total_questions > 0) {
         $correct_percentage = ($total_correct / $total_questions) * 100;
     }
     $question_text = "End Of Quiz<br><br>You Got " . round($correct_percentage) . "% of Questions Correct!";
     $_SESSION['quiz_over'] = true;
-
-    // Insert or update the quiz result into the database
-    if (isset($_SESSION['User_id'])) {
-        $user_id = $_SESSION['User_id'];
-        $quiz_id = $category_id;
-        $score = $total_correct;
-
-        $sql_insert = "INSERT INTO quiz (User_id, Category_id, Score) VALUES (?, ?, ?)
-                       ON DUPLICATE KEY UPDATE Score = ?";
-        $stmt_insert = $conn->prepare($sql_insert);
-        $stmt_insert->bind_param("iiii", $user_id, $category_id, $score, $score);
-        $stmt_insert->execute();
-    }
 }
 
-// Check if the end quiz action has been triggered
 if (isset($_POST['action1']) && $_POST['action1'] == 'end_quiz') {
-    // Unset specific session variables
     unset($_SESSION['quiz_over']);
     unset($_SESSION['category_id']);
     unset($_SESSION['question_index']);
     unset($_SESSION['total_correct']);
     unset($_SESSION['incorrect_questions']);
 
-    // Redirect to the Choose Quiz page
     header("Location: ../HTML/Choose_Quiz.php");
     exit;
 }
 
-// Check if the check answers quiz action has been triggered
 if (isset($_POST['action2']) && $_POST['action2'] == 'check_quiz') {
-    // Unset specific session variables
     unset($_SESSION['quiz_over']);
     unset($_SESSION['category_id']);
     unset($_SESSION['question_index']);
     unset($_SESSION['total_correct']);
     unset($_SESSION['incorrect_questions']);
 
-    // Redirect to the Answers page
     header("Location: ../HTML/Quiz_Answers.php");
     exit;
 }
@@ -176,7 +154,6 @@ $conn->close();
                         </button>
                     <?php endforeach; ?>
                 <?php else: ?>
-                    <!-- When quiz is over, change the form action to handle the end quiz logic -->
                     <input type="hidden" name="action1" value="end_quiz">
                     <button type="submit" class="end-quiz-button">End Quiz</button>
                     <br>
