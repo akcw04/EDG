@@ -191,52 +191,72 @@ header {
 }
 
 .flex-container {
-    display: flex;
-    justify-content: space-between;
-    padding: 20px;
-    background-color: #f4f4f9;
-    border-radius: 8px;
-    margin-bottom: 20px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: #f4f4f9;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  margin-left: 3rem;
+  width: 92%;
 }
 
 .form-container, .button-container {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .filter-form {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .filter-form label {
-    margin-right: 10px;
-    font-size: 16px;
+  margin-right: 10px;
+  font-size: 16px;
 }
 
 .filter-form select {
-    padding: 10px;
-    border-radius: 4px;
-    border: 1px solid #ddd;
-    margin-right: 10px;
-    width: 80%;
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  margin-right: 10px;
+  width: 80%;
+  transition: border-color 0.3s ease;
 }
 
-.filter-button, .add-button {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    background-color: #1c1c1c;
-    color: white;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+.filter-form select:focus {
+  border-color: #a7c7e7d5;
+  outline: none;
 }
 
-.filter-button:hover, .add-button:hover {
-    background-color: #a7c7e7d5;
-    color: black;
+.filter-form .filter-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #1c1c1c;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
+
+.filter-form .filter-button:hover {
+  background-color: #a7c7e7d5;
+  color: black;
+}
+
+.filter-form select optgroup {
+  font-weight: bold;
+  color: #333;
+}
+
+.filter-form select option {
+  padding: 8px;
+  background-color: #fff;
+  color: #333;
+}
+
 
 .results-container {
     display: flex;

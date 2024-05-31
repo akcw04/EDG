@@ -214,9 +214,15 @@ h1 {
   border: 1px solid #ddd;
   margin-right: 10px;
   width: 80%;
+  transition: border-color 0.3s ease;
 }
 
-.filter-button, .add-button {
+.filter-form select:focus {
+  border-color: #FFD1DC;
+  outline: none;
+}
+
+.filter-form .filter-button {
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
@@ -226,15 +232,37 @@ h1 {
   transition: background-color 0.3s ease;
 }
 
-.filter-button:hover, .add-button:hover {
+.filter-form .filter-button:hover {
   background-color: #FFD1DC;
   color: black;
 }
 
+.filter-form select optgroup {
+  font-weight: bold;
+  color: #333;
+}
+
+.filter-form select option {
+  padding: 8px;
+  background-color: #fff;
+  color: #333;
+}
+
 .add-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #1c1c1c;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.add-button:hover {
   background-color: #FFD1DC;
   color: black;
 }
+
 
 .table-container {
   margin: 0 auto;
