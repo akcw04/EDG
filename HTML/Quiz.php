@@ -67,11 +67,12 @@ if (isset($_POST['choice'])) {
         $stmt_insert_quiz = $conn->prepare($sql_insert_quiz);
         $stmt_insert_quiz->bind_param("iiii", $user_id, $category_id, $total_correct, $total_correct);
         $stmt_insert_quiz->execute();
+        $quiz_id = $stmt_insert_quiz->insert_id; // Get the inserted quiz_id
 
         // Store the user's answer in the user_answers table
-        $sql_insert_answer = "INSERT INTO user_answers (Quiz_id, Question_id, Choice_id, Is_correct) VALUES (?, ?, ?, ?)";
+        $sql_insert_answer = "INSERT INTO user_answers (Question_id, Choice_id, Is_correct) VALUES (?, ?, ?)";
         $stmt_insert_answer = $conn->prepare($sql_insert_answer);
-        $stmt_insert_answer->bind_param("iiii", $quiz_id, $question_id, $choice_id, $is_correct);
+        $stmt_insert_answer->bind_param("iii", $question_id, $choice_id, $is_correct);
         $stmt_insert_answer->execute();
     }
 
