@@ -11,6 +11,23 @@ if (!isset($_SESSION['User_id'])) {
 
 include '../PHP/conn.php';
 
+// Fetch all categories
+$categories_sql = "SELECT Category_id, Category_Name, Parent_id FROM category WHERE Parent_id IS NOT NULL";
+$categories_result = $conn->query($categories_sql);
+
+$categories = [];
+if ($categories_result->num_rows > 0) {
+    while ($row = $categories_result->fetch_assoc()) {
+        $categories[$row['Parent_id']][] = $row;
+    }
+}
+
+$parent_category_symbols = [
+    1 => "+",
+    2 => "-",
+    3 => "*",
+    4 => "/"
+];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -182,22 +199,20 @@ include '../PHP/conn.php';
     <main>
         <div class="flex-container">
             <div class="form-container">
-                <form action="Results_Page.php" method="GET" class="filter-form">
+                <form action="Result.php" method="GET" class="filter-form">
                     <label for="category">Filter by Category:</label>
                     <select name="category" id="category">
-                        <option value="all" <?php if (isset($_GET['category']) && $_GET['category'] === 'all') echo 'selected'; ?>>ALL</option>
+                        <option value="all" <?php if (!isset($_GET['category']) || $_GET['category'] === 'all') echo 'selected'; ?>>ALL</option>
                         <?php
-                        include '../PHP/conn.php';
-                        $categories_sql = "SELECT Category_id, Category_Name FROM category";
-                        $categories_result = $conn->query($categories_sql);
-
-                        if ($categories_result->num_rows > 0) {
-                            while ($row = $categories_result->fetch_assoc()) {
-                                $selected = (isset($_GET['category']) && $_GET['category'] == $row['Category_id']) ? 'selected' : '';
-                                echo "<option value='{$row['Category_id']}' $selected>{$row['Category_Name']}</option>";
+                        foreach ($categories as $parent_id => $subcategories) {
+                            $parent_category_symbol = $parent_category_symbols[$parent_id];
+                            echo "<optgroup label='$parent_category_symbol'>";
+                            foreach ($subcategories as $subcategory) {
+                                $selected = (isset($_GET['category']) && $_GET['category'] == $subcategory['Category_id']) ? 'selected' : '';
+                                echo "<option value='{$subcategory['Category_id']}' $selected>{$subcategory['Category_Name']}</option>";
                             }
+                            echo "</optgroup>";
                         }
-                        $conn->close();
                         ?>
                     </select>
                     <button type="submit" class="filter-button">Filter</button>
@@ -215,20 +230,25 @@ include '../PHP/conn.php';
 
             // Fetch the latest quiz results for the user
             $sql = "SELECT q.Quiz_id, q.Score, 
+                           c.Category_Name, pc.Category_Name as Parent_name,
                            (SELECT COUNT(*) FROM questions WHERE Category_id=q.Category_id) as total_questions, 
                            (SELECT COUNT(*) FROM user_answers ua WHERE ua.Quiz_id=q.Quiz_id AND ua.Is_correct=1) as correct_answers 
                     FROM quiz q 
-                    WHERE q.User_id = $user_id $category_filter 
+                    JOIN category c ON q.Category_id = c.Category_id
+                    LEFT JOIN category pc ON c.Parent_id = pc.Category_id
+                    WHERE q.User_id = ? $category_filter 
                     ORDER BY q.Quiz_id DESC";
-            $result = $conn->query($sql);
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param("i", $user_id);
+            $stmt->execute();
+            $result = $stmt->get_result();
 
             if ($result->num_rows > 0) {
                 echo "<div class='results-container'>";
                 while ($row = $result->fetch_assoc()) {
                     $percentage = ($row['correct_answers'] / $row['total_questions']) * 100;
                     echo "<div class='result-card'>";
-                    echo "<h2>Quiz ID: " . $row['Quiz_id'] . "</h2>";
-                    echo "<p>Score: " . $row['Score'] . "</p>";
+                    echo "<h2>" . htmlspecialchars($row['Parent_name'] . " - " . $row['Category_Name']) . "</h2>";
                     echo "<p>Correct Answers: " . $row['correct_answers'] . " out of " . $row['total_questions'] . "</p>";
                     echo "<p>Percentage: " . round($percentage, 2) . "%</p>";
                     echo "</div>";
