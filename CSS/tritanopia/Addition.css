@@ -200,7 +200,7 @@ main {
 }
 
 .Introduction-Text {
-  font-size: calc(var(--font-size-base) * 1.125);
+  font-size: calc(var(--font-size-base) * 1.25);
   font-weight: bold;
   color: black;
   text-align: justify;
@@ -222,7 +222,7 @@ main {
 }
 
 .Example-One-Text, .Example-Two-Text, .Example-Three-Text {
-  font-size: calc(var(--font-size-base) * 1.125);
+  font-size: calc(var(--font-size-base) * 1.25);
   font-weight: bold;
   color: white;
 }
@@ -247,7 +247,7 @@ main {
   }
 
   .Text {
-    font-size: calc(var(--font-size-base) * 1.125);
+    font-size: calc(var(--font-size-base) * 1.25);
     font-weight: bold;
     color: black;
     text-align: center;

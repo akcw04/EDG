@@ -202,7 +202,7 @@ box-shadow: 5px 5px rgba(0,0,0,0.1);
 }
 
 .Introduction-Text {
-font-size: calc(var(--font-size-base) * 1.125);
+font-size: calc(var(--font-size-base) * 1.25);
 font-weight: bold;
 color: black;
 text-align: justify;
@@ -224,7 +224,7 @@ margin-bottom: 10px;
 }
 
 .Example-One-Text, .Example-Two-Text, .Example-Three-Text {
-font-size: calc(var(--font-size-base) * 1.125);
+font-size: calc(var(--font-size-base) * 1.25);
 font-weight: bold;
 color: white;
 }
@@ -249,7 +249,7 @@ align-items: center;
 }
 
 .Text {
-  font-size: calc(var(--font-size-base) * 1.125);
+  font-size: calc(var(--font-size-base) * 1.25);
   font-weight: bold;
   color: black;
   text-align: center;
