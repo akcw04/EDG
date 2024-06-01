@@ -284,5 +284,9 @@ img {
   color: white
 }
 
+  .background {
+    height: 100vh;
+    background-color: #a7c7e7d5;
+  }
 
 

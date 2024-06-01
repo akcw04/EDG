@@ -173,6 +173,7 @@ $font_size = isset($_SESSION['font_size']) ? $_SESSION['font_size'] : 'medium';
         </nav>
       
         <main>
+          <div class="background">
           <div class="Title-Box">
           <p class="Title-Text">Addition</p> <!-- Title -->
           </div>
@@ -336,7 +337,7 @@ $font_size = isset($_SESSION['font_size']) ? $_SESSION['font_size'] : 'medium';
           <div class="Outro"> <!-- Addition-Outro -->
             <p>Congratulations on finishing your addition tutorial! You've learned how to combine numbers and find totals, which is a fundamental skill in math. Your ability to add will help you in many everyday situations. Great job on taking this important step in your math journey!</p>
           </div>
-
+        </div>
         </main>
 
         <div id="settings-modal" class="modal">
