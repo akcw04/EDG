@@ -120,6 +120,56 @@ $parent_category_symbols = [
         .logout-button:hover, .cancel-button:hover {
             background-color: #bbb;
         }
+
+        .flex-container {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+            background-color: #f4f4f9;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-left: 3rem;
+            width: 92%;
+        }
+
+        .form-container, .button-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .filter-form {
+            display: flex;
+            align-items: center;
+        }
+
+        .filter-form label {
+            margin-right: 10px;
+            font-size: 16px;
+        }
+
+        .filter-form select {
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            margin-right: 10px;
+            width: 80%;
+        }
+
+        .filter-button, .add-button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #1c1c1c;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .filter-button:hover, .add-button:hover {
+            background-color: #FFD1DC;
+            color: black;
+        }
     </style>
 </head>
 
@@ -246,7 +296,7 @@ $parent_category_symbols = [
             if ($result->num_rows > 0) {
                 echo "<div class='results-container'>";
                 while ($row = $result->fetch_assoc()) {
-                    $progress_percent = ($total_questions > 0) ? ($current_question_index / $total_questions) * 100 : 0;
+                    $percentage = ($row['total_questions'] > 0) ? ($row['correct_answers'] / $row['total_questions']) * 100 : 0;
                     echo "<div class='result-card'>";
                     echo "<h2>" . htmlspecialchars($row['Parent_name'] . " - " . $row['Category_Name']) . "</h2>";
                     echo "<p>Correct Answers: " . $row['correct_answers'] . " out of " . $row['total_questions'] . "</p>";
