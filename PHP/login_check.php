@@ -15,7 +15,13 @@ function check_data($Email, $Password, $conn) {
         if (password_verify($Password, $user['Password'])) {
             $_SESSION['User_id'] = $user['User_id']; // Store the user ID in the session
             $_SESSION['Role'] = $user['Role']; // Store the Role in the session
-            echo '<script>alert("Login Successful"); window.location.href = "http://localhost/EDG/HTML/Pick_Color.html";</script>';
+            
+            // Redirect based on user role
+            if ($_SESSION['Role'] == 1) {
+                echo '<script>alert("Login Successful. Welcome, Admin!"); window.location.href = "http://localhost/EDG/HTML/Admin_Dashboard.html";</script>';
+            } else {
+                echo '<script>alert("Login Successful"); window.location.href = "http://localhost/EDG/HTML/Pick_Color.html";</script>';
+            }
         } else {
             echo '<script>alert("Incorrect Password"); window.location.href = "http://localhost/EDG/HTML/Login.html";</script>';
         }
