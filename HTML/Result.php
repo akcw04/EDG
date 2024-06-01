@@ -246,7 +246,7 @@ $parent_category_symbols = [
             if ($result->num_rows > 0) {
                 echo "<div class='results-container'>";
                 while ($row = $result->fetch_assoc()) {
-                    $percentage = ($row['correct_answers'] / $row['total_questions']) * 100;
+                    $progress_percent = ($total_questions > 0) ? ($current_question_index / $total_questions) * 100 : 0;
                     echo "<div class='result-card'>";
                     echo "<h2>" . htmlspecialchars($row['Parent_name'] . " - " . $row['Category_Name']) . "</h2>";
                     echo "<p>Correct Answers: " . $row['correct_answers'] . " out of " . $row['total_questions'] . "</p>";
