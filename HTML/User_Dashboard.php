@@ -221,7 +221,7 @@ $font_size = isset($_SESSION['font_size']) ? $_SESSION['font_size'] : 'medium';
         <div class="start_pic_container">
             <div class="start_pic">
               <a href="../HTML/Choose_Quiz.php"><img class="pic" src="../IMG/start_attempting_pic.png" alt="start_attempting_quiz"></a>
-            </div>
+          </div>
             <h3>Tap on the Picture to Start Attempting A Quiz Now !
               <br>
               <p class="encourage">Unlock Your Potential with Every Quiz!
