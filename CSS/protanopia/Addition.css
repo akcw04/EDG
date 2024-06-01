@@ -191,7 +191,7 @@ main {
 
 
 .Introduction-Container {
-  background-color: #fff;
+  background-color: #a7c7e7d5;
   border-radius: 8px;
   padding-top: 5px;
   padding-bottom: 15px;
@@ -209,7 +209,7 @@ main {
 }
 
 .Example-One-Container, .Example-Two-Container, .Example-Three-Container {
-  background-color: white;
+  background-color: #a7c7e7d5;
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   height:auto;
@@ -218,7 +218,7 @@ main {
 .Example-One-Text-Box, .Example-Two-Text-Box, .Example-Three-Text-Box {
   display: flex;
   justify-content: center;
-  background-color: #a7c7e7d5;
+  background-color: black;
   padding: 8px;
   margin-bottom: 10px;
 }
@@ -226,7 +226,7 @@ main {
 .Example-One-Text, .Example-Two-Text, .Example-Three-Text {
   font-size: calc(var(--font-size-base) * 1.125);
   font-weight: bold;
-  color: black;
+  color: white;
 }
 
 .Example-One-Box1, .Example-One-Box2, .Example-One-Box3,
@@ -272,7 +272,7 @@ img {
 }
 
 .Outro {
-  background-color: #a7c7e7d5;
+  background-color: black;
   padding-top: 20px;
   padding-bottom: 50px;
   padding-left: 20px;
@@ -281,6 +281,10 @@ img {
   text-align: center;
   font-size: 30px;
   font-weight: bold;
-  color: black
+  color: white
 }
 
+.background {
+  background-color: #a7c7e7d5;
+  height: 100vh;
+}
