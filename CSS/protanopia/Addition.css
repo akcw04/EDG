@@ -191,6 +191,7 @@ main {
 
 
 .Introduction-Container {
+  background-color: #a7c7e7d5;
   border-radius: 8px;
   padding-top: 5px;
   padding-bottom: 15px;
@@ -208,6 +209,7 @@ main {
 }
 
 .Example-One-Container, .Example-Two-Container, .Example-Three-Container {
+  background-color: #a7c7e7d5;
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   height:auto;
@@ -279,10 +281,11 @@ img {
   text-align: center;
   font-size: 30px;
   font-weight: bold;
+  color: white
 }
 
   .background {
-    height: 100vh;
+    height: auto;
     background-color: #a7c7e7d5;
   }
 
