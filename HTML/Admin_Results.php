@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Then delete the question
             $question_sql = "DELETE FROM questions WHERE Questions_id='$id'";
             if ($conn->query($question_sql) === TRUE) {
-                echo '<script>alert("Record deleted successfully"); window.location.href = "Admin_Assessments.php";</script>';
+                echo '<script>alert("Record deleted successfully"); window.location.href = "Admin_Quiz.php";</script>';
             } else {
                 echo "Error deleting question: " . $conn->error;
             }
@@ -173,7 +173,7 @@ $result = $stmt->get_result();
             </a>
         </li>
         <li class="nav-item">
-            <a href="../HTML/Admin_Assessments.php" class="nav-link">
+            <a href="../HTML/Admin_Quiz.php" class="nav-link">
                 <svg xmlns="http://www.w3.org/2000/svg" height="30" width="30" viewBox="0 0 384 512" fill="white">
                     <path d="M64 0C28.7 0 0 28.7 0 64V448c0 35.3 28.7 64 64 64H320c35.3 0 64-28.7 64-64V160H256c-17.7 0-32-14.3-32-32V0H64zM256 0V128H384L256 0zM112 256H272c8.8 0 16 7.2 16 16s-7.2 16-16 16H112c-8.8 0-16-7.2-16-16s7.2-16 16-16zm0 64H272c8.8 0 16 7.2 16 16s-7.2 16-16 16H112c-8.8 0-16-7.2-16-16s7.2-16 16-16z"/>
                 </svg>
@@ -203,7 +203,7 @@ $result = $stmt->get_result();
     <h1>Manage Results</h1>
     <div class="flex-container">
         <div class="form-container">
-            <form action="admin_assessments.php" method="GET" class="filter-form">
+            <form method="GET" class="filter-form">
                 <label for="category">Filter by Category:</label>
                 <select name="category" id="category">
                     <option value="all" <?php if ($filter_category_id === 'all' || !$filter_category_id) echo 'selected'; ?>>ALL</option>

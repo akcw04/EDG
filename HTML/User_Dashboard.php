@@ -217,7 +217,7 @@ $font_size = isset($_SESSION['font_size']) ? $_SESSION['font_size'] : 'medium';
       </section>
 
       <section id="section4">
-        <h1>Assessments</h1>
+        <h1>Quiz</h1>
         <div class="start_pic_container">
             <div class="start_pic">
               <a href="../HTML/Choose_Quiz.php"><img class="pic" src="../IMG/start_attempting_pic.png" alt="start_attempting_quiz"></a>
@@ -244,7 +244,7 @@ $font_size = isset($_SESSION['font_size']) ? $_SESSION['font_size'] : 'medium';
       <section id="section5">
       <h1>About Us</h1>
       
-      <p class="About-Us">Welcome to Educational Goat, where curiosity meets fun and learning! Founded by a passionate team of quiz lovers and lifelong learners, Educational Goat is dedicated to creating a vibrant community through interactive quizzes. The unique part of website is that it is friendly to protanopia and tritanopia users. Our platform offers tutorials for basic math, which included the materials for the users to learn, then assessments which allows the users to evaluate themselves. At Educational Goat, we believe in the power of knowledge and the joy of discovery. Whether you're looking to challenge yourself, compete with friends, or simply explore new subjects, our quizzes are designed to educate, entertain, and inspire. Join us on this exciting journey of learning, one question at a time!</p> 
+      <p class="About-Us">Welcome to Educational Goat, where curiosity meets fun and learning! Founded by a passionate team of quiz lovers and lifelong learners, Educational Goat is dedicated to creating a vibrant community through interactive quizzes. The unique part of website is that it is friendly to protanopia and tritanopia users. Our platform offers tutorials for basic math, which included the materials for the users to learn, then Quizzes which allows the users to evaluate themselves. At Educational Goat, we believe in the power of knowledge and the joy of discovery. Whether you're looking to challenge yourself, compete with friends, or simply explore new subjects, our quizzes are designed to educate, entertain, and inspire. Join us on this exciting journey of learning, one question at a time!</p> 
       
       <div class="Banner-Wrapper">
         <div>

@@ -55,7 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $choice_sql = "UPDATE choices SET Choice_text='$choice_text', Is_correct='$is_correct' WHERE Question_id='$question_id' AND Choice_id='$choice_id'";
                 $conn->query($choice_sql);
             }
-            echo '<script>alert("Assessment updated successfully"); window.location.href = "/EDG/EDG/HTML/Admin_Assessments.php";</script>';
+            echo '<script>alert("Assessment updated successfully"); window.location.href = "/EDG/EDG/HTML/Admin_Quiz.php";</script>';
         } else {
             echo "Error: " . $sql . "<br>" . $conn->error;
         }
@@ -69,7 +69,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $choice_sql = "INSERT INTO choices (Question_id, Choice_text, Is_correct) VALUES ('$question_id', '$choice_text', '$is_correct')";
                 $conn->query($choice_sql);
             }
-            echo '<script>alert("Assessment added successfully"); window.location.href = "/EDG/EDG/HTML/Admin_Assessments.php";</script>';
+            echo '<script>alert("Assessment added successfully"); window.location.href = "/EDG/EDG/HTML/Admin_Quiz.php";</script>';
         } else {
             echo "Error: " . $sql . "<br>" . $conn->error;
         }
@@ -196,7 +196,7 @@ $parent_category_symbols = [
             </select>
             <div class="button-group">
                 <button type="submit"><?php echo $editing ? 'Update' : 'Add'; ?> Assessment</button>
-                <button type="button" onclick="window.location.href='/EDG/EDG/HTML/Admin_Assessments.php'">Cancel</button>
+                <button type="button" onclick="window.location.href='/EDG/EDG/HTML/Admin_Quiz.php'">Cancel</button>
             </div>
         </form>
     </div>
