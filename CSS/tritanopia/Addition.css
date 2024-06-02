@@ -190,25 +190,24 @@ main {
 
 
 .Introduction-Container {
-  background-color: #fff;
+  background-color: #9adbb3d1;
   border-radius: 8px;
   padding-top: 5px;
   padding-bottom: 15px;
   margin-bottom: 10px;
   margin-left: 20px;
   margin-right: 20px;
-  box-shadow: 5px 5px rgba(0,0,0,0.1);
 }
 
 .Introduction-Text {
-  font-size: calc(var(--font-size-base) * 1.125);
+  font-size: calc(var(--font-size-base) * 1.25);
   font-weight: bold;
   color: black;
   text-align: justify;
 }
 
 .Example-One-Container, .Example-Two-Container, .Example-Three-Container {
-  background-color: white;
+  background-color: #9adbb3d1;
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   height:auto;
@@ -223,7 +222,7 @@ main {
 }
 
 .Example-One-Text, .Example-Two-Text, .Example-Three-Text {
-  font-size: calc(var(--font-size-base) * 1.125);
+  font-size: calc(var(--font-size-base) * 1.25);
   font-weight: bold;
   color: white;
 }
@@ -248,7 +247,7 @@ main {
   }
 
   .Text {
-    font-size: calc(var(--font-size-base) * 1.125);
+    font-size: calc(var(--font-size-base) * 1.25);
     font-weight: bold;
     color: black;
     text-align: center;
@@ -281,4 +280,9 @@ img {
   font-size: 30px;
   font-weight: bold;
   color: white
+}
+
+.background {
+  background-color: #9adbb3d1;
+  height: 100vh;
 }
