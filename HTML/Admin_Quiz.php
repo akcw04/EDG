@@ -237,7 +237,7 @@ if ($result->num_rows > 0) {
             </form>
         </div>
         <div class="button-container">
-            <button type="button" class="add-button" onclick="window.location.href='../PHP/Add_Assessment.php'">Add Quiz</button>
+            <button type="button" class="add-button" onclick="window.location.href='../PHP/Add_Quiz.php'">Add Quiz</button>
         </div>
     </div>
     <div class="table-container">
@@ -275,7 +275,7 @@ if ($result->num_rows > 0) {
                         }
                         echo "</td>";
                         echo "<td>
-                                <form action='../PHP/Edit_Assessment.php' method='GET' style='display:inline-block;'>
+                                <form action='../PHP/Edit_Quiz.php' method='GET' style='display:inline-block;'>
                                     <input type='hidden' name='id' value='" . $question['info']['Questions_id'] . "'>
                                     <button type='submit'>Edit</button>
                                 </form>

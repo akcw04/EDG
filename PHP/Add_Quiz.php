@@ -9,8 +9,33 @@ if (!isset($_SESSION['User_id'])) {
 
 include 'conn.php';
 
+$editing = isset($_GET['id']);
+if ($editing) {
+    $question_id = $_GET['id'];
+    $question_sql = "SELECT * FROM questions WHERE Questions_id = '$question_id'";
+    $question_result = $conn->query($question_sql);
+    $question = $question_result->fetch_assoc();
+
+    $choices_sql = "SELECT * FROM choices WHERE Question_id = '$question_id'";
+    $choices_result = $conn->query($choices_sql);
+    $choices = [];
+    while ($choice = $choices_result->fetch_assoc()) {
+        $choices[] = $choice;
+    }
+} else {
+    $question = [
+        'Category_id' => '',
+        'Question_Text' => '',
+    ];
+    $choices = [
+        ['Choice_text' => '', 'Is_correct' => 0],
+        ['Choice_text' => '', 'Is_correct' => 0],
+        ['Choice_text' => '', 'Is_correct' => 0],
+        ['Choice_text' => '', 'Is_correct' => 0],
+    ];
+}
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $question_id = $_POST['id'];
     $category_id = $_POST['category'];
     $question_text = $_POST['question'];
     $choices = [
@@ -20,45 +45,34 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         ['text' => $_POST["choice4"], 'is_correct' => $_POST["is_correct"] == '4' ? 1 : 0]
     ];
 
-    $sql = "UPDATE questions SET Category_id='$category_id', Question_Text='$question_text' WHERE Questions_id='$question_id'";
-    if ($conn->query($sql) === TRUE) {
-        foreach ($choices as $index => $choice) {
-            $choice_id = $index + 1;
-            $choice_text = $choice['text'];
-            $is_correct = $choice['is_correct'];
-            $choice_sql = "UPDATE choices SET Choice_text='$choice_text', Is_correct='$is_correct' WHERE Question_id='$question_id' AND Choice_id='$choice_id'";
-            $conn->query($choice_sql);
+    if ($editing) {
+        $sql = "UPDATE questions SET Category_id='$category_id', Question_Text='$question_text' WHERE Questions_id='$question_id'";
+        if ($conn->query($sql) === TRUE) {
+            foreach ($choices as $index => $choice) {
+                $choice_text = $choice['text'];
+                $is_correct = $choice['is_correct'];
+                $choice_id = $index + 1;
+                $choice_sql = "UPDATE choices SET Choice_text='$choice_text', Is_correct='$is_correct' WHERE Question_id='$question_id' AND Choice_id='$choice_id'";
+                $conn->query($choice_sql);
+            }
+            echo '<script>alert("Quiz updated successfully"); window.location.href = "/EDG/EDG/HTML/Admin_Quiz.php";</script>';
+        } else {
+            echo "Error: " . $sql . "<br>" . $conn->error;
         }
-        echo '<script>alert("Assessment updated successfully"); window.location.href = "/EDG/EDG/HTML/Admin_Quiz.php";</script>';
     } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
-    }
-} else {
-    $question_id = $_GET['id'];
-    $sql = "SELECT q.Questions_id, q.Category_id, q.Question_Text, 
-            c1.Choice_text AS choice1, c1.Is_correct AS is_correct1, 
-            c2.Choice_text AS choice2, c2.Is_correct AS is_correct2, 
-            c3.Choice_text AS choice3, c3.Is_correct AS is_correct3, 
-            c4.Choice_text AS choice4, c4.Is_correct AS is_correct4
-            FROM questions q
-            LEFT JOIN choices c1 ON q.Questions_id = c1.Question_id AND c1.Choice_id = 1
-            LEFT JOIN choices c2 ON q.Questions_id = c2.Question_id AND c2.Choice_id = 2
-            LEFT JOIN choices c3 ON q.Questions_id = c3.Question_id AND c3.Choice_id = 3
-            LEFT JOIN choices c4 ON q.Questions_id = c4.Question_id AND c4.Choice_id = 4
-            WHERE q.Questions_id='$question_id'";
-    $result = $conn->query($sql);
-    if ($result->num_rows > 0) {
-        $row = $result->fetch_assoc();
-        $category_id = $row['Category_id'];
-        $question_text = $row['Question_Text'];
-        $choice1 = $row['choice1'];
-        $is_correct1 = $row['is_correct1'];
-        $choice2 = $row['choice2'];
-        $is_correct2 = $row['is_correct2'];
-        $choice3 = $row['choice3'];
-        $is_correct3 = $row['is_correct3'];
-        $choice4 = $row['choice4'];
-        $is_correct4 = $row['is_correct4'];
+        $sql = "INSERT INTO questions (Category_id, Question_Text) VALUES ('$category_id', '$question_text')";
+        if ($conn->query($sql) === TRUE) {
+            $question_id = $conn->insert_id;
+            foreach ($choices as $choice) {
+                $choice_text = $choice['text'];
+                $is_correct = $choice['is_correct'];
+                $choice_sql = "INSERT INTO choices (Question_id, Choice_text, Is_correct) VALUES ('$question_id', '$choice_text', '$is_correct')";
+                $conn->query($choice_sql);
+            }
+            echo '<script>alert("Quiz added successfully"); window.location.href = "/EDG/EDG/HTML/Admin_Quiz.php";</script>';
+        } else {
+            echo "Error: " . $sql . "<br>" . $conn->error;
+        }
     }
 }
 
@@ -86,8 +100,8 @@ $parent_category_symbols = [
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Edit Assessment</title>
-    <link rel="stylesheet" href="../CSS/Add_Assessment.css" />
+    <title><?php echo $editing ? 'Edit Quiz' : 'Add New Quiz'; ?></title>
+    <link rel="stylesheet" href="/EDG/EDG/PHP/Add_Quiz.php" />
     <style>
         body {
             font-family: 'Roboto', sans-serif;
@@ -147,9 +161,8 @@ $parent_category_symbols = [
 
 <main>
     <div class="form-container">
-        <h1>Edit Assessment</h1>
-        <form action="Edit_Assessment.php" method="POST">
-            <input type="hidden" name="id" value="<?php echo $question_id; ?>">
+        <h1><?php echo $editing ? 'Edit Quiz' : 'Add New Quiz'; ?></h1>
+        <form action="Add_Quiz.php" method="POST">
             <label for="category">Category:</label>
             <select name="category" id="category" required>
                 <?php
@@ -157,7 +170,7 @@ $parent_category_symbols = [
                     $parent_category_symbol = $parent_category_symbols[$parent_id];
                     echo "<optgroup label='$parent_category_symbol'>";
                     foreach ($subcategories as $subcategory) {
-                        $selected = $category_id == $subcategory['Category_id'] ? 'selected' : '';
+                        $selected = $subcategory['Category_id'] == $question['Category_id'] ? 'selected' : '';
                         echo "<option value='{$subcategory['Category_id']}' $selected>{$subcategory['Category_Name']}</option>";
                     }
                     echo "</optgroup>";
@@ -165,24 +178,24 @@ $parent_category_symbols = [
                 ?>
             </select>
             <label for="question">Question Text:</label>
-            <input type="text" id="question" name="question" value="<?php echo htmlspecialchars($question_text); ?>" required>
+            <input type="text" id="question" name="question" value="<?php echo htmlspecialchars($question['Question_Text']); ?>" required>
             <label for="choice1">Choice 1:</label>
-            <input type="text" id="choice1" name="choice1" value="<?php echo htmlspecialchars($choice1); ?>" required>
+            <input type="text" id="choice1" name="choice1" value="<?php echo htmlspecialchars($choices[0]['Choice_text']); ?>" required>
             <label for="choice2">Choice 2:</label>
-            <input type="text" id="choice2" name="choice2" value="<?php echo htmlspecialchars($choice2); ?>" required>
+            <input type="text" id="choice2" name="choice2" value="<?php echo htmlspecialchars($choices[1]['Choice_text']); ?>" required>
             <label for="choice3">Choice 3:</label>
-            <input type="text" id="choice3" name="choice3" value="<?php echo htmlspecialchars($choice3); ?>" required>
+            <input type="text" id="choice3" name="choice3" value="<?php echo htmlspecialchars($choices[2]['Choice_text']); ?>" required>
             <label for="choice4">Choice 4:</label>
-            <input type="text" id="choice4" name="choice4" value="<?php echo htmlspecialchars($choice4); ?>" required>
+            <input type="text" id="choice4" name="choice4" value="<?php echo htmlspecialchars($choices[3]['Choice_text']); ?>" required>
             <label for="is_correct">Correct Choice:</label>
             <select name="is_correct" id="is_correct" required>
-                <option value="1" <?php if($is_correct1) echo 'selected'; ?>>Choice 1</option>
-                <option value="2" <?php if($is_correct2) echo 'selected'; ?>>Choice 2</option>
-                <option value="3" <?php if($is_correct3) echo 'selected'; ?>>Choice 3</option>
-                <option value="4" <?php if($is_correct4) echo 'selected'; ?>>Choice 4</option>
+                <option value="1" <?php if($choices[0]['Is_correct']) echo 'selected'; ?>>Choice 1</option>
+                <option value="2" <?php if($choices[1]['Is_correct']) echo 'selected'; ?>>Choice 2</option>
+                <option value="3" <?php if($choices[2]['Is_correct']) echo 'selected'; ?>>Choice 3</option>
+                <option value="4" <?php if($choices[3]['Is_correct']) echo 'selected'; ?>>Choice 4</option>
             </select>
             <div class="button-group">
-                <button type="submit">Update Assessment</button>
+                <button type="submit"><?php echo $editing ? 'Update' : 'Add'; ?> Quiz</button>
                 <button type="button" onclick="window.location.href='/EDG/EDG/HTML/Admin_Quiz.php'">Cancel</button>
             </div>
         </form>
