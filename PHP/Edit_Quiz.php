@@ -29,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $choice_sql = "UPDATE choices SET Choice_text='$choice_text', Is_correct='$is_correct' WHERE Question_id='$question_id' AND Choice_id='$choice_id'";
             $conn->query($choice_sql);
         }
-        echo '<script>alert("Quiz updated successfully"); window.location.href = "/EDG/EDG/HTML/Admin_Quiz.php";</script>';
+        echo '<script>alert("Quiz updated successfully"); window.location.href = "../HTML/Admin_Quiz.php";</script>';
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
@@ -125,21 +125,27 @@ $parent_category_symbols = [
             box-sizing: border-box;
         }
         .button-group {
+            margin-top: 20px;
             display: flex;
             justify-content: space-between;
-            margin-top: 20px;
         }
-        button {
-            padding: 10px 20px;
+        .button-group button {
+            flex: 1;
+            margin: 5px;
+            padding: 10px;
+            font-size: 18px;
             border: none;
             border-radius: 5px;
-            background-color: #333;
-            color: white;
             cursor: pointer;
+            transition: background-color 0.3s ease;
         }
-        button[type="button"] {
+        button[type="submit"] {
+            background-color: black;
+            color: white;
+        }
+        button[type="submit"]:hover {
             background-color: #ccc;
-            color: #333;
+            color: black;
         }
     </style>
 </head>
@@ -182,8 +188,8 @@ $parent_category_symbols = [
                 <option value="4" <?php if($is_correct4) echo 'selected'; ?>>Choice 4</option>
             </select>
             <div class="button-group">
-                <button type="submit">Update Quiz</button>
-                <button type="button" onclick="window.location.href='/EDG/EDG/HTML/Admin_Quiz.php'">Cancel</button>
+                  <button type="submit">Update</button>
+                  <button type="button" onclick="window.location.href='../HTML/Admin_Quiz.php'">Cancel</button>
             </div>
         </form>
     </div>

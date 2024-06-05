@@ -197,7 +197,6 @@ main {
   height: auto;
   top: 0; /* Ensure the background starts from the top */
   object-fit: cover; /* Maintain aspect ratio */
-  z-index: -1; /* Place the background behind other elements */
   background-size: cover; /* Ensure the background covers the entire width */
   background-position: center; /* Center the background image */
   background-repeat: no-repeat; /* Prevent repeating the image */

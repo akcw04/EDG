@@ -55,7 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $choice_sql = "UPDATE choices SET Choice_text='$choice_text', Is_correct='$is_correct' WHERE Question_id='$question_id' AND Choice_id='$choice_id'";
                 $conn->query($choice_sql);
             }
-            echo '<script>alert("Quiz updated successfully"); window.location.href = "/EDG/EDG/HTML/Admin_Quiz.php";</script>';
+            echo '<script>alert("Quiz updated successfully"); window.location.href = "../HTML/Admin_Quiz.php";</script>';
         } else {
             echo "Error: " . $sql . "<br>" . $conn->error;
         }
@@ -69,7 +69,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $choice_sql = "INSERT INTO choices (Question_id, Choice_text, Is_correct) VALUES ('$question_id', '$choice_text', '$is_correct')";
                 $conn->query($choice_sql);
             }
-            echo '<script>alert("Quiz added successfully"); window.location.href = "/EDG/EDG/HTML/Admin_Quiz.php";</script>';
+            echo '<script>alert("Quiz added successfully"); window.location.href = "../HTML/Admin_Quiz.php";</script>';
         } else {
             echo "Error: " . $sql . "<br>" . $conn->error;
         }
@@ -101,7 +101,7 @@ $parent_category_symbols = [
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><?php echo $editing ? 'Edit Quiz' : 'Add New Quiz'; ?></title>
-    <link rel="stylesheet" href="/EDG/EDG/PHP/Add_Quiz.php" />
+    <link rel="stylesheet" href="../PHP/Add_Quiz.php" />
     <style>
         body {
             font-family: 'Roboto', sans-serif;
@@ -139,22 +139,29 @@ $parent_category_symbols = [
             box-sizing: border-box;
         }
         .button-group {
+            margin-top: 20px;
             display: flex;
             justify-content: space-between;
-            margin-top: 20px;
         }
-        button {
-            padding: 10px 20px;
+        .button-group button {
+            flex: 1;
+            margin: 5px;
+            padding: 10px;
+            font-size: 18px;
             border: none;
             border-radius: 5px;
-            background-color: #333;
-            color: white;
             cursor: pointer;
+            transition: background-color 0.3s ease;
         }
-        button[type="button"] {
+        button[type="submit"] {
+            background-color: black;
+            color: white;
+        }
+        button[type="submit"]:hover {
             background-color: #ccc;
-            color: #333;
+            color: black;
         }
+    </style
     </style>
 </head>
 <body>
@@ -196,7 +203,7 @@ $parent_category_symbols = [
             </select>
             <div class="button-group">
                 <button type="submit"><?php echo $editing ? 'Update' : 'Add'; ?> Quiz</button>
-                <button type="button" onclick="window.location.href='/EDG/EDG/HTML/Admin_Quiz.php'">Cancel</button>
+                <button type="button" onclick="window.location.href='../HTML/Admin_Quiz.php'">Cancel</button>
             </div>
         </form>
     </div>

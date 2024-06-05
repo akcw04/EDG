@@ -195,11 +195,12 @@
                             <input type='hidden' name='action' value='edit'>
                             <button type='submit'>Edit</button>
                           </form>
-                          <form action='../PHP/manage_user.php' method='POST' style='display:inline-block;'>
+                          <form id='deleteform' action='../PHP/manage_user.php' method='POST' style='display:inline-block;'>
                             <input type='hidden' name='id' value='" . $row["User_id"] . "'>
                             <input type='hidden' name='action' value='delete'>
-                            <button type='submit'>Delete</button>
+                            <button type='submit' onclick='confirmDelete(\"deleteForm" . $row['User_id'] . "\")'>Delete</button>
                           </form>
+
                         </td>";
                   echo "</tr>";
               }
@@ -233,6 +234,12 @@ function openModal() {
 function closeModal() {
     document.getElementById('logout-modal').style.display = 'none';
 }
+
+function confirmDelete() {
+        if (confirm("Are you sure you want to delete this User? zthis action cannot be undone")) {
+            document.getElementById('deleteForm').submit();
+        }
+    }
 </script>
 </body>
 </html>

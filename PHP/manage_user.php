@@ -110,6 +110,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo "Error updating record: " . $conn->error;
         }
     } elseif ($action == 'delete') {
+        
         // First, delete associated records in the quiz table
         $sql_delete_quiz = "DELETE FROM quiz WHERE User_id=$id";
         if ($conn->query($sql_delete_quiz) === TRUE) {
