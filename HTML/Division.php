@@ -14,7 +14,7 @@ $font_size = isset($_SESSION['font_size']) ? $_SESSION['font_size'] : 'medium';
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <script defer src="../Javascript/Sample_Materials.js"></script>
         <link rel="stylesheet" href="../CSS/font_sizes.css">
-        <link rel="stylesheet" href="../CSS/<?php echo $css_folder; ?>/Division.css">
+        <link rel="stylesheet" href="../CSS/<?php echo $css_folder; ?>/Materials.css">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&display=swap" rel="stylesheet"/>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

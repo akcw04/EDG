@@ -268,7 +268,7 @@ $conn->close();
                           <td>**********</td>
                       </tr>
                       <tr class="button-container">
-                        <th><button class="button" name="submit" id="submit" class="edit_button" onclick="window.location.href='../PHP/Edit_Profile.php'"><b>Edit Profile</b></button></th>
+                        <th><button class="button" name="submit" id="submit" class="edit_button" onclick="window.location.href='../PHP/Edit_Profile.php'"><b>Edit</b></button></th>
                       </tr>
                   </table>
                 </div>
