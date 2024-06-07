@@ -44,12 +44,18 @@ include '../PHP/quiz.php';
                             <p><?php echo htmlspecialchars($choice['Choice_text']); ?></p>
                         </button>
                     <?php endforeach; ?>
-                <?php else: ?>
-                    <input type="hidden" name="end_quiz" value="end_quiz">
-                    <button type="submit" class="end-quiz-button">End Quiz</button>
-                    <br>
-                    <input type="hidden" name="check_quiz" value="check_quiz">
-                    <button type="submit" class="answers-button">Check Answers</button>
+                    <?php else: ?>
+                    <div class="button-container">
+                        <form method="post">
+                            <input type="hidden" name="end_quiz" value="1">
+                            <button type="submit" class="end-quiz-button">End Quiz</button>
+                        </form>
+                        <br>
+                        <form method="post">
+                            <input type="hidden" name="check_quiz" value="1">
+                            <button type="submit" class="answers-button">Check Answers</button>
+                        </form>
+                    </div>
                 <?php endif; ?>
             </div>
         </form>

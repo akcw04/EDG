@@ -133,14 +133,13 @@ p {
 }
 
 .end-quiz-button:hover {
-    background-color: #727272; /* Darker shade of green on hover for feedback */
+    background-color: #727272; /* Darker shade of grey on hover for feedback */
     transform: scale(1.05); /* Slight enlargement on hover for interaction feedback */
 }
 
 .end-quiz-button:focus {
     outline: none; /* Remove focus outline to maintain the style integrity */
-    box-shadow: 0 0 0 2px rgba(255,255,255,0.5), 0 0 0 4px #9ADBB3; /* Focus indicator for accessibility */
-
+    box-shadow: 0 0 0 2px rgba(255,255,255,0.5), 0 0 0 4px #A7C7E7; /* Focus indicator for accessibility */
 }
 
 .answers-button {
@@ -160,12 +159,11 @@ p {
 }
 
 .answers-button:hover {
-    background-color: #727272; /* Darker shade of green on hover for feedback */
+    background-color: #727272; /* Darker shade of grey on hover for feedback */
     transform: scale(1.05); /* Slight enlargement on hover for interaction feedback */
 }
 
 .answers-button:focus {
     outline: none; /* Remove focus outline to maintain the style integrity */
-    box-shadow: 0 0 0 2px rgba(255,255,255,0.5), 0 0 0 4px #9ADBB3; /* Focus indicator for accessibility */
-
+    box-shadow: 0 0 0 2px rgba(255,255,255,0.5), 0 0 0 4px #A7C7E7; /* Focus indicator for accessibility */
 }
