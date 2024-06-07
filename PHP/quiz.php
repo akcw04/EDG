@@ -49,6 +49,28 @@ $row_count = $result_count->fetch_assoc();
 $total_questions = $row_count['total'];
 $progress_percent = ($current_question_index / $total_questions) * 100;
 
+if (isset($_POST['check_quiz'])) {
+    unset($_SESSION['quiz_over']);
+    unset($_SESSION['category_id']);
+    unset($_SESSION['question_index']);
+    unset($_SESSION['total_correct']);
+    unset($_SESSION['incorrect_questions']);
+
+    header("Location: http://localhost/EDG/HTML/Quiz_Answers.php");
+    exit;
+}
+
+if (isset($_POST['end_quiz'])) {
+    unset($_SESSION['quiz_over']);
+    unset($_SESSION['category_id']);
+    unset($_SESSION['question_index']);
+    unset($_SESSION['total_correct']);
+    unset($_SESSION['incorrect_questions']);
+
+    header("Location: http://localhost/EDG/HTML/Choose_Quiz.php");
+    exit;
+}
+
 if (isset($_POST['choice'])) {
     $choice_id = $_POST['choice'];
     $sql = "SELECT Is_correct, Question_id FROM choices WHERE Choice_id = ?";
@@ -71,7 +93,6 @@ if (isset($_POST['choice'])) {
     $stmt_insert_answer = $conn->prepare($sql_insert_answer);
     $stmt_insert_answer->bind_param("iiiii", $_SESSION['User_id'], $quiz_id, $choice['Question_id'], $choice_id, $is_correct);
     $stmt_insert_answer->execute();
-
 
     $_SESSION['question_index']++;
 
@@ -100,28 +121,6 @@ if ($result->num_rows > 0) {
 
     $question_text = "End Of Quiz<br><br>You Got " . round($correct_percentage) . "% of Questions Correct!";
     $_SESSION['quiz_over'] = true;
-}
-
-if (isset($_POST['action1']) && $_POST['action1'] == 'end_quiz') {
-    unset($_SESSION['quiz_over']);
-    unset($_SESSION['category_id']);
-    unset($_SESSION['question_index']);
-    unset($_SESSION['total_correct']);
-    unset($_SESSION['incorrect_questions']);
-
-    header("Location: ../HTML/Choose_Quiz.php");
-    exit;
-}
-
-if (isset($_POST['action2']) && $_POST['action2'] == 'check_quiz') {
-    unset($_SESSION['quiz_over']);
-    unset($_SESSION['category_id']);
-    unset($_SESSION['question_index']);
-    unset($_SESSION['total_correct']);
-    unset($_SESSION['incorrect_questions']);
-
-    header("Location: ../HTML/Quiz_Answers.php");
-    exit;
 }
 
 $conn->close();

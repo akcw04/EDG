@@ -76,7 +76,10 @@ h1 {
 
 p {
     margin: 20px;
+    font-family: "Dosis", sans-serif;
+    font-size: calc(var(--font-size-base) * 1.125); /* 18px / 16px */
 }
+
 
 /* Container for the progress bar */
 .progress-container {
