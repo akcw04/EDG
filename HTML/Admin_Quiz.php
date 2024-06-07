@@ -264,28 +264,38 @@ if ($result->num_rows > 0) {
                         $parent_category_id = $category_name_row['Parent_id'];
                         $parent_category_symbol = $parent_category_symbols[$parent_category_id];
 
-                        echo "<tr>";
-                        echo "<td>" . $question['info']['Questions_id'] . "</td>";
-                        echo "<td>" . $parent_category_symbol . "</td>";
-                        echo "<td>" . $category_name . "</td>";
-                        echo "<td>" . $question['info']['Question_Text'] . "</td>";
-                        echo "<td>";
-                        foreach ($question['choices'] as $choice) {
-                            echo $choice['Choice_text'] . " " . ($choice['Is_correct'] ? "(Correct)" : "") . "<br>";
-                        }
-                        echo "</td>";
-                        echo "<td>
-                                <form action='../PHP/Edit_Quiz.php' method='GET' style='display:inline-block;'>
-                                    <input type='hidden' name='id' value='" . $question['info']['Questions_id'] . "'>
-                                    <button type='submit'>Edit</button>
-                                </form>
-                                <form id='deleteForm" . $question['info']['Questions_id'] . "' action='Admin_Quiz.php' method='POST' style='display:inline-block;'>
-                                    <input type='hidden' name='id' value='" . $question['info']['Questions_id'] . "'>
-                                    <input type='hidden' name='action' value='delete'>
-                                    <button type='button' onclick='confirmDelete(" . $question['info']['Questions_id'] . ")'>Delete</button>
-                                </form>
-                            </td>";
-                        echo "</tr>";
+echo "<tr>";
+echo "<td>" . $question['info']['Questions_id'] . "</td>";
+echo "<td>" . $parent_category_symbol . "</td>";
+echo "<td>" . $category_name . "</td>";
+echo "<td>" . $question['info']['Question_Text'] . "</td>";
+echo "<td>";
+foreach ($question['choices'] as $index => $choice) {
+    $choice_id = $index + 1;
+    echo $choice['Choice_text'] . " " . ($choice['Is_correct'] ? "(Correct)" : "") . "<br>";
+    echo "<input type='hidden' name='choice$choice_id' value='" . htmlspecialchars($choice['Choice_text']) . "'>";
+    echo "<input type='hidden' name='is_correct$choice_id' value='" . $choice['Is_correct'] . "'>";
+}
+echo "</td>";
+echo "<td>
+        <form action='../PHP/Edit_Quiz.php' method='GET' style='display:inline-block;'>
+            <input type='hidden' name='id' value='" . $question['info']['Questions_id'] . "'>
+            <input type='hidden' name='category_id' value='" . $question['info']['Category_id'] . "'>
+            <input type='hidden' name='question_text' value='" . htmlspecialchars($question['info']['Question_Text']) . "'>";
+foreach ($question['choices'] as $index => $choice) {
+    $choice_id = $index + 1;
+    echo "<input type='hidden' name='choice$choice_id' value='" . htmlspecialchars($choice['Choice_text']) . "'>";
+    echo "<input type='hidden' name='is_correct$choice_id' value='" . $choice['Is_correct'] . "'>";
+}
+echo "    <button type='submit'>Edit</button>
+        </form>
+        <form id='deleteForm" . $question['info']['Questions_id'] . "' action='Admin_Quiz.php' method='POST' style='display:inline-block;'>
+            <input type='hidden' name='id' value='" . $question['info']['Questions_id'] . "'>
+            <input type='hidden' name='action' value='delete'>
+            <button type='button' onclick='confirmDelete(" . $question['info']['Questions_id'] . ")'>Delete</button>
+        </form>
+    </td>";
+echo "</tr>";
                     }
                 } else {
                     echo "<tr><td colspan='6'>No quizzes found</td></tr>";

@@ -13,53 +13,70 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $question_id = $_POST['id'];
     $category_id = $_POST['category'];
     $question_text = $_POST['question'];
+    $correct_choice = $_POST['is_correct']; // This will hold the value 1, 2, 3, or 4
+
     $choices = [
-        ['text' => $_POST["choice1"], 'is_correct' => $_POST["is_correct"] == '1' ? 1 : 0],
-        ['text' => $_POST["choice2"], 'is_correct' => $_POST["is_correct"] == '2' ? 1 : 0],
-        ['text' => $_POST["choice3"], 'is_correct' => $_POST["is_correct"] == '3' ? 1 : 0],
-        ['text' => $_POST["choice4"], 'is_correct' => $_POST["is_correct"] == '4' ? 1 : 0]
+        ['text' => $_POST["choice1"], 'is_correct' => $correct_choice == '1' ? 1 : 0],
+        ['text' => $_POST["choice2"], 'is_correct' => $correct_choice == '2' ? 1 : 0],
+        ['text' => $_POST["choice3"], 'is_correct' => $correct_choice == '3' ? 1 : 0],
+        ['text' => $_POST["choice4"], 'is_correct' => $correct_choice == '4' ? 1 : 0]
     ];
 
+    // Start a transaction
+    $conn->begin_transaction();
+
+    // Update the question
     $sql = "UPDATE questions SET Category_id='$category_id', Question_Text='$question_text' WHERE Questions_id='$question_id'";
     if ($conn->query($sql) === TRUE) {
+        // Retrieve the current choices to ensure correct updates
+        $choices_sql = "SELECT Choice_id FROM choices WHERE Question_id='$question_id'";
+        $result = $conn->query($choices_sql);
+        $existing_choices = [];
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $existing_choices[] = $row['Choice_id'];
+            }
+        }
+
+        // Update the choices
+        $all_choices_updated = true;
         foreach ($choices as $index => $choice) {
-            $choice_id = $index + 1;
+            $choice_id = $existing_choices[$index];
             $choice_text = $choice['text'];
             $is_correct = $choice['is_correct'];
             $choice_sql = "UPDATE choices SET Choice_text='$choice_text', Is_correct='$is_correct' WHERE Question_id='$question_id' AND Choice_id='$choice_id'";
-            $conn->query($choice_sql);
+            if (!$conn->query($choice_sql)) {
+                $all_choices_updated = false;
+                echo "Error updating choice $choice_id: " . $conn->error . "<br>";
+                break;
+            }
         }
-        echo '<script>alert("Quiz updated successfully"); window.location.href = "../HTML/Admin_Quiz.php";</script>';
+
+        if ($all_choices_updated) {
+            // Commit the transaction if everything is successful
+            $conn->commit();
+            echo '<script>alert("Quiz updated successfully"); window.location.href = "../HTML/Admin_Quiz.php";</script>';
+        } else {
+            // Rollback the transaction in case of an error
+            $conn->rollback();
+            echo "Error updating choices: " . $conn->error;
+        }
     } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
+        $conn->rollback();
+        echo "Error updating question: " . $sql . "<br>" . $conn->error;
     }
 } else {
     $question_id = $_GET['id'];
-    $sql = "SELECT q.Questions_id, q.Category_id, q.Question_Text, 
-            c1.Choice_text AS choice1, c1.Is_correct AS is_correct1, 
-            c2.Choice_text AS choice2, c2.Is_correct AS is_correct2, 
-            c3.Choice_text AS choice3, c3.Is_correct AS is_correct3, 
-            c4.Choice_text AS choice4, c4.Is_correct AS is_correct4
-            FROM questions q
-            LEFT JOIN choices c1 ON q.Questions_id = c1.Question_id AND c1.Choice_id = 1
-            LEFT JOIN choices c2 ON q.Questions_id = c2.Question_id AND c2.Choice_id = 2
-            LEFT JOIN choices c3 ON q.Questions_id = c3.Question_id AND c3.Choice_id = 3
-            LEFT JOIN choices c4 ON q.Questions_id = c4.Question_id AND c4.Choice_id = 4
-            WHERE q.Questions_id='$question_id'";
-    $result = $conn->query($sql);
-    if ($result->num_rows > 0) {
-        $row = $result->fetch_assoc();
-        $category_id = $row['Category_id'];
-        $question_text = $row['Question_Text'];
-        $choice1 = $row['choice1'];
-        $is_correct1 = $row['is_correct1'];
-        $choice2 = $row['choice2'];
-        $is_correct2 = $row['is_correct2'];
-        $choice3 = $row['choice3'];
-        $is_correct3 = $row['is_correct3'];
-        $choice4 = $row['choice4'];
-        $is_correct4 = $row['is_correct4'];
-    }
+    $category_id = $_GET['category_id'];
+    $question_text = $_GET['question_text'];
+    $choice1 = $_GET['choice1'];
+    $is_correct1 = $_GET['is_correct1'];
+    $choice2 = $_GET['choice2'];
+    $is_correct2 = $_GET['is_correct2'];
+    $choice3 = $_GET['choice3'];
+    $is_correct3 = $_GET['is_correct3'];
+    $choice4 = $_GET['choice4'];
+    $is_correct4 = $_GET['is_correct4'];
 }
 
 // Fetch categories
@@ -155,7 +172,7 @@ $parent_category_symbols = [
     <div class="form-container">
         <h1>Edit Quiz</h1>
         <form action="Edit_Quiz.php" method="POST">
-            <input type="hidden" name="id" value="<?php echo $question_id; ?>">
+            <input type="hidden" name="id" value="<?php echo htmlspecialchars($question_id); ?>">
             <label for="category">Category:</label>
             <select name="category" id="category" required>
                 <?php
