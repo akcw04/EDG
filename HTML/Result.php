@@ -4,7 +4,6 @@ $color_mode = isset($_SESSION['color_mode']) ? $_SESSION['color_mode'] : 0;
 $css_folder = $color_mode ? "tritanopia" : "protanopia";
 $font_size = isset($_SESSION['font_size']) ? $_SESSION['font_size'] : 'medium';
 
-// Check if User_id is set in the session before doing anything else
 if (!isset($_SESSION['User_id'])) {
     die('User ID is not set in the session.');
 }
@@ -273,25 +272,25 @@ $parent_category_symbols = [
         <section>
             <h1>Your Quiz Results</h1>
             <?php
-            include '../PHP/conn.php';
             $user_id = $_SESSION['User_id'];
             $filter_category_id = $_GET['category'] ?? 'all';
             $category_filter = $filter_category_id !== 'all' ? "AND q.Category_id = '$filter_category_id'" : '';
-
+            
             // Fetch the latest quiz results for the user
-            $sql = "SELECT q.Quiz_id, q.Score, 
-                           c.Category_Name, pc.Category_Name as Parent_name,
-                           (SELECT COUNT(*) FROM questions WHERE Category_id=q.Category_id) as total_questions, 
-                           (SELECT COUNT(*) FROM user_answers ua WHERE ua.Quiz_id=q.Quiz_id AND ua.Is_correct=1) as correct_answers 
+            $sql = "SELECT q.Quiz_id, q.Score, c.Category_Name, pc.Category_Name as Parent_name,
+                        (SELECT COUNT(*) FROM questions WHERE Category_id=q.Category_id) as total_questions,
+                        (SELECT COUNT(*) FROM user_answers ua WHERE ua.Quiz_id=q.Quiz_id AND ua.Is_correct=1) as correct_answers 
                     FROM quiz q 
                     JOIN category c ON q.Category_id = c.Category_id
                     LEFT JOIN category pc ON c.Parent_id = pc.Category_id
                     WHERE q.User_id = ? $category_filter 
+                    AND q.Quiz_id = (SELECT MAX(Quiz_id) FROM quiz WHERE User_id = q.User_id AND Category_id = q.Category_id)
                     ORDER BY q.Quiz_id DESC";
             $stmt = $conn->prepare($sql);
             $stmt->bind_param("i", $user_id);
             $stmt->execute();
             $result = $stmt->get_result();
+
 
             if ($result->num_rows > 0) {
                 echo "<div class='results-container'>";

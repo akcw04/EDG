@@ -45,10 +45,10 @@ include '../PHP/quiz.php';
                         </button>
                     <?php endforeach; ?>
                 <?php else: ?>
-                    <input type="hidden" name="action1" value="end_quiz">
+                    <input type="hidden" id="action1" name="action1" value="end_quiz">
                     <button type="submit" class="end-quiz-button">End Quiz</button>
                     <br>
-                    <input type="hidden" name="action2" value="check_quiz">
+                    <input type="hidden" id="action2" name="action2" value="check_quiz">
                     <button type="submit" class="answers-button">Check Answers</button>
                 <?php endif; ?>
             </div>
