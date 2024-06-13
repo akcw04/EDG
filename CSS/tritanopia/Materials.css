@@ -266,7 +266,7 @@
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   align-items: center;
-  filter: invert(0.1) saturate(120%) hue-rotate(180deg) contrast(90%);
+  filter: contrast(90%) saturate(70%) hue-rotate(90deg);
   }
   
   .Outro {

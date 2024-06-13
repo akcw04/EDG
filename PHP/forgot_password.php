@@ -2,7 +2,6 @@
 <?php
 
 session_start();
-unset($_SESSION['User_id']);
 
 require 'C:/xampp/htdocs/EDG/vendor/autoload.php';
 
