@@ -91,7 +91,7 @@ $sql_answers = "CREATE TABLE IF NOT EXISTS user_answers (
     FOREIGN KEY (User_id) REFERENCES users(User_id),
     FOREIGN KEY (Quiz_id) REFERENCES quiz(Quiz_id),
     FOREIGN KEY (Question_id) REFERENCES questions(Questions_id),
-    FOREIGN KEY (Choice_id) REFERENCES choices(Choice_id),
+    FOREIGN KEY (Choice_id) REFERENCES choices(Choice_id) ON DELETE CASCADE,
     UNIQUE KEY unique_user_quiz_question (User_id, Quiz_id, Question_id)
 )";
 $conn->query($sql_answers);

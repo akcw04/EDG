@@ -89,34 +89,16 @@
 </style>
 </head>
 
-
 <body>
   <nav class="navbar">
     <ul class="navbar-nav">
       <li class="logo">
         <a href="../HTML/Admin_Dashboard.html" class="nav-link">
           <span class="link-text logo-text">EDG</span>
-          <svg
-            aria-hidden="true"
-            focusable="false"
-            data-prefix="fad"
-            data-icon="angle-double-right"
-            role="img"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 448 512"
-            class="svg-inline--fa fa-angle-double-right fa-w-14 fa-5x"
-          >
+          <svg aria-hidden="true" focusable="false" data-prefix="fad" data-icon="angle-double-right" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="svg-inline--fa fa-angle-double-right fa-w-14 fa-5x">
             <g class="fa-group">
-              <path
-                fill="currentColor"
-                d="M224 273L88.37 409a23.78 23.78 0 0 1-33.8 0L32 386.36a23.94 23.94 0 0 1 0-33.89l96.13-96.37L32 159.73a23.94 23.94 0 0 1 0-33.89l22.44-22.79a23.78 23.78 0 0 1 33.8 0L223.88 239a23.94 23.94 0 0 1 .1 34z"
-                class="fa-secondary">
-              </path>
-              <path
-                fill="currentColor"
-                d="M415.89 273L280.34 409a23.77 23.77 0 0 1-33.79 0L224 386.26a23.94 23.94 0 0 1 0-33.89L320.11 256l-96-96.47a23.94 23.94 0 0 1 0-33.89l22.52-22.59a23.77 23.77 0 0 1 33.79 0L416 239a24 24 0 0 1-.11 34z"
-                class="fa-primary">
-              </path>
+              <path fill="currentColor" d="M224 273L88.37 409a23.78 23.78 0 0 1-33.8 0L32 386.36a23.94 23.94 0 0 1 0-33.89l96.13-96.37L32 159.73a23.94 23.94 0 0 1 0-33.89l22.44-22.79a23.78 23.78 0 0 1 33.8 0L223.88 239a23.94 23.94 0 0 1 .1 34z" class="fa-secondary"></path>
+              <path fill="currentColor" d="M415.89 273L280.34 409a23.77 23.77 0 0 1-33.79 0L224 386.26a23.94 23.94 0 0 1 0-33.89L320.11 256l-96-96.47a23.94 23.94 0 0 1 0-33.89l22.52-22.59a23.77 23.77 0 0 1 33.79 0L416 239a24 24 0 0 1-.11 34z" class="fa-primary"></path>
             </g>
           </svg>
         </a>
@@ -190,17 +172,16 @@
                   echo "<td>" . $row["Email"] . "</td>";
                   echo "<td>" . $row["Role"] . "</td>";
                   echo "<td>
-                          <form action='../PHP/manage_user.php' method='POST' style='display:inline-block;'>
+                        <form action='../PHP/manage_user.php' method='POST' style='display:inline-block;'>
                             <input type='hidden' name='id' value='" . $row["User_id"] . "'>
                             <input type='hidden' name='action' value='edit'>
                             <button type='submit'>Edit</button>
-                          </form>
-                          <form id='deleteform' action='../PHP/manage_user.php' method='POST' style='display:inline-block;'>
+                        </form>
+                        <form id='deleteForm" . $row["User_id"] . "' action='../PHP/manage_user.php' method='POST' style='display:inline-block;'>
                             <input type='hidden' name='id' value='" . $row["User_id"] . "'>
                             <input type='hidden' name='action' value='delete'>
-                            <button type='submit' onclick='confirmDelete(\"deleteForm" . $row['User_id'] . "\")'>Delete</button>
-                          </form>
-
+                            <button type='button' onclick='confirmDelete(\"deleteForm" . $row["User_id"] . "\")'>Delete</button>
+                        </form>
                         </td>";
                   echo "</tr>";
               }
@@ -235,34 +216,34 @@ function closeModal() {
     document.getElementById('logout-modal').style.display = 'none';
 }
 
-function confirmDelete() {
-        if (confirm("Are you sure you want to delete this User? zthis action cannot be undone")) {
-            document.getElementById('deleteForm').submit();
-        }
+function confirmDelete(formId) {
+    if (confirm("Are you sure you want to delete this User? This action cannot be undone.")) {
+        document.getElementById(formId).submit();
     }
+}
 
 function filterUsers() {
-    var input, filter, table, tr, td, i, txtValue;
+    var input, filter, table, tr, td, i, j, txtValue;
     input = document.getElementById("searchInput");
     filter = input.value.toLowerCase();
     table = document.querySelector(".table-container table");
     tr = table.getElementsByTagName("tr");
 
-    for (i = 0; i < tr.length; i++) {
+    for (i = 1; i < tr.length; i++) { // Start from 1 to skip header row
+        tr[i].style.display = "none"; // Default to hide the row
         td = tr[i].getElementsByTagName("td");
-        for (var j = 0; j < td.length; j++) {
+        for (j = 0; j < td.length; j++) {
             if (td[j]) {
                 txtValue = td[j].textContent || td[j].innerText;
                 if (txtValue.toLowerCase().indexOf(filter) > -1) {
-                    tr[i].style.display = "";
+                    tr[i].style.display = ""; // Show the row if a match is found
                     break; // Break the inner loop if a match is found
-                } else {
-                    tr[i].style.display = "none";
                 }
             }
         }
     }
 }
+
 
 </script>
 </body>
