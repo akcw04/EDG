@@ -1,0 +1,48 @@
+# Composer dependencies (regenerable from composer.json)
+vendor/
+
+# Composer artifacts
+.composer/
+
+# Environment & secrets
+.env
+.env.local
+.env.*.local
+config.local.php
+
+# Database dumps
+*.sql
+*.sqlite
+*.sqlite-journal
+*.db
+
+# PHP build / cache
+*.cache
+*.log
+
+# Server / debug logs
+error_log
+access_log
+debug.log
+
+# Uploaded user files (uncomment if you add an uploads dir)
+# uploads/
+# user_uploads/
+
+# IDE / editor
+.vscode/
+.idea/
+.fleet/
+*.code-workspace
+*.swp
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Office temp lock files
+~$*.docx
+~$*.xlsx
+~$*.pptx
